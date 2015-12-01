@@ -1,0 +1,13 @@
+{
+	"name"		:	"Moisture",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove moisture sensor",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Moisture"		:	"moisture.js"
+		}
+	}
+}

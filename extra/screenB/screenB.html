@@ -1,0 +1,235 @@
+<script type="text/javascript">
+    RED.nodes.registerType('ScreenB', {
+        category: 'Extra',
+        color: '#E2D96E',
+        defaults: {
+            name:       {value: "ScreenB",  required: false},
+            types:       {value: 0,          required: true},
+            rs:         {value: 8,          required: true},
+            en:         {value: 9,          required: true},
+            d4:         {value: 4,          required: true},
+            d5:         {value: 5,          required: true},
+            d6:         {value: 6,          required: true},
+            d7:         {value: 7,          required: true},
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        label: function() {
+            return this.name || "ScreenB";
+        }
+    });
+</script>
+
+<script type="text/xred" data-template-name="ScreenB">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name </label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-types"><i class="fa fa-tag"></i> Type </label>
+        <select id="node-input-types">
+            <option value=0>0</option>
+            <option value=1>1</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-rs"><i class="fa fa-tag"></i> RS </label>
+        <select id="node-input-rs">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14(A0)</option>
+            <option value=15>15(A1)</option>
+            <option value=16>16(A2)</option>
+            <option value=17>17(A3)</option>
+            <option value=18>18(A4)</option>
+            <option value=19>19(A5)</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-en"><i class="fa fa-tag"></i> EN </label>
+        <select id="node-input-en">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14(A0)</option>
+            <option value=15>15(A1)</option>
+            <option value=16>16(A2)</option>
+            <option value=17>17(A3)</option>
+            <option value=18>18(A4)</option>
+            <option value=19>19(A5)</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-d4"><i class="fa fa-tag"></i> D4 </label>
+        <select id="node-input-d4">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14(A0)</option>
+            <option value=15>15(A1)</option>
+            <option value=16>16(A2)</option>
+            <option value=17>17(A3)</option>
+            <option value=18>18(A4)</option>
+            <option value=19>19(A5)</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-d5"><i class="fa fa-tag"></i> D5 </label>
+        <select id="node-input-d5">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14(A0)</option>
+            <option value=15>15(A1)</option>
+            <option value=16>16(A2)</option>
+            <option value=17>17(A3)</option>
+            <option value=18>18(A4)</option>
+            <option value=19>19(A5)</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-d6"><i class="fa fa-tag"></i> D6 </label>
+        <select id="node-input-d6">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14(A0)</option>
+            <option value=15>15(A1)</option>
+            <option value=16>16(A2)</option>
+            <option value=17>17(A3)</option>
+            <option value=18>18(A4)</option>
+            <option value=19>19(A5)</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-d7"><i class="fa fa-tag"></i> D7 </label>
+        <select id="node-input-d7">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14(A0)</option>
+            <option value=15>15(A1)</option>
+            <option value=16>16(A2)</option>
+            <option value=17>17(A3)</option>
+            <option value=18>18(A4)</option>
+            <option value=19>19(A5)</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/xred" data-help-name="ScreenB">
+    <h3 id="屏幕bhd44780节点"><strong>屏幕B（HD44780）节点</strong></h3>
+
+    <p>本节点使用HD44780 LCD屏幕显示文字。</p>
+
+    <h4 id="参数配置"><strong>参数配置</strong></h4>
+
+    <ol>
+    <li>Name：节点名字</li>
+    <li>Type: 显示方式</li>
+    <li>EN: EN管脚</li>
+    <li>D4: D4管脚</li>
+    <li>D5: D5管脚</li>
+    <li>D6: D6管脚</li>
+    <li>D7: D7管脚</li>
+    </ol>
+
+    <h4 id="输入量"><strong>输入量</strong></h4>
+
+    <ol>
+    <li>msg.payload: 要显示的文字</li>
+    </ol>
+
+    <h4 id="输出量"><strong>输出量</strong></h4>
+
+    <ol>
+    <li>无。</li>
+    </ol>
+
+    <h4 id="使用方法"><strong>使用方法</strong></h4>
+
+    <ol>
+    <li>将屏幕B插入扩展板中。</li>
+    <li>选择Type方式，其中Type0为文字输出模式，该模式使用屏幕的两行完成显示，最多显示32个字符； <br>
+    Type1为指令模式，该模式使用一行进行显示，最多显示15个字符，每次输入时，都会将上一次的字符串滚动到屏幕第一行。</li>
+    <li>默认情况下，不需要更改管脚设置。</li>
+    <li>使用时，向输入节点传送含有payload的消息即可。</li>
+    </ol>
+</script>
+
+

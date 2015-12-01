@@ -1,0 +1,13 @@
+{
+	"name"	:	"FaceDetect",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for Face Detect",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"FaceDetect"	:	"facedetect.js"
+			}
+		}
+	}

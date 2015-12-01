@@ -1,0 +1,151 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('Driver', {
+        category: 'Motion',
+        color: '#E2D96E',
+        defaults: {
+            name:      {value: "Driver", required: false},
+            lpwm:      {value: 6,       required: true},
+            ldir:      {value: 7,       required: true},
+            rpwm:      {value: 5,       required: true},
+            rdir:      {value: 4,       required: true},
+            speed:     {value: 50,      required: true},
+            timeout:   {value: 2,       required: true},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "Driver";
+        }
+    });
+</script>
+
+<script type="text/xred" data-template-name="Driver">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name </label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-lpwm"><i class="fa fa-tag"></i> Left PWM </label>
+        <!--input type="number" id="node-input-lpwm" placeholder="Pin number"-->
+        <select id="node-input-lpwm">
+			<option value=3>3</option>
+			<option value=5>5</option>
+			<option value=6>6</option>
+			<option value=9>9</option>
+			<option value=10>10</option>
+			<option value=11>11</option>
+		</select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-ldir"><i class="fa fa-tag"></i> Left_Dir </label>
+        <!--input type="number" id="node-input-ldir" placeholder="Pin number"-->
+        <select id="node-input-ldir">
+			<option value=0>0</option>
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+			<option value=4>4</option>
+			<option value=5>5</option>
+			<option value=6>6</option>
+			<option value=7>7</option>
+			<option value=8>8</option>
+			<option value=9>9</option>
+			<option value=10>10</option>
+			<option value=11>11</option>
+			<option value=12>12</option>
+			<option value=13>13</option>
+			<option value=14>14(A0)</option>
+			<option value=15>15(A1)</option>
+			<option value=16>16(A2)</option>
+			<option value=17>17(A3)</option>
+			<option value=18>18(A4)</option>
+			<option value=19>19(A5)</option>
+		</select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-rpwm"><i class="fa fa-tag"></i> Right PWM </label>
+        <!--input type="number" id="node-input-rpwm" placeholder="Pin number"-->
+        <select id="node-input-rpwm">
+			<option value=3>3</option>
+			<option value=5>5</option>
+			<option value=6>6</option>
+			<option value=9>9</option>
+			<option value=10>10</option>
+			<option value=11>11</option>
+		</select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-rdir"><i class="fa fa-tag"></i> Right_Dir </label>
+        <!--input type="number" id="node-input-rdir" placeholder="Pin number"-->
+        <select id="node-input-rdir">
+			<option value=0>0</option>
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+			<option value=4>4</option>
+			<option value=5>5</option>
+			<option value=6>6</option>
+			<option value=7>7</option>
+			<option value=8>8</option>
+			<option value=9>9</option>
+			<option value=10>10</option>
+			<option value=11>11</option>
+			<option value=12>12</option>
+			<option value=13>13</option>
+			<option value=14>14(A0)</option>
+			<option value=15>15(A1)</option>
+			<option value=16>16(A2)</option>
+			<option value=17>17(A3)</option>
+			<option value=18>18(A4)</option>
+			<option value=19>19(A5)</option>
+		</select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-speed"><i class="fa fa-tag"></i> Speed </label>
+        <input type="number" id="node-input-speed" placeholder="Default speed">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-timeout"><i class="fa fa-tag"></i> Timeout </label>
+        <input type="number" id="node-input-timeout" placeholder="Default timeout">
+    </div>
+</script>
+
+<script type="text/xred" data-help-name="Driver">
+<h3 id="两轮机器人控制节点"><a name="两轮机器人控制节点" href="#两轮机器人控制节点"></a>两轮机器人控制节点</h3>
+    <p>本节点使用<code>upm_ojl298</code>控制两轮小车。其中规定，从车的尾部看起，左侧车轮为左轮，右侧车轮为右轮。</p>
+    <h4 id="参数配置"><a name="参数配置" href="#参数配置"></a>参数配置</h4>
+    <ol>
+    <li>Name：参数配置</li><li>Left pwm：左电机pwm引脚</li><li>Left dir：左电机dir引脚</li><li>Right pwm：左电机pwm引脚</li><li>Right dir：左电机dir引脚</li><li>Speed：两轮电机速度</li><li>Timeout：超时时间</li></ol>
+    <h4 id="输入量"><a name="输入量" href="#输入量"></a>输入量</h4>
+    <ol>
+    <li>msg.speed：速度</li><li>msg.direction：方向</li></ol>
+    <h4 id="输出量"><a name="输出量" href="#输出量"></a>输出量</h4>
+    <p>无</p>
+    <h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
+    <ol>
+    <li>配置好节点的每个参数。</li><li><code>msg.speed</code>的值为0-100的整数，表示速度的百分比。</li><li><code>msg.direction</code>的值为0-4的整数，分别代表的是<code>前进</code>、<code>后退</code>、<code>左转</code>、<code>右转</code>和<code>停止</code>。</li><li>发送指令后，小车会按照规定方向与速度执行任务，并在超时时间到时，停止运动。超时时间使用<code>Timeout</code>进行设置，单位为秒，可以为小数。</li></ol>
+</script>
+

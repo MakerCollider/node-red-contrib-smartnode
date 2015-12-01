@@ -1,0 +1,13 @@
+{
+	"name"	:	"Camera",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for Camera",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"Camera"	:	"camera.js"
+			}
+		}
+	}

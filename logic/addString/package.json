@@ -1,0 +1,13 @@
+{
+	"name"		:	"add-strings",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node that lets the user add strings on either end of a msg.payload",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"add-strings"	:	"add-strings.js"
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"name"		:	"Button",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove button",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Button"	:	"button.js"
+		}
+	}
+}

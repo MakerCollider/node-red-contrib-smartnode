@@ -1,0 +1,13 @@
+{
+	"name"		:	"Temp",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove temperature sensor",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Temp"		:	"temp.js"
+		}
+	}
+}

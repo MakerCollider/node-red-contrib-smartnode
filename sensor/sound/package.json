@@ -1,0 +1,13 @@
+{
+	"name"		:	"SoundSensor",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove sound sensor",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"SoundSensor"		:	"sound.js"
+		}
+	}
+}

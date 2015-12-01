@@ -1,0 +1,27 @@
+<script type="text/javascript">
+    RED.nodes.registerType('SmartNode', {
+        category: 'Version',
+        color: '#E2D96E',
+        defaults: {
+            name:       {value: "SmartNode",  required: false},
+        },
+        inputs:  0,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "SmartNode";
+        }
+    });
+</script>
+
+<script type="text/xred" data-template-name="SmartNode">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name </label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/xred" data-help-name="SmartNode">
+</script>
+
+

@@ -1,0 +1,79 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<script type="text/javascript">
+	RED.nodes.registerType('Camera', {
+		category: 'imageProcessing',
+		color: '#E2D96E',
+		defaults: {
+			name:          {value: "Camera", required: false},
+			cameraId:      {value: 0, required: true},
+			frameConfig:   {value: 0, required: true},
+			timerVal:      {value: 500, required: true},
+		},
+		inputs: 1,
+		outputs: 1,
+		icon: "light.png",
+		label: function() {
+			return this.name || "Camera";
+		}
+	});
+</script>
+
+<script type="text/xred" data-template-name="Camera">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-cameraId"><i class="fa fa-tag"></i> CameraId</label>
+        <select id="node-input-cameraId">
+			<option value=0>0</option>
+			<option value=1>1</option>
+			<option value=2>2</option>
+			<option value=3>3</option>
+		</select>
+	</div>
+	<div class="form-row">
+		<label for="node-input-frameConfig"><i class="fa fa-tag"></i> FrameConfig</label>
+        <select id="node-input-frameConfig">
+			<option value=0>320 * 240</option>
+			<option value=1>640 * 480</option>
+			<option value=2>1024 * 768</option>
+		</select>
+	</div>
+		<div class="form-row">
+		<label for="node-input-timerVal"><i class="fa fa-tag"></i> TimerVal</label>
+		<input type="number" id="node-input-timerVal" placeholder="Milliseconds">
+	</div>
+</script>
+
+<script type="text/xred" data-help-name="Camera">
+	<h3 id="摄像头节点"><a name="摄像头节点" href="#摄像头节点"></a>摄像头节点</h3>
+	<p>本节点使用摄像头获取图像，并将图像数据发送至下一节点。</p>
+	<h4 id="配置参数"><a name="配置参数" href="#配置参数"></a>配置参数</h4>
+	<ol>
+	<li>Name：节点名字。</li><li>CameraId：要使用的摄像头编号。</li><li>FrameConfig：图像分辨率。</li><li>TimerVal：定时器时长。</li></ol>
+	<h4 id="输入"><a name="输入" href="#输入"></a>输入</h4>
+	<ol>
+	<li>msg.payload：开关摄像头。</li></ol>
+	<h4 id="输出"><a name="输出" href="#输出"></a>输出</h4>
+	<ol>
+	<li>msg.imagePtr：图像数据包。</li></ol>
+	<h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
+	<ol>
+	<li>将摄像头插入Edison的USB口。</li><li>设置参数，如果只有一个摄像头，CameraId为0。</li><li>当<code>msg.payload</code>为1时，摄像头开启，并定时输出图像数据。</li><li>输出内容为格式化字符串，样式为<code>Camera:xxxxxxxx</code>，其中<code>xxxxxxx</code>为<code>cv:Mat</code>类型的指针，存有摄像头读取到的图像。</li></ol>
+</script>
+

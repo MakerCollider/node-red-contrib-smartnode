@@ -1,0 +1,13 @@
+{
+	"name"		:	"Touch",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for grove touch ttp223",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"Touch"	:	"Touch.js"
+		}
+	}
+}

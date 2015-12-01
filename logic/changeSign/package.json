@@ -1,0 +1,13 @@
+{
+	"name"		:	"change-sign",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node that lets the user change the sign of a number",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"change-sign"	:	"change-sign.js"
+		}
+	}
+}

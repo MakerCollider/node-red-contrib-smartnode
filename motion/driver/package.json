@@ -1,0 +1,13 @@
+{
+	"name"	:	"Driver",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for driving two wheels robot.",
+	"dependencies"	:	{
+		},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	:	{
+			"Driver"	:	"driver.js"
+		}
+	}
+}

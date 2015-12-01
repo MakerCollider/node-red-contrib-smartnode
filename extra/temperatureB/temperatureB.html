@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    RED.nodes.registerType('TemperatureB', {
+        category: 'Extra',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "TemperatureB", required: false},
+            analogPin: {value: "0", required: false},
+            interval: {value: "1000", required: false}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || "TemperatureB";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="TemperatureB">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-analogPin"><i class="fa fa-tag"></i> Analog Pin</label>
+        <!--input type="number" id="node-input-analogPin"-->
+        <select id="node-input-analogPin">
+            <option value=0>A0</option>
+            <option value=1>A1</option>
+            <option value=2>A2</option>
+            <option value=3>A3</option>
+            <option value=4>A4</option>
+            <option value=5>A5</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="TemperatureB">
+    <p>A Node-RED node for temperature sensor, need analog pin</p>
+</script>

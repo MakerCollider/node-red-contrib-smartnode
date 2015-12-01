@@ -1,0 +1,13 @@
+{
+	"name"	:	"Geometry",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for Geometry Detect",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"Geometry"	:	"geometry.js"
+			}
+		}
+	}

@@ -1,0 +1,13 @@
+{
+	"name"		:	"MPU6050",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for Mpu6050 Accelerometer",
+	"dependencies"	:	{
+	},
+	"keywords"	:	[ "node-red" ],
+	"node-red"	:	{
+		"nodes"	: {
+			"MPU6050"		:	"mpu6050.js"
+		}
+	}
+}

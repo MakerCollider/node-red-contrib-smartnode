@@ -1,0 +1,13 @@
+{
+	"name"	:	"Img2Base64",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-RED node for image to base64",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"Img2Base64"	:	"img2base64.js"
+			}
+		}
+	}

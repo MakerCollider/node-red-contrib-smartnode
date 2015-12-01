@@ -1,0 +1,13 @@
+{
+	"name"	:	"Motor",
+	"version"	:	"0.0.1",
+	"description"	:	"A Node-red node for Motor.",
+	"dependencies"	:	{
+		},
+		"keywords"	:	[ "node-red" ],
+		"node-red"	:	{
+			"nodes"	:	{
+				"Motor"	:	"motor.js"
+			}
+		}
+}

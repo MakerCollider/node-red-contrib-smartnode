@@ -4,7 +4,8 @@
     "keywords":     ["node-red"],
     "dependencies": {
         "bindings": "*",
-        "ejs": "*"
+        "ejs": "*",
+        "pkginfo": "*"
     },
     "node-red":     {
         "nodes":{

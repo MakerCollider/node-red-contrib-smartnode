@@ -66,6 +66,6 @@ module.exports = function(RED) {
         sendStat();
    }
 
-    RED.nodes.registerType('toggle', toggle);
+    RED.nodes.registerType('Toggle', toggle);
 
 };

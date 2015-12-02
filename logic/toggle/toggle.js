@@ -24,6 +24,11 @@ module.exports = function(RED) {
 
         var stat = parseInt(config.initVal);
 
+        if(stat)
+            node.status({fill: 'red', shape:'dot', text: 'off'});
+        else
+            node.status({fill: 'green', shape:'dot', text: 'on'});
+
         function setStat(val) {
         if(val) 
             node.status({fill: 'green', shape:'dot', text: 'on'});
@@ -63,7 +68,7 @@ module.exports = function(RED) {
             'html': 'toggle.html'
         });
 
-        sendStat();
+        /*sendStat();*/
    }
 
     RED.nodes.registerType('Toggle', toggle);

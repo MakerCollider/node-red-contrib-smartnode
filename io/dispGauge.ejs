@@ -1,5 +1,5 @@
 <!--
-  Copyright 2015, 2015 MakerCollider .
+  Copyright 2015 Maker Collider
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.

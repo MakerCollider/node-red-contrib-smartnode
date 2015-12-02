@@ -47,7 +47,7 @@
             "TemperatureA":     "sensor/temperatureA/temperatureA.js",
             "TemperatureHumidity":"sensor/temperatureHumidity/temperatureHumidity.js",
             "Touch":            "sensor/touch/touch.js",
-            "UVSensor":         "sensor/uv/UV.js"
+            "UVSensor":         "sensor/uv/UV.js",
 	    
 	    "DisplayImg":       "io/disp.js",
 	    "DisplayGauge":     "io/dispGauge.js" 

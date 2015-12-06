@@ -10,6 +10,9 @@
         icon: "light.png",
         label: function() {
             return this.name || "SmartNode";
+        },
+        paletteLabel: function () {
+            return this.name||this._("SmartNode.label.palette");
         }
     });
 </script>
@@ -21,7 +24,5 @@
     </div>
 </script>
 
-<script type="text/xred" data-help-name="SmartNode">
-</script>
 
 

@@ -31,7 +31,10 @@
 		icon: "light.png",
 		label: function() {
 			return this.name || "Motor";
-		}
+		},
+                paletteLabel: function () {
+                    return this.name||this._("Motor.label.palette");
+                }
 	});
 </script>
 
@@ -92,19 +95,4 @@
 	</div>
 </script>
 
-<script type="text/xred" data-help-name="Motor">
-	<h3 id="openjumper-l298-h桥电机驱动板节点"><a name="openjumper-l298-h桥电机驱动板节点" href="#openjumper-l298-h桥电机驱动板节点"></a>OpenJumper L298 H桥电机驱动板节点</h3>
-	<p>本节点使用<code>upm_ojl298</code>控制电机。节点中规定，电机旋转方向是面向电机输出轴时的旋转方向。</p>
-	<h4 id="参数配置"><a name="参数配置" href="#参数配置"></a>参数配置</h4>
-	<ol>
-	<li>Name：参数配置</li><li>pwm：电机pwm引脚</li><li>Dir：电机dir引脚</li><li>Speed：电机速度</li><li>Timeout：超时时间</li></ol>
-	<h4 id="输入量"><a name="输入量" href="#输入量"></a>输入量</h4>
-	<ol>
-	<li>msg.speed：速度</li><li>msg.direction：方向</li><li>msg.timeout:运行时间</li></ol>
-	<h4 id="输出量"><a name="输出量" href="#输出量"></a>输出量</h4>
-	<p>无</p>
-	<h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
-	<ol>
-	<li>配置好节点的每个参数。</li><li>使用时，通过发送<code>msg</code>控制小车的行进。</li><li><code>msg.direction</code>的值为0-2的整数，从零开始分别代表的是<code>逆时针</code>、<code>顺时针</code>和<code>停止</code>。</li><li><code>msg.speed</code>的值为0-100的整数，表示速度的百分比。</li><li><code>msg.timeout</code>的值为0-100的小数，表示运行时间，单位为秒。</li><li>在不设置<code>msg.speed</code>和<code>msg.timeout</code>时，节点会使用参数中的值作为默认值。需要注意的是，如果使用过<code>msg.speed</code>和<code>msg.timeout</code>，之后的默认值都会发生改变。</li></ol>
-</script>
 

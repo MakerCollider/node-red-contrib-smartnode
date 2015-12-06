@@ -1,0 +1,7 @@
+{
+    "ScreenB": {
+        "label": {
+            "palette": "HD44780Screen"
+        }
+    }    
+}

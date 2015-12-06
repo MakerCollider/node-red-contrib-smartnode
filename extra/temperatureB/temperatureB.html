@@ -12,6 +12,9 @@
         icon: "light.png",
         label: function() {
             return this.name || "TemperatureB";
+        },
+        paletteLabel: function () {
+            return this.name||this._("TemperatureB.label.palette");
         }
     });
 </script>
@@ -39,6 +42,3 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="TemperatureB">
-    <p>A Node-RED node for temperature sensor, need analog pin</p>
-</script>

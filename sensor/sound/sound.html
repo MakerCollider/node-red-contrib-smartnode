@@ -27,6 +27,9 @@
         icon: "light.png",
         label: function() {
             return this.name || "Sound";
+        },
+        paletteLabel: function () {
+            return this.name||this._("Sound.label.palette");
         }
     });
 </script>
@@ -54,6 +57,3 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="Sound">
-    <p>A Node-RED node for sound sensor, need  analog pin</p>
-</script>

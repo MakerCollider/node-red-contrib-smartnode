@@ -17,7 +17,7 @@
 module.exports = function(RED) {
     var checkPin = require("../../extends/check_pin"); 
     var groveSensor = require("jsupm_grove");
-    function tempratureA(config) {
+    function temperatureA(config) {
         RED.nodes.createNode(this, config);
         this.analogPin = config.analogPin;
         this.interval = config.interval;
@@ -71,5 +71,5 @@ module.exports = function(RED) {
     		node.send(msg);
     	}
     }
-    RED.nodes.registerType("TempratureA", tempratureA);
+    RED.nodes.registerType("TemperatureA", temperatureA);
 }

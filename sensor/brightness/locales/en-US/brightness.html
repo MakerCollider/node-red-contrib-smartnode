@@ -1,0 +1,47 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-help-name="Brightness">
+<h3 id="光传感器节点">光传感器节点</h3>
+
+<p>本节点表示grove套件的光传感器模块。</p>
+
+<h4 id="参数配置">参数配置</h4>
+
+<ol>
+<li>Name：节点名称</li>
+<li>Analog Pin：模拟引脚</li>
+<li>Interval：输出时间间隔，单位为ms</li>
+</ol>
+
+<h4 id="输入量">输入量</h4>
+
+<ol>
+<li>msg.payload：开关量</li>
+</ol>
+
+<h4 id="输出量">输出量</h4>
+
+<ol>
+<li>msg.payload：光照强度，单位为lux</li>
+</ol>
+
+<h4 id="使用方法">使用方法</h4>
+
+<ol>
+<li>配置好节点的每个参数，<code>msg.payload</code>为1时，每隔Interval时间，输出一次光照强度值，<code>msg.payload</code>为0时，停止输出光照强度值。</li>
+</ol>
+</script>

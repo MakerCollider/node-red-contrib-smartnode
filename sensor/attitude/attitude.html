@@ -28,6 +28,9 @@
         icon: "light.png",
         label: function() {
             return this.name || "Attitude";
+        },
+        paletteLabel: function () {
+            return this.name||this._("Attitude.label.palette");
         }
     });
 </script>
@@ -43,6 +46,3 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="Attitude">
-    <p>A Node-RED node for attitude sensor, need digital pin</p>
-</script>

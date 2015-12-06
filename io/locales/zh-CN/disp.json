@@ -1,0 +1,12 @@
+{
+    "dispImg": {
+        "label": {
+            "palette": "显示图像"
+        }
+    },
+    "dispGauge": {
+        "label": {
+            "palette": "显示数值"
+        }
+    }    
+}

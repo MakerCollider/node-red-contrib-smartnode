@@ -1,0 +1,12 @@
+{
+    "dispImg": {
+        "label": {
+            "palette": "DisplayImage"
+        }
+    },
+    "dispGauge": {
+        "label": {
+            "palette": "DisplayGauge"
+        }
+    }    
+}

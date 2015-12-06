@@ -28,6 +28,9 @@
         icon: "light.png",
         label: function() {
             return this.name || "Math Operation";
+        },
+        paletteLabel: function () {
+            return this.name||this._("Math.label.palette");
         }
     });
 </script>
@@ -52,6 +55,3 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="Math">
-    <p>A Node-RED node for a user to perform basic math operations</p>
-</script>

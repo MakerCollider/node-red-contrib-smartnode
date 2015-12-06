@@ -1,0 +1,7 @@
+{
+    "FaceDetect": {
+        "label": {
+            "palette": "FaceDetect"
+        }
+    }    
+}

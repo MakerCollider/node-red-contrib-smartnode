@@ -48,9 +48,8 @@
             "TemperatureHumidity":"sensor/temperatureHumidity/temperatureHumidity.js",
             "Touch":            "sensor/touch/touch.js",
             "UVSensor":         "sensor/uv/UV.js",
-	    
-	    "DisplayImg":       "io/disp.js",
-	    "DisplayGauge":     "io/dispGauge.js" 
+
+            "DiaplayImage":     "io/disp.js"
         }
     }
 }

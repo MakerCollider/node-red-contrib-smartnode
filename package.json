@@ -1,12 +1,21 @@
 {
     "name":         "node-red-contrib-smartnode",
     "version":      "0.9.7",
-    "keywords":     ["node-red"],
+    "keywords":     ["node-red",
+                     "node",
+                     "intel",
+                     "Edison"
+                    ],
     "dependencies": {
         "bindings": "*",
         "ejs": "*",
         "pkginfo": "*"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
+    },
+    
     "node-red":     {
         "nodes":{
             "SmartNode":        "smartNode/smartnode.js",
@@ -51,5 +60,15 @@
 
             "DiaplayImage":     "io/disp.js"
         }
-    }
+    },
+    "author": {
+        "name": "Maker Collider SmartNode team",
+        "email": "ediet2005@gmail.com",
+        "url": "http://www.makercollider.com"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/MakerCollider/node-red-contrib-smartnode/issues"
+    },
+    "homepage": "https://github.com/MakerCollider/node-red-contrib-smartnode"
 }

@@ -52,9 +52,24 @@ module.exports = function(RED) {
         var camera = new jslib.Camera(node.cameraId, node.weidth, node.height);
 
         function camera_timer(){
-        	var ptrString = camera.read();
-            var msg =  {imagePtr:ptrString};
-            node.send(msg);
+		var isVaild = true;
+		if(camera.m_running){
+        		var ptrString = camera.read();
+			if(ptrString == ""){
+				isVaild = false;
+			}
+            		var msg =  {imagePtr:ptrString};
+            		node.send(msg);
+		}
+		else{
+			isVaild = false;
+		}
+		
+		if(!isVaild){
+			node.log("Camera unplugged");
+			clearInterval(node.timer);
+			node.status({fill:"red", shape:"dot", text:"Unplugged"});
+		}
         }
 
         node.log("Camera prepared.");

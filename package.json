@@ -9,7 +9,8 @@
     "dependencies": {
         "bindings": "*",
         "ejs": "*",
-        "pkginfo": "*"
+        "pkginfo": "*",
+        "node-red-contrib-smartnode-hook": "*"
     },
     "repository": {
         "type": "git",

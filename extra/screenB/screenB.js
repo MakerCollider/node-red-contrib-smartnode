@@ -25,6 +25,7 @@ module.exports = function(RED) {
         this.on('input', function(msg) {
             if(msg.payload)
             {
+                msg.payload = msg.payload.toString();
                 screen.clear();
                 if(TYPE == 0)
                 {

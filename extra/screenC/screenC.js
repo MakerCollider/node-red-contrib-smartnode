@@ -39,7 +39,11 @@ module.exports = function(RED) {
         
         //Handle inputs
         this.on('input', function(msg) {
-            if(msg.payload == '1') {
+            if((typeof msg.imagePtr) == "string"){
+                screen.ILI9225GclearScreen(0x0000);
+                screen.ILI9225GfillRectA(msg.imagePtr);
+                this.status({fill:"blue",shape:"dot",text:"Camera"});                
+            } else if(msg.payload == 1) {
                 screen.ILI9225GclearScreen(0x0000);
                 screen.ILI9225GfillRect(1);
                 this.status({fill:"blue",shape:"dot",text:"happy!"});

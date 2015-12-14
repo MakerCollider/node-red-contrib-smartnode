@@ -16,19 +16,39 @@
 var atlas = global.atlas;
 var ejs = require('ejs');
 var fs = require('fs');
+var jslib = require('jsupm_img2base64');
 
 module.exports = function(RED) {
     function dispImg(config) {
         RED.nodes.createNode(this, config);
+        var img2Base64 = new jslib.Cimg2Base64();
         var node = this;
         var name = config.name;
 
-        node.on('input', function(data) {
-            if(typeof data == "object" && data['payload'] != undefined) {
-                atlas.emit(name, data.payload);
-            } else {
-                atlas.emit(name, data);
+        node.on('input', function(msg) {
+            if((typeof msg.imagePtr) != "string")
+            {
+                this.log("Input Error! Wrong Topic");
+                node.status({fill:"red", shape:"dot", text:"InputError"});
             }
+            else
+            {
+                var result = img2Base64.noderedBase64(msg.imagePtr);
+                if(result == -1)
+                {
+                    this.log("Input Error! Wrong String Format");
+                    node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
+                }
+                var msg1 = {payload: img2Base64.m_outputString};
+                //node.send(msg1);
+                atlas.emit(name, msg1.payload);
+            }
+            /*
+            if(typeof msg == "object" && msg['payload'] != undefined) {
+                atlas.emit(name, msg1.payload);
+            } else {
+                atlas.emit(name, msg1);
+            }*/
         });  
 
         atlas.genHtml.save({

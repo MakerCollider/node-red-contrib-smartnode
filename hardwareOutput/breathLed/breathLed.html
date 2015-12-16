@@ -1,0 +1,90 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('BreathLed', {
+        category: 'HardwareOutput',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "BreathLed", required: false},
+            pwmPin: {value: "3", required: false},
+            interval: {value: "1000", required: false},
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        label: function() {
+            return this.name || "BreathLed";
+        },
+        paletteLabel: function () {
+            return this.name||this._("BreathLed.label.palette");
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="BreathLed">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-pwmPin"><i class="fa fa-tag"></i> Pwm Pin</label>
+        <!--input type="number" id="node-input-pwmPin"-->
+        <select id="node-input-pwmPin">
+            <option value=3>3</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-interval"><i class="fa fa-tag"></i> Interval</label>
+        <input type="number" id="node-input-interval">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="BreathLed">
+<h3 id="呼吸灯节点">呼吸灯节点</h3>
+
+<p>本节点表示grove套件的呼吸LED模块。</p>
+
+<h4 id="参数配置">参数配置</h4>
+
+<ol>
+<li>Name：节点名称</li>
+<li>Digital Pin：Pwm引脚</li>
+<li>Interval：呼吸节奏间隔，单位为ms</li>
+</ol>
+
+<h4 id="输入量">输入量</h4>
+
+<ol>
+<li>msg.payload：开关量</li>
+</ol>
+
+<h4 id="输出量">输出量</h4>
+
+<p>无</p>
+
+<h4 id="使用方法">使用方法</h4>
+
+<ol>
+<li>配置好节点的每个参数，<code>msg.payload</code>为1时，LED灯开始呼吸，<code>msg.payload</code>为0时，LED灯停止呼吸。</li>
+</ol>
+</script>
+

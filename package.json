@@ -30,6 +30,7 @@
             "Led":              "hardwareOutput/led/led.js",
             "Relay":            "hardwareOutput/relay/relay.js",
             "Screen":           "hardwareOutput/screen/screen.js",
+            "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",

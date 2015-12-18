@@ -20,7 +20,7 @@
 		defaults: {
 			name:          {value: "Camera", required: false},
 			cameraId:      {value: 0, required: true},
-			frameConfig:   {value: 0, required: true},
+			frameConfig:   {value: 1, required: true},
 			timerVal:      {value: 500, required: true},
 		},
 		inputs: 1,
@@ -52,11 +52,9 @@
 	<div class="form-row">
 		<label for="node-input-frameConfig"><i class="fa fa-tag"></i> FrameConfig</label>
         <select id="node-input-frameConfig">
-			<option value=0>80 * 60</option>
-			<option value=1>160 * 120</option>
-			<option value=2>320 * 240</option>
-			<option value=3>640 * 480</option>
-			<option value=4>1024 * 768</option>
+			<option value=0>160 * 120</option>
+			<option value=1>320 * 240</option>
+			<option value=2>640 * 480</option>
 		</select>
 	</div>
 		<div class="form-row">

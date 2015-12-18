@@ -26,24 +26,16 @@ module.exports = function(RED) {
         var timer;
         switch (Number(config.frameConfig)){
             case 0:
-                node.weidth = 80;
-                node.height = 60;
-                break;
-            case 1:
                 node.weidth = 160;
                 node.height = 120;
                 break;
-            case 2:
+            case 1:
                 node.weidth = 320;
                 node.height = 240;
                 break;
-            case 3:
+            case 2:
                 node.weidth = 640;
                 node.height = 480;
-                break;
-            case 4:
-                node.weidth = 1024;
-                node.height = 768;
                 break;
             default:
                 node.weidth = 160;

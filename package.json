@@ -1,6 +1,6 @@
 {
     "name":         "node-red-contrib-smartnode",
-    "version":      "1.0.3",
+    "version":      "1.0.4",
     "keywords":     ["node-red",
                      "node",
                      "intel",
@@ -31,11 +31,11 @@
             "Relay":            "hardwareOutput/relay/relay.js",
             "Screen":           "hardwareOutput/screen/screen.js",
             "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
+            "lineTracking":     "hardwareOutput/lineTrack/lineTrack.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
-            "Img2Base64":       "imageProcessing/img2Base64/img2base64.js",
 
             "add-strings":      "logic/addString/add-strings.js",
             "change-sign":      "logic/changeSign/change-sign.js",
@@ -59,6 +59,7 @@
             "TemperatureHumidity":"sensor/temperatureHumidity/temperatureHumidity.js",
             "Touch":            "sensor/touch/touch.js",
             "UVSensor":         "sensor/uv/UV.js",
+            "LineTracking":     "sensor/lineTrack/lineTrack.js",
 
             "DiaplayImage":     "io/disp.js"
         }

@@ -62,6 +62,7 @@
             "UVSensor":         "sensor/uv/UV.js",
             "LineTracking":     "sensor/lineTrack/lineTrack.js",
             "PM2.5":            "sensor/pm2dot5/pm2dot5.js",
+            "SlidePosition":    "sensor/slidePosition/slidePosition.js",
 
             "DiaplayImage":     "io/disp.js"
         }

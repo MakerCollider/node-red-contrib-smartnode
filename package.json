@@ -10,6 +10,7 @@
         "bindings": "*",
         "ejs": "*",
         "pkginfo": "*",
+        "Buffer": "*",
         "node-red-contrib-smartnode-hook": "*"
     },
     "repository": {
@@ -60,6 +61,7 @@
             "Touch":            "sensor/touch/touch.js",
             "UVSensor":         "sensor/uv/UV.js",
             "LineTracking":     "sensor/lineTrack/lineTrack.js",
+            "PM2.5":            "sensor/pm2dot5/pm2dot5.js",
 
             "DiaplayImage":     "io/disp.js"
         }

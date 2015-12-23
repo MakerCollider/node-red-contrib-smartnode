@@ -24,6 +24,7 @@
             "ScreenB":          "extra/screenB/screenB.js",
             "ScreenC":          "extra/screenC/screenC.js",
             "TemperatureB":     "extra/temperatureB/temperatureB.js",
+            "Clarifai"  : "extra/clarifai/clarifai.js",
 
             "Blink":            "hardwareOutput/blink/blink.js",
             "Buzzer":           "hardwareOutput/buzzer/buzzer.js",

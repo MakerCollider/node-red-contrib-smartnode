@@ -72,6 +72,7 @@
             "IrRemoteKit":      "sensor/irRemoteKit/irRemoteKit.js",
             "IrDistance":       "sensor/irDistance/irDistance.js",
             "IrFallPrevent":    "sensor/irFallPrevent/irFallPrevent.js",
+            "IrSwitch":         "sensor/irSwitch/irSwitch.js",
 
             "DiaplayImage":     "io/disp.js"
         }

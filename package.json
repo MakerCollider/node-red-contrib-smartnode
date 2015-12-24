@@ -74,6 +74,8 @@
             "IrFallPrevent":    "sensor/irFallPrevent/irFallPrevent.js",
             "IrSwitch":         "sensor/irSwitch/irSwitch.js",
             "GraySensor":       "sensor/gray/gray.js",
+            "SmartGraySensor":  "sensor/smartGray/smartGray.js",
+            "CO2Sensor":        "sensor/co2/co2.js",     
 
             "DiaplayImage":     "io/disp.js"
         }

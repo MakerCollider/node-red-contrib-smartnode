@@ -1,7 +1,0 @@
-{
-    "TemperatureB": {
-        "label": {
-            "palette": "LM35Temperature"
-        }
-    }    
-}

@@ -26,19 +26,10 @@
     "node-red":     {
         "nodes":{
             "SmartNode":        "smartNode/smartnode.js",
-            "ScreenB":          "extra/screenB/screenB.js",
-            "ScreenC":          "extra/screenC/screenC.js",
-            "TemperatureB":     "extra/temperatureB/temperatureB.js",
+            "ScreenC":          "extra/screen9225/screen9225.js",
             "Clarifai":         "extra/clarifai/clarifai.js",
 
-            "Blink":            "hardwareOutput/blink/blink.js",
-            "Buzzer":           "hardwareOutput/buzzer/buzzer.js",
             "EdisonSerial":     "hardwareOutput/edisonSerial/edisonserial.js",
-            "Led":              "hardwareOutput/led/led.js",
-            "Relay":            "hardwareOutput/relay/relay.js",
-            "Screen":           "hardwareOutput/screen/screen.js",
-            "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
-            "lineTracking":     "hardwareOutput/lineTrack/lineTrack.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
@@ -52,30 +43,8 @@
 
             "Driver":           "motion/driver/driver.js",
             "Motor":            "motion/motor/motor.js",
-            "Servo":            "motion/servo/servo.js",
 
             "Attitude":         "sensor/attitude/attitude.js",
-            "Brightness":       "sensor/brightness/brightness.js",
-            "Button":           "sensor/button/button.js",
-            "Encoder":          "sensor/encoder/encoder.js",
-            "Moisture":         "sensor/moisture/moisture.js",
-            "Motion":           "sensor/motion/motion.js",
-            "RotaryEncoder":    "sensor/rotaryEncoder/rotaryEncoder.js",
-            "Sound":            "sensor/sound/sound.js",
-            "TemperatureA":     "sensor/temperatureA/temperatureA.js",
-            "TemperatureHumidity":"sensor/temperatureHumidity/temperatureHumidity.js",
-            "Touch":            "sensor/touch/touch.js",
-            "UVSensor":         "sensor/uv/UV.js",
-            "LineTracking":     "sensor/lineTrack/lineTrack.js",
-            "PM2.5":            "sensor/pm2dot5/pm2dot5.js",
-            "SlidePosition":    "sensor/slidePosition/slidePosition.js",
-            "IrRemoteKit":      "sensor/irRemoteKit/irRemoteKit.js",
-            "IrDistance":       "sensor/irDistance/irDistance.js",
-            "IrFallPrevent":    "sensor/irFallPrevent/irFallPrevent.js",
-            "IrSwitch":         "sensor/irSwitch/irSwitch.js",
-            "GraySensor":       "sensor/gray/gray.js",
-            "SmartGraySensor":  "sensor/smartGray/smartGray.js",
-            "CO2Sensor":        "sensor/co2/co2.js",     
 
             "DiaplayImage":     "io/disp.js"
         }

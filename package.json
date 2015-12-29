@@ -16,7 +16,16 @@
         "fs": "*",
         "path": "*",
         "onnect-multiparty": "*",
-        "node-red-contrib-smartnode-hook": "*"
+        "node-red-contrib-smartnode-hook": "*",
+        "mraa": ">=0.8.1",
+        "jsupm_screenSpi9225": ">=0.0.1",
+        "jsupm_camera": ">=0.0.1",
+        "jsupm_facedetect": ">=0.0.1",
+        "jsupm_geometry": ">=0.0.1",
+        "jsupm_screenSpi9225": ">=0.0.1",
+        "jsupm_img2base64": ">=0.0.1",
+        "jsupm_ojl298": ">=0.0.1",
+        "jsupm_mpu9150": ">=0.0.1"
     },
     "repository": {
         "type": "git",

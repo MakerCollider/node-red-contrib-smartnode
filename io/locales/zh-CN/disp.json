@@ -8,5 +8,10 @@
         "label": {
             "palette": "显示数值"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "ResultDisplay": "结果显示"
+        }
+    }     
 }

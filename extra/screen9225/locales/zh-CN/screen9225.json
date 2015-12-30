@@ -3,5 +3,10 @@
         "label": {
             "palette": "ILI9225屏幕"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Extra": "扩展节点"
+        }
+    }     
 }

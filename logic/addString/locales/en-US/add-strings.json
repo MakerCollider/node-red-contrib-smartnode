@@ -3,5 +3,10 @@
         "label": {
             "palette": "Add-String"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Logic": "Logic_Operation"
+        }
+    }     
 }

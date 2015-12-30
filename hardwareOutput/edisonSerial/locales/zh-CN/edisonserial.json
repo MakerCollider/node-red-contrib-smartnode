@@ -3,5 +3,10 @@
         "label": {
             "palette": "Edison串口"
         }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
     }    
 }

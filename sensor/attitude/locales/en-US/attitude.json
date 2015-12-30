@@ -3,5 +3,10 @@
         "label": {
             "palette": "Attitude"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Sensor": "Advanced_Sensor"
+        }
+    }     
 }

@@ -3,5 +3,10 @@
         "label": {
             "palette": "添加字符串"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
 }

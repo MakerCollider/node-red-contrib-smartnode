@@ -1,12 +1,12 @@
 {
-    "Screen9225": {
+    "Clarifai": {
         "label": {
-            "palette": "ILI9225Screen"
+            "palette": "Clarifai"
         }
     },
     "palette": {
         "label": {
               "Extra": "Extra_Nodes"
         }
-    }     
+    }    
 }

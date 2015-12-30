@@ -3,5 +3,10 @@
         "label": {
             "palette": "Driver"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Motion": "Robot_Motion_Control"
+        }
+    }     
 }

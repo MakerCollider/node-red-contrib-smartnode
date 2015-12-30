@@ -1,12 +1,12 @@
 {
-    "SmartNode": {
+    "Clarifai": {
         "label": {
-            "palette": "SmartNode"
+            "palette": "Clarifai"
         }
     },
     "palette": {
         "label": {
-              "Version": "Version_Info"
+              "Extra": "扩展节点"
         }
     }     
 }

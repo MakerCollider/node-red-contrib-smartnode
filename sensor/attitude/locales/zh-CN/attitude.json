@@ -3,5 +3,10 @@
         "label": {
             "palette": "位置传感器"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
 }

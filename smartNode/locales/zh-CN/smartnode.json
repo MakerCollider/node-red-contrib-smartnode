@@ -3,5 +3,10 @@
         "label": {
             "palette": "SmartNode版本"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Version": "版本信息"
+        }
+    }     
 }

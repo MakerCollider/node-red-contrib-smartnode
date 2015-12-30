@@ -3,5 +3,10 @@
         "label": {
             "palette": "电机控制"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Motion": "机器人运动控制"
+        }
+    }     
 }

@@ -3,5 +3,10 @@
         "label": {
             "palette": "软件开关"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
 }

@@ -3,5 +3,10 @@
         "label": {
             "palette": "Math"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Logic": "Logic_Operation"
+        }
+    }     
 }

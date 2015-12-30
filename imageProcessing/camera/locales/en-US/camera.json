@@ -3,5 +3,10 @@
         "label": {
             "palette": "Camera"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "Image_Process"
+        }
+    }     
 }

@@ -3,5 +3,10 @@
         "label": {
             "palette": "FaceDetect"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "Image_Process"
+        }
+    }     
 }

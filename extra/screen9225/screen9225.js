@@ -16,7 +16,7 @@
 
 module.exports = function(RED) {
 
-    var jslib = require('jsupm_screenSpi9225');
+    var jslib = require('jsupm_screenspi9225');
     var exec = require('child_process').exec; 
 
     function screenC(config) {

@@ -8,5 +8,10 @@
         "label": {
             "palette": "DisplayGauge"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "ResultDisplay": "Result_Display"
+        }
+    }     
 }

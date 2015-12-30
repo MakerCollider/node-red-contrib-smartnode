@@ -3,5 +3,10 @@
         "label": {
             "palette": "Geometry"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "Image_Process"
+        }
+    }     
 }

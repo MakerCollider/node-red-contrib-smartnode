@@ -3,5 +3,10 @@
         "label": {
             "palette": "改变类型"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
 }

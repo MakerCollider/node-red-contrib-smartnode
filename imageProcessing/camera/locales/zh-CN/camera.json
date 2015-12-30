@@ -3,5 +3,10 @@
         "label": {
             "palette": "摄像头"
         }
-    }    
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "图像处理"
+        }
+    }     
 }

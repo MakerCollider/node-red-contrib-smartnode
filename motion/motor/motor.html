@@ -30,7 +30,7 @@
 		outputs: 1,
 		icon: "light.png",
 		label: function() {
-			return this.name || "Motor";
+			return this.name +' D' + this.pwm+ ',D'+ this.dir;
 		},
                 paletteLabel: function () {
                     return this.name||this._("Motor.label.palette");

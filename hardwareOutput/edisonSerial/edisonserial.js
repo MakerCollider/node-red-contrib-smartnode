@@ -62,7 +62,7 @@ module.exports = function(RED) {
         this.on('input', function(msg) {
             this.status({fill:"blue",shape:"dot",text:"Sending"});
 
-            serial.writeStr(msg.payload);
+            serial.writeStr(msg.payload.toString());
             this.status({fill:"green",shape:"dot",text:"OK"});
             this.log("Send Message: " + msg.payload);
         });

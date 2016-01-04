@@ -65,6 +65,6 @@ module.exports = function(RED) {
             this.status({fill:"red",shape:"ring",text:"closed"});
         });
     }
-    RED.nodes.registerType("ScreenC", screenC);
+    RED.nodes.registerType("Screen9225", screenC);
 }
 

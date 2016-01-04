@@ -1,0 +1,12 @@
+{
+    "RobotHead-Random": {
+        "label": {
+            "palette": "机器人表情随机变化"
+        }
+    },
+    "palette": {
+        "label": {
+              "Motion": "机器人运动控制"
+        }
+    }     
+}

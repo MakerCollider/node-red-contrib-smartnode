@@ -1,0 +1,12 @@
+{
+    "RobotHead-Smile": {
+        "label": {
+            "palette": "机器人微笑"
+        }
+    },
+    "palette": {
+        "label": {
+              "Motion": "机器人运动控制"
+        }
+    }     
+}

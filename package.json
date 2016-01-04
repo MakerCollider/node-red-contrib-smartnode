@@ -51,6 +51,10 @@
 
             "Driver":           "motion/driver/driver.js",
             "Motor":            "motion/motor/motor.js",
+            "RobotHead-Init":   "motion/robotHead/robotHeadInit/robotHeadInit.js",
+            "RobotHead-Smile":  "motion/robotHead/robotHeadSmile/robotHeadSmile.js",
+            "RobotHead-Sad":    "motion/robotHead/robotHeadSad/robotHeadSad.js",
+            "RobotHead-Random": "motion/robotHead/robotHeadRandom/robotHeadRandom.js",
 
             "Attitude":         "sensor/attitude/attitude.js",
 

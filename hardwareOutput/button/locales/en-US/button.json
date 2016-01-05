@@ -1,0 +1,12 @@
+{
+    "Button": {
+        "label": {
+            "palette": "Button"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "HardwareOutput"
+        }
+    }     
+}

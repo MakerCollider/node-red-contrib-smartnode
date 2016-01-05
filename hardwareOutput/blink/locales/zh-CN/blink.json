@@ -1,0 +1,12 @@
+{
+    "Blink": {
+        "label": {
+            "palette": "LED闪烁"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }    
+}

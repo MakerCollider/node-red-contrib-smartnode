@@ -1,0 +1,12 @@
+{
+    "Led": {
+        "label": {
+            "palette": "LED"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "HardwareOutput"
+        }
+    }     
+}

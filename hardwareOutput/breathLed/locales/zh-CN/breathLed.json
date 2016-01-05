@@ -1,0 +1,12 @@
+{
+    "BreathLed": {
+        "label": {
+            "palette": "呼吸灯"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }     
+}

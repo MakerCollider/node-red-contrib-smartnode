@@ -38,10 +38,11 @@
             "Clarifai":         "extra/clarifai/clarifai.js",
 
             "EdisonSerial":     "hardwareOutput/edisonSerial/edisonserial.js",
-	    "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
+	        "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
             "Button":           "hardwareOutput/button/button.js",
             "Blink":            "hardwareOutput/blink/blink.js",
             "Led":              "hardwareOutput/led/led.js",
+            "PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
@@ -52,6 +53,7 @@
             "change-type":      "logic/changeType/change-type.js",
             "Math":             "logic/math/math-operations.js",
             "Toggle":           "logic/toggle/toggle.js",
+            "SubString":        "logic/subString/substring.js",
 
             "Driver":           "motion/driver/driver.js",
             "Motor":            "motion/motor/motor.js",

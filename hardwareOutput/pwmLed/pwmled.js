@@ -39,8 +39,7 @@ module.exports = function(RED) {
             return;
         }
 
-        var pwm = new m.Pwm(node.pwmPin);
-        pwm.enable(true);
+        var pwm;
         function setPwmto0(pin) {                                                                      
             var mraa =require('mraa');                                                                 
             var exec = require('child_process').exec;                                                  
@@ -50,27 +49,30 @@ module.exports = function(RED) {
             gpio.dir(mraa.DIR_OUT);                                                                    
             exec(cmd1,0);                                                                              
             gpio.write(0);                                                                             
-            exec(cmd2,0);                                                                              
+            exec(cmd2,0);                                                                            
         }
         this.on('input', function(msg){
-          if (msg.payload>0 && msg.payload<=255)
+          var pwmValue = parseInt(msg.payload);
+          if (pwmValue>0)
           {
-            pwm.write(msg.payload/255);
-            console.log("pwm value is: "+msg.payload/255);
+            if(pwmValue>255)
+              pwmValue = 255;
+            pwm = new m.Pwm(node.pwmPin);
+            pwm.enable(true);
+            pwm.write(pwmValue/255);
+            console.log("pwm value is: "+pwmValue/255);
           }
-          else if (msg.payload>255)
-          {
-            pwm.write(1);
-          }
-          else if (msg.payload<=0)
-          {
-            pwm.write(0);
+          else if (pwmValue<=0)
+          { 
+            //pwm.write(0);
             setPwmto0(node.pwmPin);
           }
         });	
         this.on('close', function() {
-        checkPin.initDigitalPin();  //init pin
-      });	
+            checkPin.initDigitalPin();  //init pin
+            //pwm.write(0);
+            setPwmto0(node.pwmPin);
+        });	
       }
     RED.nodes.registerType("PwmLed", pwmLed);
 }

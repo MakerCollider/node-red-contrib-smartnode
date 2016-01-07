@@ -15,7 +15,7 @@
  **/
 module.exports = function(RED) {
 
-    var mraa = require('mraa');
+    var mraa = require("mraa-makercollider");
 
     function edisonSerial(config) {
         node = this;

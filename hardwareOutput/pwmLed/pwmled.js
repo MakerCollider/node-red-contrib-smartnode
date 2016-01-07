@@ -16,7 +16,7 @@
 
 module.exports = function(RED) {
     var checkPin = require("../../extends/check_pin");
-    var m = require('mraa');
+    var m = require("mraa-makercollider");
     function pwmLed(config) {
       RED.nodes.createNode(this, config);
       this.pwmPin = config.pwmPin;
@@ -41,7 +41,7 @@ module.exports = function(RED) {
 
         var pwm;
         function setPwmto0(pin) {                                                                      
-            var mraa =require('mraa');                                                                 
+            var mraa =require("mraa-makercollider");                                                                 
             var exec = require('child_process').exec;                                                  
             var gpio = new mraa.Gpio(pin);                                                             
             var cmd1 = "echo " + pin + " > /sys/class/gpio/unexport";                                  

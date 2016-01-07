@@ -14,7 +14,7 @@
   limitations under the License.
 -->
 <script type="text/javascript">
-    RED.nodes.registerType('wechat', {
+    RED.nodes.registerType('WeChat', {
         category: 'Extra',
         color: '#E2D96E',
         defaults: {
@@ -25,7 +25,10 @@
         outputs: 1,
         icon: "file.png",
         label: function() {
-            return this.clientid || "wechat";
+            return "WeChat";
+        },
+        paletteLabel: function () {
+            return this.name||this._("WeChat.label.palette");
         },
         oneditsave: function() {
         	this.prev_clientid = this.clientid;
@@ -33,14 +36,9 @@
     });
 </script>
 
-<script type="text/x-red" data-template-name="wechat">
+<script type="text/x-red" data-template-name="WeChat">
     <div class="form-row">
-        <label for="node-input-clientid"><i class="fa fa-tag"></i> clientid</label>
+        <label for="node-input-clientid"><i class="fa fa-tag"></i> Client ID</label>
         <input type="text" id="node-input-clientid" placeholder="client id">
     </div>
 </script>
-
-<script type="text/x-red" data-help-name="wechat">
-    <p>A Node-RED node for wechat</p>
-</script>
-

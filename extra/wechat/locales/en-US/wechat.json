@@ -1,0 +1,12 @@
+{
+    "wechat": {
+        "label": {
+            "palette": "WeChat"
+        }
+    },
+    "palette": {
+        "label": {
+              "Extra": "Extra_Nodes"
+        }
+    }     
+}

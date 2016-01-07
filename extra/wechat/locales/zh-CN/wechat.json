@@ -1,0 +1,12 @@
+{
+    "WeChat": {
+        "label": {
+            "palette": "微信"
+        }
+    },
+    "palette": {
+        "label": {
+              "Extra": "扩展节点"
+        }
+    }     
+}

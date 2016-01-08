@@ -32,12 +32,12 @@ module.exports = function(RED) {
         });	
 
     }
-    RED.nodes.registerType("wechat", Wechat);
+    RED.nodes.registerType("WeChat", Wechat);
 
     function createCLient(_node){
         if (_node.clientid){
             var settings = {
-                keepalive: 100,
+                keepalive: 10000,
                 protocolId: 'MQIsdp',
                 protocolVersion: 3,
                 clientId: 'client-a',
@@ -48,10 +48,10 @@ module.exports = function(RED) {
               , host = 'www.makercollider.com';
               client = mqtt.createClient(1883, host, settings);
             client.subscribe(_node.clientid,{qos:1}, function (topic) {
-                //console.log('presenced '+_node.clientid);
+                console.log('presenced '+_node.clientid);
             });
             client.unsubscribe(_node.prev_clientid, function (topic) {
-                //console.log('unpresenced '+_node.prev_clientid);
+                console.log('unpresenced '+_node.prev_clientid);
             });
             
             client.on('message', function(topic, message) {

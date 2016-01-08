@@ -1,12 +1,8 @@
 {
     "wechat": {
         "label": {
-            "palette": "WeChat"
+            "palette-in": "wechat in",
+            "palette-out": "wechat out"
         }
-    },
-    "palette": {
-        "label": {
-              "Extra": "Extra_Nodes"
-        }
-    }     
+    }  
 }

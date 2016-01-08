@@ -16,49 +16,96 @@
 
 module.exports = function(RED) {
     
-    function Wechat(config) {
+    function WechatIn(config) {
         RED.nodes.createNode(this,config);
-        this.clientid = config.clientid;
-        this.prev_clientid = config.prev_clientid;
+        this.accountid = config.accountid;
+        this.prev_accountid = config.prev_accountid;
         var node = this;
         this.on('input', function(msg) {
-            msg.payload = msg.payload.toLowerCase();
+            //msg.payload = msg.payload.toLowerCase();
         });
 
-        createCLient(node);
+        subscribeMqtt(node);
         
         this.on('close', function() { 
 
         });	
-
     }
-    RED.nodes.registerType("WeChat", Wechat);
 
-    function createCLient(_node){
-        if (_node.clientid){
+    function subscribeMqtt(_node){
+        if (_node.accountid){
             var settings = {
                 keepalive: 10000,
                 protocolId: 'MQIsdp',
                 protocolVersion: 3,
-                clientId: 'client-a',
+                clientId: 'client-a1',
+                clean: false
+            }
+
+            var mqtt = require('mqtt')
+              , host = 'www.makercollider.com';
+            client = mqtt.createClient(1883, host, settings);
+            client.subscribe(_node.accountid,{qos:1}, function (topic) {
+                console.log('presenced '+_node.accountid);
+            });
+
+            if (_node.accountid != _node.prev_accountid){
+                client.unsubscribe(_node.prev_accountid, function (topic) {
+                    console.log('unpresenced '+_node.prev_accountid);
+                });
+            }
+
+            client.on('message', function(topic, message) {
+                if (topic == _node.accountid){
+                    console.log(topic+''+message);
+                    var msg = {payload:''+message}
+                    _node.send(msg);
+                }
+            });          
+        }
+    }
+
+
+    RED.nodes.registerType("wechat in", WechatIn);
+
+    
+    function WechatOut(config) {
+        RED.nodes.createNode(this,config);
+        this.accountid = config.accountid;
+        var node = this;
+        this.on('input', function(msg) {
+            msg.payload = msg.payload.toLowerCase();
+            console.log(msg.payload);
+            if (msg.payload){
+                publishMqtt(node,msg.payload);
+            }
+            
+        });
+        this.on('close', function() { 
+
+        }); 
+
+    }
+    RED.nodes.registerType("wechat out", WechatOut);
+
+    function publishMqtt(_node,msg){
+
+        if (_node.accountid){
+            
+            var settings = {
+                keepalive: 10000,
+                protocolId: 'MQIsdp',
+                protocolVersion: 3,
+                clientId: 'client-a3',
                 clean: false
             }
 
             var mqtt = require('mqtt')
               , host = 'www.makercollider.com';
               client = mqtt.createClient(1883, host, settings);
-            client.subscribe(_node.clientid,{qos:1}, function (topic) {
-                console.log('presenced '+_node.clientid);
-            });
-            client.unsubscribe(_node.prev_clientid, function (topic) {
-                console.log('unpresenced '+_node.prev_clientid);
-            });
-            
-            client.on('message', function(topic, message) {
-                console.log(''+message);
-                var msg = {payload:''+message}
-                _node.send(msg);
-            });
+            client.publish(_node.accountid+'mc',msg);
+            client.end();
+            console.log('published '+_node.accountid+'mc');
         }
     }
 }

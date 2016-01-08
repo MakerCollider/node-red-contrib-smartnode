@@ -1,12 +1,8 @@
 {
-    "WeChat": {
+    "wechat": {
         "label": {
-            "palette": "微信"
+            "palette-in": "收微信",
+            "palette-out": "发微信"
         }
-    },
-    "palette": {
-        "label": {
-              "Extra": "扩展节点"
-        }
-    }     
+    }  
 }

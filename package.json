@@ -1,6 +1,6 @@
 {
     "name":         "node-red-contrib-smartnode",
-    "version":      "1.0.11",
+    "version":      "1.0.12",
     "keywords":     ["node-red",
                      "node",
                      "intel",
@@ -17,14 +17,12 @@
         "path": "*",
         "connect-multiparty": "*",
         "node-red-contrib-smartnode-hook": "*",
-        "mraa-makercollider": ">=0.0.3",
         "jsupm_screenspi9225": ">=0.0.1",
         "jsupm_camera": ">=0.0.1",
         "jsupm_facedetect": ">=0.0.1",
         "jsupm_geometry": ">=0.0.1",
         "jsupm_img2base64": ">=0.0.1",
-        "jsupm_ojl298": ">=0.0.1",
-        "jsupm_mpu9150": ">=0.0.1"
+        "jsupm_ojl298": ">=0.0.1"
     },
     "repository": {
         "type": "git",

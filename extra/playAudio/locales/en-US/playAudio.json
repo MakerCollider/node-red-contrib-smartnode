@@ -1,0 +1,12 @@
+{
+    "PlayAudio": {
+        "label": {
+            "palette": "音乐播放"
+        }
+    },
+    "palette": {
+        "label": {
+              "Extra": "扩展节点"
+        }
+    }     
+}

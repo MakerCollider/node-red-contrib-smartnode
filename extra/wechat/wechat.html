@@ -14,31 +14,63 @@
   limitations under the License.
 -->
 <script type="text/javascript">
-    RED.nodes.registerType('WeChat', {
-        category: 'Extra',
+    RED.nodes.registerType('wechat in', {
+        category: 'social',
         color: '#E2D96E',
         defaults: {
-            clientid: {value: "", required: false},
-            prev_clientid: {value: "", required: false}
+            accountid: {value: "", required: false},
+            prev_accountid: {value: "", required: false}
         },
         inputs: 0,
         outputs: 1,
-        icon: "file.png",
+        icon: "wechat.png",
+        align: "right",
         label: function() {
-            return "WeChat";
+            return this.name || "wechat in";
         },
         paletteLabel: function () {
-            return this.name||this._("WeChat.label.palette");
+            return this._("wechat.label.palette-in");
         },
         oneditsave: function() {
-        	this.prev_clientid = this.clientid;
+        	this.prev_accountid = this.accountid;
         }
     });
 </script>
 
-<script type="text/x-red" data-template-name="WeChat">
+<script type="text/x-red" data-template-name="wechat in">
     <div class="form-row">
-        <label for="node-input-clientid"><i class="fa fa-tag"></i> Client ID</label>
-        <input type="text" id="node-input-clientid" placeholder="client id">
+        <label for="node-input-accountid"><i class="fa fa-tag"></i> Account ID</label>
+        <input type="text" id="node-input-accountid" placeholder="Account ID">
+    </div>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('wechat out', {
+        category: 'social',
+        color: '#E2D96E',
+        defaults: {
+            accountid: {value: "", required: false}
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "wechat.png",
+        label: function() {
+            return this.name || "wechat out";
+        },
+
+        paletteLabel: function () {
+            return  this._("wechat.label.palette-out");
+        },
+        oneditsave: function() {
+          this.prev_accountid = this.accountid;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="wechat out">
+    <div class="form-row">
+        <label for="node-input-accountid"><i class="fa fa-tag"></i> Account ID</label>
+        <input type="text" id="node-input-accountid" placeholder="Account ID">
     </div>
 </script>

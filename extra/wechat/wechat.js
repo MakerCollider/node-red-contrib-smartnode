@@ -74,6 +74,7 @@ module.exports = function(RED) {
         this.accountid = config.accountid;
         var node = this;
         this.on('input', function(msg) {
+            msg.payload = msg.payload.toString();
             msg.payload = msg.payload.toLowerCase();
             console.log(msg.payload);
             if (msg.payload){

@@ -1,36 +1,19 @@
-<!--
-  Copyright 2015 Maker Collider
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <script type="text/xred" data-help-name="Screen9225">
-	<h3 id="屏幕控制节点"><a name="屏幕控制节点" href="#屏幕控制节点"></a>屏幕控制节点</h3>
-	<p>本节点使用ILI9225 TFT屏幕显示表情。</p>
-	<h4 id="参数配置"><a name="参数配置" href="#参数配置"></a>参数配置</h4>
-	<ol>
-	<li>Name：节点名字。</li></ol>
-	<h4 id="输入量"><a name="输入量" href="#输入量"></a>输入量</h4>
-	<ol>
-	<li>msg.payload:表情代号。</li></ol>
-	<h4 id="输出量"><a name="输出量" href="#输出量"></a>输出量</h4>
-	<ol>
-	<li>无。</li></ol>
-	<h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
-	<ol>
-	<li>按照要求将屏幕接线。</li><li>向节点输入<code>msg.payload</code>消息,其中0为笑脸,1为哭脸,2为平常脸。</li></ol>
-	<h4 id="接线图"><a name="接线图" href="#接线图"></a>接线图</h4>
-	<p>左侧为屏幕引脚,右侧为Edison Arduino Board引脚。</p>
-	<p>VCC : 5V<br>GND : GND<br>GND :<br>NC :<br>NC :<br>LED : 3.3V<br>CLK : 13<br>SDI : 11<br>RS : A0(14)<br>RST : A1(15)<br>CS : 9</p>
+<h1 id="ili9225屏幕"><a name="ili9225屏幕" href="#ili9225屏幕"></a>ILI9225屏幕</h1>
+<p>本节点使用ILI9225 TFT屏幕显示图片。</p>
+<h4 id="**参数配置**"><a name="**参数配置**" href="#**参数配置**"></a><strong>参数配置</strong></h4>
+<ol>
+<li>Name：节点名字。</li></ol>
+<h4 id="**输入量**"><a name="**输入量**" href="#**输入量**"></a><strong>输入量</strong></h4>
+<ol>
+<li>msg.payload: 要显示的图像的序号（从0开始），或者清屏（-1）。</li><li>msg.imagePtr: 用于显示实时画面，接收来自摄像头，人脸识别等结点传入的实时图像。</li></ol>
+<h4 id="**输出量**"><a name="**输出量**" href="#**输出量**"></a><strong>输出量</strong></h4>
+<ol>
+<li>无。</li></ol>
+<h4 id="**使用方法**"><a name="**使用方法**" href="#**使用方法**"></a><strong>使用方法</strong></h4>
+<ol>
+<li>按照要求将屏幕接线。</li><li>向节点输入<code>msg.payload</code>或者<code>msg.imagePtr</code>消息，显示相应的图像。</li></ol>
+<h4 id="**接线图**"><a name="**接线图**" href="#**接线图**"></a><strong>接线图</strong></h4>
+<p>左侧为屏幕引脚,右侧为Edison Arduino Board引脚。</p>
+<p>VCC : 5V<br>GND : GND<br>GND :<br>NC :<br>NC :<br>LED : 3.3V<br>CLK : 13<br>SDI : 11<br>RS : A0(14)<br>RST : A1(15)<br>CS : 9</p>
 </script>
-
-

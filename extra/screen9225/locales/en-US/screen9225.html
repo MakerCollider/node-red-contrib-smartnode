@@ -1,36 +1,17 @@
-<!--
-  Copyright 2015 Maker Collider
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
 <script type="text/xred" data-help-name="Screen9225">
-	<h3 id="屏幕控制节点"><a name="屏幕控制节点" href="#屏幕控制节点"></a>屏幕控制节点</h3>
-	<p>本节点使用ILI9225 TFT屏幕显示表情。</p>
-	<h4 id="参数配置"><a name="参数配置" href="#参数配置"></a>参数配置</h4>
-	<ol>
-	<li>Name：节点名字。</li></ol>
-	<h4 id="输入量"><a name="输入量" href="#输入量"></a>输入量</h4>
-	<ol>
-	<li>msg.payload:表情代号。</li></ol>
-	<h4 id="输出量"><a name="输出量" href="#输出量"></a>输出量</h4>
-	<ol>
-	<li>无。</li></ol>
-	<h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
-	<ol>
-	<li>按照要求将屏幕接线。</li><li>向节点输入<code>msg.payload</code>消息,其中0为笑脸,1为哭脸,2为平常脸。</li></ol>
-	<h4 id="接线图"><a name="接线图" href="#接线图"></a>接线图</h4>
-	<p>左侧为屏幕引脚,右侧为Edison Arduino Board引脚。</p>
-	<p>VCC : 5V<br>GND : GND<br>GND :<br>NC :<br>NC :<br>LED : 3.3V<br>CLK : 13<br>SDI : 11<br>RS : A0(14)<br>RST : A1(15)<br>CS : 9</p>
+<h1 id="ili9225-screen"><a name="ili9225-screen" href="#ili9225-screen"></a>ILI9225 Screen</h1>
+<p>This node can be used to show image from ILI9225 Screen.</p>
+<h4 id="**config**"><a name="**config**" href="#**config**"></a><strong>Config</strong></h4>
+<ol>
+<li>Name：Name of this node。</li></ol>
+<h4 id="**input**"><a name="**input**" href="#**input**"></a><strong>Input</strong></h4>
+<ol>
+<li>msg.payload: Picture Index(start from 0), or clean the screen(-1).</li><li>msg.imagePtr: Receive the message from Camera node, Face Detect node, etc.</li></ol>
+<h4 id="**output**"><a name="**output**" href="#**output**"></a><strong>Output</strong></h4>
+<p>None</p>
+<h4 id="**howto**"><a name="**howto**" href="#**howto**"></a><strong>Howto</strong></h4>
+<ol>
+<li>Link the wires.</li><li>Use ‘msg.payload’ or ‘msg.imagePtr’ to show image.</li></ol>
+<h4 id="**pin-map**"><a name="**pin-map**" href="#**pin-map**"></a><strong>Pin map</strong></h4>
+<p>VCC : 5V<br>GND : GND<br>GND :<br>NC :<br>NC :<br>LED : 3.3V<br>CLK : 13<br>SDI : 11<br>RS : A0(14)<br>RST : A1(15)<br>CS : 9</p>
 </script>
-
-

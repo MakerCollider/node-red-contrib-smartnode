@@ -1,12 +1,12 @@
 {
     "Screen9225": {
         "label": {
-            "palette": "ILI9225Screen"
+            "palette": "ILI9225 Screen"
         }
     },
     "palette": {
         "label": {
-              "Extra": "Extra_Nodes"
+              "Extra": "Extra"
         }
     }     
 }

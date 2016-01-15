@@ -64,7 +64,7 @@ module.exports = function(RED) {
         }
             
         //create uploads dir
-        var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/';
+        var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/audio/';
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath);
         } 
@@ -73,18 +73,18 @@ module.exports = function(RED) {
         app.post('*/upload', multipart(), function(req, res){
             console.log('upload completed');
             //get filename
-            var filename = req.files.files.originalFilename || path.basename(req.files.files.ws.path);
+            var filename = req.files.files.originalFilename || path.basename(req.files.files.path);
             //copy file to a public directory
             var targetPath = uploadPath + filename;
             //console.log(req.files.files.ws.path);
             //console.log(path.dirname(__filename));
             //copy file
-            fs.createReadStream(req.files.files.ws.path).pipe(fs.createWriteStream(targetPath));
+            fs.createReadStream(req.files.files.path).pipe(fs.createWriteStream(targetPath));
             //return file url
             //console.log(req.headers.host);
             var host = req.headers.host;
             host = host.replace(/3000/, "1880");
-            res.json({code: 200, msg: {url: 'http://' + host + '/uploads/' + filename}});
+            res.json({code: 200, msg: {url: 'http://' + host + '/uploads/audio/' + filename}});
         }); 
 
         app.get('*/getfiles', function(req, res){
@@ -120,8 +120,9 @@ module.exports = function(RED) {
         node.status({fill:"blue", shape:"dot",text:"ready"});
 
         this.on('input', function(msg) {
-            if(msg.payload-1 in node.rules){
-                fileStr = node.rules[msg.payload-1].v;
+            var value = Number(msg.payload);
+            if(value in node.rules){
+                fileStr = node.rules[value].v;
                 if(fileStr.substr(-3, 3) == "WAV" || fileStr.substr(-3, 3) == "wav"){
                     console.log("it's wav file");
                     orders = "killall -SIGINT mpg123 play; play " + fileStr;
@@ -140,7 +141,7 @@ module.exports = function(RED) {
                         }
                     });
                 }
-                node.status({fill:"green", shape:"dot",text:"playing"});
+                node.status({fill:"green", shape:"dot",text: "playing" + msg.payload});
             }
             else if(msg.payload == -1){
                 orders = "killall -SIGINT mpg123 play";
@@ -149,15 +150,20 @@ module.exports = function(RED) {
                         console.log(err);
                     }
                 });
-                node.status({fill:"grey", shape:"dot",text:"stop"});
+                node.status({fill:"red", shape:"dot",text:"stop"});
             }
             else{
-                node.status({fill:"red", shape:"dot",text:"error"});
+                node.status({fill:"grey", shape:"dot",text:"error"});
             }
         });
 
         this.on('close', function() { 
-
+            orders = "killall -SIGINT mpg123 play";
+            term.exec(orders, function(err, stdout,stderr){
+                if(err){
+                    console.log(err);
+                }
+            });
         }); 
 
     }

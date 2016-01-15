@@ -140,7 +140,7 @@ module.exports = function(RED) {
         //Handle inputs
         this.on('input', function(msg) {
             var value = Number(msg.payload);
-            if(value in node.rules){
+            if(value in node.rules || (value >= 100 && value <=102)){
                 state = false;
                 screenSpi.ILI9225GfillRect(value);
                 this.status({fill:"green",shape:"dot",text: "Image " + msg.payload});

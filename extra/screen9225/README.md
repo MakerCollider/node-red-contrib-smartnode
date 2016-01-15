@@ -14,6 +14,7 @@
 ####**使用方法**
 1. 按照要求将屏幕接线。
 2. 向节点输入`msg.payload`或者`msg.imagePtr`消息，显示相应的图像。
+3. 默认存储了三张表情图片在系统中，分别是生气（100），微笑（101）和平和（102）。
 
 ####**接线图**
 左侧为屏幕引脚,右侧为Edison Arduino Board引脚。
@@ -47,6 +48,7 @@ None
 ####**Howto**
 1. Link the wires.
 2. Use 'msg.payload' or 'msg.imagePtr' to show image.
+3. There are three default emotions on the node, they are angry(100), smile(101)and normal(102).
 
 ####**Pin map**
 

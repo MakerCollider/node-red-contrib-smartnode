@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <link type="text/css" rel="stylesheet" href="lib/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container">
+      <form class = "form-horizontal" enctype='multipart/form-data' method='post' action='javascript:;' role = "form" id = "frmUploadFile">
+        <div class = "form-group">
+          <div class = "a-upload">
+            <input type = "file" id="files" name = "files" />选择文件...
+          </div>
+          <button  onClick = "uploadFile()" class="btn-upload">上传</button>
+          <span id="spanMessage" class="msg"></span>
+        </div>
+      </form>
+    </div>
+    <script src="lib/jquery.min.js"></script>
+    <script src="post.js"></script>
+  </body>
+</html>
+<style type="text/css">
+
+.btn-upload {
+  position: absolute;
+  width: 60px;
+  height: 24px;
+  display:inline;
+  margin-left: 40px;
+}
+.msg {
+  position: absolute;
+  color:#FF0000;
+  display:inline;
+  margin-left: 120px;
+}
+
+
+/*a  upload */
+.a-upload {
+    padding: 0 10px;
+    height: 24px;
+    width: 160px;
+    line-height: 24px;
+    position: relative;
+    cursor: pointer;
+    color: #333;
+    background: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    margin-bottom: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #444;
+    background: #eee;
+    border-color: #333;
+    text-decoration: none
+}
+</style>

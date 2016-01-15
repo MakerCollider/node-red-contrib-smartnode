@@ -1,6 +1,6 @@
 {
     "name":         "node-red-contrib-smartnode",
-    "version":      "1.0.14",
+    "version":      "1.0.15",
     "keywords":     ["node-red",
                      "node",
                      "intel",
@@ -21,7 +21,6 @@
 	"jsupm_ojl298": ">=0.0.1",
 	"jsupm_screenspi9225": ">=0.0.1",
 	"morgan": "*",
-	"mraa": ">=0.8.1",
 	"node-red-contrib-smartnode-hook": "*",
 	"path": "*",
         "pkginfo": "*"

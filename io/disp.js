@@ -19,6 +19,13 @@ var fs = require('fs');
 var jslib = require('jsupm_img2base64');
 
 module.exports = function(RED) {
+    var domain = require('domain');
+
+    var d = domain.create();
+
+    d.on('error', function(e) {
+        console.log("error in dispImg:", e);
+    });
     function dispImg(config) {
         RED.nodes.createNode(this, config);
         var img2Base64 = new jslib.Cimg2Base64();
@@ -26,23 +33,29 @@ module.exports = function(RED) {
         var name = config.name;
 
         node.on('input', function(msg) {
-            if((typeof msg.imagePtr) != "string")
-            {
-                this.log("Input Error! Wrong Topic");
-                node.status({fill:"red", shape:"dot", text:"InputError"});
-            }
-            else
-            {
-                var result = img2Base64.noderedBase64(msg.imagePtr);
-                if(result == -1)
-                {
-                    this.log("Input Error! Wrong String Format");
-                    node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
-                }
-                var msg1 = {payload: img2Base64.m_outputString};
-                //node.send(msg1);
-                atlas.emit(name, msg1.payload);
-            }
+            d.run(function () {
+                process.nextTick(function () {
+                    //throw new Error("exception in nextTick callback");
+                    if((typeof msg.imagePtr) != "string")
+                    {
+                        this.log("Input Error! Wrong Topic");
+                        node.status({fill:"red", shape:"dot", text:"InputError"});
+                    }
+                    else
+                    {
+                        var result = img2Base64.noderedBase64(msg.imagePtr);
+                        if(result == -1)
+                        {
+                            this.log("Input Error! Wrong String Format");
+                            node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
+                        }
+                        var msg1 = {payload: img2Base64.m_outputString};
+                        //node.send(msg1);
+                        atlas.emit(name, msg1.payload);
+                    }
+                });
+            });
+            
             /*
             if(typeof msg == "object" && msg['payload'] != undefined) {
                 atlas.emit(name, msg1.payload);

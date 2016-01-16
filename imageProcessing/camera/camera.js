@@ -14,7 +14,13 @@
  * limitations under the License.
  **/
 module.exports = function(RED) {
+    var domain = require('domain');
 
+    var d = domain.create();
+
+    d.on('error', function(e) {
+        console.log("error in camera:", e);
+    });
     var jslib = require('jsupm_camera');
     function camera(config) {
         var node = this;
@@ -69,34 +75,45 @@ module.exports = function(RED) {
 
         //Handle inputs
         node.on('input', function(msg) {
-            if(Number(msg.payload) == 1)
-            {
-                node.log("Start Camera Timer.");
-                if(camera.startCamera())
-                {
-                    setTimeout(function(){}, 500);
-                    node.timer = setInterval(camera_timer, node.timerVal);
-                    node.status({fill:"green",shape:"dot",text:"Running"});
-                }
-                else
-                {
-                    node.log("Cannot open camera!");
-                    node.status({fill:"red",shape:"dot",text:"Error"});
-                }
-            }
-            else
-            {
-                clearInterval(node.timer);
-        camera.stopCamera();
-                node.log("Stop Camera Timer.");
-                node.status({fill:"red",shape:"dot",text:"Stop"});
-            }
+            d.run(function () {
+                process.nextTick(function () {
+                    if(Number(msg.payload) == 1)
+                    {
+                        node.log("Start Camera Timer.");
+                        if(camera.startCamera())
+                        {
+                            setTimeout(function(){}, 500);
+                            node.timer = setInterval(camera_timer, node.timerVal);
+                            node.status({fill:"green",shape:"dot",text:"Running"});
+                        }
+                        else
+                        {
+                            node.log("Cannot open camera!");
+                            node.status({fill:"red",shape:"dot",text:"Error"});
+                        }
+                    }
+                    else
+                    {
+                        clearInterval(node.timer);
+                        camera.stopCamera();
+                        node.log("Stop Camera Timer.");
+                        node.status({fill:"red",shape:"dot",text:"Stop"});
+                    }
+                    //throw new Error("exception in nextTick callback");
+                });
+            });
+            
         });
 
         node.on('close', function() {
-            node.log("Stop Camera");
-        clearInterval(node.timer);
-            camera.stopCamera();
+            d.run(function () {
+                process.nextTick(function () {
+                    //throw new Error("exception in nextTick callback");
+                    node.log("Stop Camera");
+                    clearInterval(node.timer);
+                    camera.stopCamera();
+                });
+            });
         });
     }
     RED.nodes.registerType("Camera", camera);

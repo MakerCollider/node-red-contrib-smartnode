@@ -53,25 +53,41 @@ module.exports = function(RED) {
         });
         app.use(morgan('dev'));
         // app.use(express.static('./public'));
-        app.use(express.static(__dirname + '/html'));
+        app.use(express.static(__dirname + '/../../extends/upload'));
         if (listen_status == 'end'){
             app.listen(process.env.PORT || 3000);
             listen_status ='starting';
         }
 
-        //create uploads dir
-        var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/picture/';
-        if (!fs.existsSync(uploadPath)) {
-            fs.mkdirSync(uploadPath);
-        } 
-
         console.log('Node.js Ajax Upload File running at: http://0.0.0.0:3000');
         app.post("*/upload", multipart(), function(req, res){
+            //file dir
+            var fileDir = '';
+            if (req.query.type){
+                fileDir = req.query.type+'/';
+            }
+            //create uploads dir
+            var uploadFatherPath = path.dirname(__filename) + '/../../../../public/uploads/';
+            if (!fs.existsSync(uploadFatherPath)) {
+                fs.mkdirSync(uploadFatherPath);
+            }
+
+            var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/'+fileDir;
+            if (!fs.existsSync(uploadPath)) {
+                fs.mkdirSync(uploadPath);
+            }
+
             console.log('upload completed');
             //get filename
             var filename = req.files.files.originalFilename || path.basename(req.files.files.path);
+            
+            //file dir
+            var fileDir = '';
+            if (req.query.type){
+                fileDir = req.query.type+'/';
+            }
             //copy file to a public directory
-            var targetPath = uploadPath + filename;
+            var targetPath = uploadPath + fileDir + filename;
             //console.log(req.files.files.ws.path);
             //console.log(path.dirname(__filename));
             //copy file
@@ -84,6 +100,14 @@ module.exports = function(RED) {
         }); 
 
         app.get('*/getfiles', function(req, res){
+            //file dir
+            var fileDir = '';
+            if (req.query.type){
+                fileDir = req.query.type+'/';
+            }
+            //create uploads dir
+            var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/'+fileDir;
+
             var filesList = geFileList(uploadPath);
             res.json({code: 200, msg: filesList});
         });

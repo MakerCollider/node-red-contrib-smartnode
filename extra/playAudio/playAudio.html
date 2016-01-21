@@ -35,7 +35,13 @@
         },
         oneditprepare: function() {
             rules = this.rules;
-            loadFrame();
+
+            //load frame
+            var fileType = 'audio';
+            var host = window.location.host;
+            var web_url = 'http://'+host.replace(/1880/, "3000");
+            web_url = web_url+'/index.html?type='+fileType;
+            loadFrame(web_url,fileType);
 
             var operators = [];
             if (files){
@@ -43,45 +49,9 @@
             }
 
             $("#node-input-add-file").click(function() {
-                addSingleFileSelect();
+                addSingleFileSelect(fileType);
             }); 
-
-            function generateFileSelect(i,rule) {
-                var container = $('<li/>',{style:"background: #fff; margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
-                var row = $('<div/>').appendTo(container);
-                $('<i style="color: #eee; cursor: move;" class="node-input-rule-handle fa fa-bars"></i>').appendTo(row);
-
-                var selectField = $('<select/>',{style:"width:240px; margin-left: 5px; text-align: center;"}).appendTo(row);
-                for (var d in operators) {
-                    selectField.append($("<option></option>").val(operators[d].v).text(operators[d].t));
-                }
-
-                var finalspan = $('<span/>',{style:"float: right;margin-right: 10px;"}).appendTo(row);
-                finalspan.append(' &#8594; <span class="node-input-rule-index">'+i+'</span> ');
-
-                var deleteButton = $('<a/>',{href:"#",class:"editor-button editor-button-small", style:"margin-top: 7px; margin-left: 5px;"}).appendTo(finalspan);
-                $('<i/>',{class:"fa fa-remove"}).appendTo(deleteButton);
-
-                deleteButton.click(function() {
-                    container.css({"background":"#fee"});
-                    container.fadeOut(300, function() {
-                        $(this).remove();
-                        $("#node-input-file-container").children().each(function(i) {
-                            $(this).find(".node-input-rule-index").html(i+1);
-                        });
-
-                    });
-                });
-
-                $("#node-input-file-container").append(container);
-
-                selectField.find("option").filter(function() {return $(this).val() == rule.t;}).attr('selected',true);
-                selectField.change();
-
-                selectField.click(function() {
-                    appendNewOptions(this);
-                });
-            }    
+  
 
             function switchDialogResize() {
                 var rows = $("#dialog-form>div:not(.node-input-rule-container-row)");
@@ -133,23 +103,17 @@
                 var r = {t:text,v:val,id:id};
                 node.rules.push(r);
             });
-
-            console.log(node.rules);
         }
     });
 
-    //load frame
-    var host = window.location.host;
-    var web_url = 'http://'+host.replace(/1880/, "3000");
-
-    function loadFrame(){
-        $('#frmUpload').attr('src',web_url);
-        getFilesList();
+    function loadFrame(_url,_fileType){
+        $('#frmUpload').attr('src',_url);
+        getFilesList(_fileType);
     }
 
-    function getFilesList(){
+    function getFilesList(_fileType){
         $.ajax({
-            url: web_url+'/getfiles',
+            url: web_url+'/getfiles?type='+_fileType,
             type: 'GET',
             dataType: "json",
             cache: false,
@@ -158,7 +122,7 @@
 
                     files = data.msg;
                     for (var i in rules){
-                        generateMultiFileSelect(parseInt(i)+1,rules[i]);
+                        generateMultiFileSelect(parseInt(i)+1,rules[i],_fileType);
                     }
                 } 
             },
@@ -166,9 +130,9 @@
         });
     }
 
-    function addSingleFileSelect(){
+    function addSingleFileSelect(_fileType){
         $.ajax({
-            url: web_url+'/getfiles',
+            url: web_url+'/getfiles?type='+_fileType,
             type: 'GET',
             dataType: "json",
             cache: false,
@@ -179,16 +143,16 @@
                     $("#node-input-file-container").children().each(function(i) {
                         j++;
                     });
-                    generateSingleFileSelect(parseInt(j)+1,files); 
+                    generateSingleFileSelect(parseInt(j)+1,files,_fileType); 
                 } 
             },
             error: function(){}
         });
     }
 
-    function appendNewOptions(selectField){
+    function appendNewOptions(selectField,_fileType){
         $.ajax({
-            url: web_url+'/getfiles',
+            url: web_url+'/getfiles?type='+_fileType,
             type: 'GET',
             dataType: "json",
             cache: false,
@@ -215,7 +179,7 @@
                     }
                     
                     for (var d in diff_files) { 
-                        console.log(diff_files[d].v);
+                        //console.log(diff_files[d].v);
                         $(selectField).append($("<option></option>").val(diff_files[d].v).text(diff_files[d].t));
                     }
 
@@ -227,7 +191,7 @@
     }
 
 
-    function generateMultiFileSelect(i,rule) {
+    function generateMultiFileSelect(i,rule,_fileType) {
         var container = $('<li/>',{style:"background: #fff; margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
         var row = $('<div/>').appendTo(container);
         $('<i style="color: #eee; cursor: move;" class="node-input-rule-handle fa fa-bars"></i>').appendTo(row);
@@ -260,12 +224,12 @@
         selectField.change();
 
         selectField.click(function() {
-            appendNewOptions(this);
+            appendNewOptions(this,_fileType);
         });
     }
 
 
-    function generateSingleFileSelect(i,_files) {
+    function generateSingleFileSelect(i,_files,_fileType) {
         var container = $('<li/>',{style:"background: #fff; margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
         var row = $('<div/>').appendTo(container);
         $('<i style="color: #eee; cursor: move;" class="node-input-rule-handle fa fa-bars"></i>').appendTo(row);
@@ -276,7 +240,7 @@
         }
     
         selectField.click(function() {
-            appendNewOptions(this);
+            appendNewOptions(this,_fileType);
         });
 
         selectField.change();

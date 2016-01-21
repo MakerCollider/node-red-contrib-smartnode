@@ -56,24 +56,35 @@ module.exports = function(RED) {
             next();
         });
         app.use(morgan('dev'));
-       // app.use(express.static('./public'));
-        app.use(express.static(__dirname + '/html'));
+        //app.use(express.static(__dirname + '/html'));
+        app.use(express.static(__dirname + '/../../extends/upload'));
         if (listen_status == 'end'){
             app.listen(process.env.PORT || 3000);
             listen_status ='starting';
         }
             
-        //create uploads dir
-        var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/audio/';
-        if (!fs.existsSync(uploadPath)) {
-            fs.mkdirSync(uploadPath);
-        } 
-        
         console.log('Node.js Ajax Upload File running at: http://0.0.0.0:3000');
         app.post('*/upload', multipart(), function(req, res){
+            //file dir
+            var fileDir = '';
+            if (req.query.type){
+                fileDir = req.query.type+'/';
+            }
+            //create uploads dir
+            var uploadFatherPath = path.dirname(__filename) + '/../../../../public/uploads/';
+            if (!fs.existsSync(uploadFatherPath)) {
+                fs.mkdirSync(uploadFatherPath);
+            }
+
+            var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/'+fileDir;
+            if (!fs.existsSync(uploadPath)) {
+                fs.mkdirSync(uploadPath);
+            }
+
             console.log('upload completed');
             //get filename
             var filename = req.files.files.originalFilename || path.basename(req.files.files.path);
+
             //copy file to a public directory
             var targetPath = uploadPath + filename;
             //console.log(req.files.files.ws.path);
@@ -84,10 +95,18 @@ module.exports = function(RED) {
             //console.log(req.headers.host);
             var host = req.headers.host;
             host = host.replace(/3000/, "1880");
-            res.json({code: 200, msg: {url: 'http://' + host + '/uploads/audio/' + filename}});
+            res.json({code: 200, msg: {url: 'http://' + host + '/uploads/'+ fileDir + filename}});
         }); 
 
         app.get('*/getfiles', function(req, res){
+            //file dir
+            var fileDir = '';
+            if (req.query.type){
+                fileDir = req.query.type+'/';
+            }
+            //create uploads dir
+            var uploadPath = path.dirname(__filename) + '/../../../../public/uploads/'+fileDir;
+
             var filesList = geFileList(uploadPath);
             res.json({code: 200, msg: filesList});
         });

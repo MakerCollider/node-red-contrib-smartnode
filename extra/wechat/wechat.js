@@ -15,12 +15,12 @@
  **/
 
 module.exports = function(RED) {
-    
     function WechatIn(config) {
         RED.nodes.createNode(this,config);
         this.accountid = config.accountid;
         this.prev_accountid = config.prev_accountid;
         var node = this;
+
         this.on('input', function(msg) {
             //msg.payload = msg.payload.toLowerCase();
         });
@@ -34,12 +34,13 @@ module.exports = function(RED) {
 
     function subscribeMqtt(_node){
         if (_node.accountid){
+            var _clientId = 'mqtt_' + (1+Math.random()*4294967295).toString(16);
             var settings = {
-                keepalive: 10000,
+                keepalive: 60,
                 protocolId: 'MQIsdp',
                 protocolVersion: 3,
-                clientId: 'client-a1',
-                clean: false
+                clientId: _clientId,
+                clean: true
             }
 
             var mqtt = require('mqtt')
@@ -67,24 +68,24 @@ module.exports = function(RED) {
 
 
     RED.nodes.registerType("wechat in", WechatIn);
-
     
     function WechatOut(config) {
+
         RED.nodes.createNode(this,config);
         this.accountid = config.accountid;
         var node = this;
         this.on('input', function(msg) {
             msg.payload = msg.payload.toString();
             msg.payload = msg.payload.toLowerCase();
-            console.log(msg.payload);
             if (msg.payload){
                 publishMqtt(node,msg.payload);
             }
-            
         });
+
         this.on('close', function() { 
 
         }); 
+
 
     }
     RED.nodes.registerType("wechat out", WechatOut);
@@ -92,13 +93,12 @@ module.exports = function(RED) {
     function publishMqtt(_node,msg){
 
         if (_node.accountid){
-            
+            var _clientId = 'mqtt_' + (1+Math.random()*4294967295).toString(16);
             var settings = {
-                keepalive: 10000,
+                keepalive: 60,
                 protocolId: 'MQIsdp',
                 protocolVersion: 3,
-                clientId: 'client-a3',
-                clean: false
+                clientId: _clientId
             }
 
             var mqtt = require('mqtt')

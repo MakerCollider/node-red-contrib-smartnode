@@ -15,98 +15,93 @@
  **/
 
 module.exports = function(RED) {
-    function WechatIn(config) {
-        RED.nodes.createNode(this,config);
-        this.accountid = config.accountid;
-        this.prev_accountid = config.prev_accountid;
+    var util = require("util");
+    var isUtf8 = require('is-utf8');
+
+    var mqttBoker = require('./mqttboker'); 
+
+    function WechatIn(n) {
+        mqttboker = new mqttBoker(); 
+        RED.nodes.createNode(this,n);
+        this.topic = n.accountid;
+        this.brokerConn = mqttboker;
         var node = this;
-
-        this.on('input', function(msg) {
-            //msg.payload = msg.payload.toLowerCase();
-        });
-
-        subscribeMqtt(node);
-        
-        this.on('close', function() { 
-
-        });	
-    }
-
-    function subscribeMqtt(_node){
-        if (_node.accountid){
-            var _clientId = 'mqtt_' + (1+Math.random()*4294967295).toString(16);
-            var settings = {
-                keepalive: 60,
-                protocolId: 'MQIsdp',
-                protocolVersion: 3,
-                clientId: _clientId,
-                clean: true
-            }
-
-            var mqtt = require('mqtt')
-              , host = 'www.makercollider.com';
-            client = mqtt.createClient(1883, host, settings);
-            client.subscribe(_node.accountid,{qos:1}, function (topic) {
-                console.log('presenced '+_node.accountid);
-            });
-
-            if (_node.accountid != _node.prev_accountid){
-                client.unsubscribe(_node.prev_accountid, function (topic) {
-                    console.log('unpresenced '+_node.prev_accountid);
-                });
-            }
-
-            client.on('message', function(topic, message) {
-                if (topic == _node.accountid){
-                    console.log(topic+''+message);
-                    var msg = {payload:''+message}
-                    _node.send(msg);
+        if (this.brokerConn) {
+            this.status({fill:"red",shape:"ring",text:"common.status.disconnected"});
+            if (this.topic) {
+                this.brokerConn.subscribe(this.topic,2,function(topic,payload,packet) {
+                    if (isUtf8(payload)) { payload = payload.toString(); }
+                    var msg = {topic:topic,payload:payload, qos: packet.qos, retain: packet.retain};
+                    if ((node.brokerConn.broker === "localhost")||(node.brokerConn.broker === "127.0.0.1")) {
+                        msg._topic = topic;
+                    }
+                    node.send(msg);
+                }, this.id);
+                if (this.brokerConn.connected) {
+                    node.status({fill:"green",shape:"dot",text:"common.status.connected"});
                 }
-            });          
+                node.brokerConn.register(this);
+            }
+            else {
+                this.error(RED._("mqtt.errors.not-defined"));
+            }
+            this.on('close', function() {
+                if (node.brokerConn) {
+                    node.brokerConn.unsubscribe(node.topic,node.id);
+                    node.brokerConn.deregister(node);
+                }
+            });
+        } else {
+            this.error(RED._("mqtt.errors.missing-config"));
         }
+        
     }
-
 
     RED.nodes.registerType("wechat in", WechatIn);
-    
-    function WechatOut(config) {
 
-        RED.nodes.createNode(this,config);
-        this.accountid = config.accountid;
+    function WechatOut(n) {
+        mqttboker = new mqttBoker(); 
+        RED.nodes.createNode(this,n);
+        this.topic = n.accountid+'mc';
+        this.qos = n.qos || null;
+        this.retain = n.retain;
+        this.brokerConn = mqttboker;
         var node = this;
-        this.on('input', function(msg) {
-            msg.payload = msg.payload.toString();
-            msg.payload = msg.payload.toLowerCase();
-            if (msg.payload){
-                publishMqtt(node,msg.payload);
+        
+        if (this.brokerConn) {
+            this.status({fill:"red",shape:"ring",text:"common.status.disconnected"});
+            this.on("input",function(msg) {
+                if (msg.qos) {
+                    msg.qos = parseInt(msg.qos);
+                    if ((msg.qos !== 0) && (msg.qos !== 1) && (msg.qos !== 2)) {
+                        msg.qos = null;
+                    }
+                }
+                msg.qos = Number(node.qos || msg.qos || 0);
+                msg.retain = node.retain || msg.retain || false;
+                msg.retain = ((msg.retain === true) || (msg.retain === "true")) || false;
+                if (node.topic) {
+                    msg.topic = node.topic;
+                }
+                if ( msg.hasOwnProperty("payload")) {
+                    if (msg.hasOwnProperty("topic") && (typeof msg.topic === "string") && (msg.topic !== "")) { // topic must exist
+                        this.brokerConn.publish(msg);  // send the message
+                    }
+                    else { node.warn(RED._("mqtt.errors.invalid-topic")); }
+                }
+            });
+            if (this.brokerConn.connected) {
+                node.status({fill:"green",shape:"dot",text:"common.status.connected"});
             }
-        });
-
-        this.on('close', function() { 
-
-        }); 
-
-
-    }
-    RED.nodes.registerType("wechat out", WechatOut);
-
-    function publishMqtt(_node,msg){
-
-        if (_node.accountid){
-            var _clientId = 'mqtt_' + (1+Math.random()*4294967295).toString(16);
-            var settings = {
-                keepalive: 60,
-                protocolId: 'MQIsdp',
-                protocolVersion: 3,
-                clientId: _clientId
-            }
-
-            var mqtt = require('mqtt')
-              , host = 'www.makercollider.com';
-              client = mqtt.createClient(1883, host, settings);
-            client.publish(_node.accountid+'mc',msg);
-            client.end();
-            console.log('published '+_node.accountid+'mc');
+            node.brokerConn.register(node);
+            this.on('close', function() {
+                node.brokerConn.deregister(node);
+            });
+        } else {
+            this.error(RED._("mqtt.errors.missing-config"));
         }
     }
+
+    RED.nodes.registerType("wechat out", WechatOut);
+ 
 }

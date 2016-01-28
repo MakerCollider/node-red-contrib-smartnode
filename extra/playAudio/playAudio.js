@@ -144,7 +144,7 @@ module.exports = function(RED) {
                 fileStr = node.rules[value].v;
                 if(fileStr.substr(-3, 3) == "WAV" || fileStr.substr(-3, 3) == "wav"){
                     console.log("it's wav file");
-                    orders = "killall -SIGINT mpg123 play; play " + fileStr;
+                    orders = "killall -SIGINT mpg123 play; play " + "'" + fileStr + "'";
                     term.exec(orders, function(err, stdout,stderr){
                         if(err){
                             console.log(err);
@@ -153,7 +153,7 @@ module.exports = function(RED) {
                 }
                 else if(fileStr.substr(-3, 3) == "MP3" || fileStr.substr(-3, 3) == "mp3"){
                     console.log("it's mp3 file");
-                    orders = "killall -SIGINT mpg123 play; mpg123 " + fileStr;
+                    orders = "killall -SIGINT mpg123 play; mpg123 " + "'" + fileStr + "'";
                     term.exec(orders, function(err, stdout,stderr){
                         if(err){
                             console.log(err);

@@ -1,0 +1,79 @@
+{
+  "_args": [
+    [
+      "node-red-node-intel-gpio",
+      "/home/root/jenkins/workspace/Node-red_2_SmartNode/node-red/.dist/node-red"
+    ]
+  ],
+  "_from": "node-red-node-intel-gpio@latest",
+  "_id": "node-red-node-intel-gpio@0.0.3",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/node-red-node-intel-gpio",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "email": "ceejay@vnet.ibm.com",
+    "name": "dceejay"
+  },
+  "_npmVersion": "2.11.3",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "node-red-node-intel-gpio",
+    "raw": "node-red-node-intel-gpio",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "http://registry.npmjs.org/node-red-node-intel-gpio/-/node-red-node-intel-gpio-0.0.3.tgz",
+  "_shasum": "a785f1ec9287911dde176693f4f11d44349da4ee",
+  "_shrinkwrap": null,
+  "_spec": "node-red-node-intel-gpio",
+  "_where": "/home/root/jenkins/workspace/Node-red_2_SmartNode/node-red/.dist/node-red",
+  "author": {
+    "email": "ceejay@vnet.ibm.com",
+    "name": "Dave Conway-Jones",
+    "url": "http://nodered.org"
+  },
+  "dependencies": {},
+  "description": "A Node-RED node to talk to an Intel Galileo or Edison using mraa",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "a785f1ec9287911dde176693f4f11d44349da4ee",
+    "tarball": "http://registry.npmjs.org/node-red-node-intel-gpio/-/node-red-node-intel-gpio-0.0.3.tgz"
+  },
+  "keywords": [
+    "edison",
+    "galileo",
+    "intel",
+    "node-red"
+  ],
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "name": "dceejay",
+      "email": "ceejay@vnet.ibm.com"
+    }
+  ],
+  "name": "node-red-node-intel-gpio",
+  "node-red": {
+    "nodes": {
+      "mraa-gpio-ain": "mraa-gpio-ain.js",
+      "mraa-gpio-din": "mraa-gpio-din.js",
+      "mraa-gpio-dout": "mraa-gpio-dout.js",
+      "mraa-gpio-pwm": "mraa-gpio-pwm.js"
+    }
+  },
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/node-red/node-red-nodes/tree/master/hardware/intel"
+  },
+  "scripts": {},
+  "version": "0.0.3"
+}

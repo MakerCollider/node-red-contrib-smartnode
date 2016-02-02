@@ -1,0 +1,12 @@
+{
+    "mraa-gpio-pwm": {
+        "label": {
+            "palette": "脉宽调制输出"
+        }
+    },
+    "palette": {
+        "label": {
+              "gpio": "通用输入输出"
+        }
+    }     
+}

@@ -1,0 +1,12 @@
+{
+    "NumberDetect": {
+        "label": {
+            "palette": "NumberDetect"
+        }
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "Image_Process"
+        }
+    }     
+}

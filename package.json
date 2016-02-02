@@ -15,6 +15,7 @@
 	"fs": "*",
 	"jsupm_camera": ">=0.0.1",
         "jsupm_facedetect": ">=0.0.1",
+        "jsupm_numberdetect": ">=0.0.1",
         "jsupm_geometry": ">=0.0.1",
         "jsupm_img2base64": ">=0.0.1",
 	"jsupm_mpu9150": ">=0.0.1",
@@ -51,6 +52,8 @@
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
+            "NumberDetect":     "imageProcessing/numberDetect/numberdetect.js",
+            
 
             "add-strings":      "logic/addString/add-strings.js",
             "change-sign":      "logic/changeSign/change-sign.js",

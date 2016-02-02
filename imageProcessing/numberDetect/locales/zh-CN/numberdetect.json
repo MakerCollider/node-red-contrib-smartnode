@@ -1,0 +1,12 @@
+{
+    "NumberDetect": {
+        "label": {
+            "palette": "数字识别"
+        }
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "图像处理"
+        }
+    }     
+}

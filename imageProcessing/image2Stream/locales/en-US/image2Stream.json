@@ -1,0 +1,12 @@
+{
+    "Image2Stream": {
+        "label": {
+            "palette": "Image2Stream"
+        }
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "Image_Process"
+        }
+    }     
+}

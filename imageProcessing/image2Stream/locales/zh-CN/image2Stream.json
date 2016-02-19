@@ -1,0 +1,12 @@
+{
+    "Image2Stream": {
+        "label": {
+            "palette": "图像转流数据"
+        }
+    },
+    "palette": {
+        "label": {
+              "imageProcessing": "图像处理"
+        }
+    }     
+}

@@ -28,6 +28,7 @@ module.exports = function(RED) {
         RED.nodes.createNode(this, config);
         node.cameraId = Number(config.cameraId);
         node.frameConfig = Number(config.frameConfig);
+        node.mode = Number(config.mode);
         node.timerVal = Number(config.timerVal);
         var timer;
         switch (Number(config.frameConfig)){
@@ -77,29 +78,36 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             d.run(function () {
                 process.nextTick(function () {
-                    if(Number(msg.payload) == 1)
+                    if(mode == 0)
                     {
-                        node.log("Start Camera Timer.");
-                        if(camera.startCamera())
+                        if(Number(msg.payload) == 1)
                         {
-                            setTimeout(function(){}, 500);
-                            node.timer = setInterval(camera_timer, node.timerVal);
-                            node.status({fill:"green",shape:"dot",text:"Running"});
+                            node.log("Start Camera Timer.");
+                            if(camera.startCamera())
+                            {
+                                setTimeout(function(){}, 500);
+                                node.timer = setInterval(camera_timer, node.timerVal);
+                                node.status({fill:"green",shape:"dot",text:"Running"});
+                            }
+                            else
+                            {
+                                node.log("Cannot open camera!");
+                                node.status({fill:"red",shape:"dot",text:"Error"});
+                            }
                         }
                         else
                         {
-                            node.log("Cannot open camera!");
-                            node.status({fill:"red",shape:"dot",text:"Error"});
+                            clearInterval(node.timer);
+                            camera.stopCamera();
+                            node.log("Stop Camera Timer.");
+                            node.status({fill:"red",shape:"dot",text:"Stop"});
                         }
+                        //throw new Error("exception in nextTick callback");
                     }
                     else
                     {
-                        clearInterval(node.timer);
-                        camera.stopCamera();
-                        node.log("Stop Camera Timer.");
-                        node.status({fill:"red",shape:"dot",text:"Stop"});
+                        //put write photo code here
                     }
-                    //throw new Error("exception in nextTick callback");
                 });
             });
             

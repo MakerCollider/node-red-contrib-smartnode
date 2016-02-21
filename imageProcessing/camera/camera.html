@@ -21,6 +21,7 @@ limitations under the License.
             name:          {value: "Camera", required: false},
             cameraId:      {value: 0, required: true},
             frameConfig:   {value: 1, required: true},
+            mode:          {value: 0, required: true},
             timerVal:      {value: 500, required: true},
         },
         inputs: 1,
@@ -55,6 +56,13 @@ limitations under the License.
             <option value=0>160 * 120</option>
             <option value=1>320 * 240</option>
             <option value=2>640 * 480</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-mode"><i class="fa fa-tag"></i> Mode</label>
+        <select id="node-input-mode">
+            <option value=0>Video</option>
+            <option value=1>Photo</option>
         </select>
     </div>
     <div class="form-row">

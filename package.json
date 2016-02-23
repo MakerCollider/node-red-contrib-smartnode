@@ -41,6 +41,7 @@
             "ScreenC":          "extra/screen9225/screen9225.js",
             "Clarifai":         "extra/clarifai/clarifai.js",
             "wechat":           "extra/wechat/wechat.js",
+            "WeChatPic":        "extra/weChatPic/weChatPic.js",
             "PlayAudio":        "extra/playAudio/playAudio.js",
             "EdisonSerial":     "hardwareOutput/edisonSerial/edisonserial.js",
             "BreathLed":        "hardwareOutput/breathLed/breathLed.js",

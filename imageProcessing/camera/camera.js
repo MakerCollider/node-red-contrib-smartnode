@@ -49,6 +49,20 @@ module.exports = function(RED) {
                 node.height = 120;
         }
         var camera = new jslib.Camera(node.cameraId, node.weidth, node.height);
+        if(node.mode == 1)
+        {
+            node.log("Picture mode!");
+            camera.stopCamera();
+            if(camera.startCamera())
+            {
+                node.status({fill:"blue",shape:"dot",text:"Ready"});
+            }
+            else
+            {
+                node.log("Cannot open camera!");
+                node.status({fill:"red",shape:"dot",text:"Error"});
+            }
+        }
 
         function camera_timer(){
             var isVaild = true;
@@ -78,8 +92,9 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             d.run(function () {
                 process.nextTick(function () {
-                    if(mode == 0)
+                    if(node.mode == 0)
                     {
+                        node.log("Video mode!");
                         if(Number(msg.payload) == 1)
                         {
                             node.log("Start Camera Timer.");
@@ -107,6 +122,37 @@ module.exports = function(RED) {
                     else
                     {
                         //put write photo code here
+                        node.status({fill:"green",shape:"dot",text:"Shooting"});
+                        var isVaild = true;
+                        if(camera.m_running)
+                        {
+                            var ptrString;
+                            for(i = 0; i< 5; i++)
+                            {
+                                ptrString = camera.shoot();
+                            }
+                            
+                            if(ptrString == "")
+                            {
+                                isVaild = false;
+                            }
+                            else
+                            {
+                                msg =  {imagePtr:ptrString};
+                                var msg2 = {payload:"/home/root/shoot.png"};
+                                node.send([msg, msg2]);
+                                node.status({fill:"blue",shape:"dot",text:"Ready"});
+                            }
+                        }
+                        else
+                        {
+                            isVaild = false;
+                        }
+                        if(!isVaild)
+                        {
+                            node.log("Camera unplugged");
+                            node.status({fill:"red", shape:"dot", text:"Unplugged"});
+                        }
                     }
                 });
             });
@@ -114,14 +160,15 @@ module.exports = function(RED) {
         });
 
         node.on('close', function() {
-            d.run(function () {
-                process.nextTick(function () {
+//            d.run(function () {
+//                process.nextTick(function () {
                     //throw new Error("exception in nextTick callback");
                     node.log("Stop Camera");
                     clearInterval(node.timer);
                     camera.stopCamera();
-                });
-            });
+                    node.status({fill:"red",shape:"dot",text:"Stop"});
+//                });
+//            });
         });
     }
     RED.nodes.registerType("Camera", camera);

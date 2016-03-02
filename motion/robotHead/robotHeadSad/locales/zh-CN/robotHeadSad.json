@@ -6,7 +6,7 @@
     },
     "palette": {
         "label": {
-              "Motion": "机器人运动控制"
+              "Robot": "机器人"
         }
     }     
 }

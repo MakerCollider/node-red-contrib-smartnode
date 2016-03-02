@@ -43,6 +43,7 @@
             "wechat":           "extra/wechat/wechat.js",
             "WeChatPic":        "extra/weChatPic/weChatPic.js",
             "PlayAudio":        "extra/playAudio/playAudio.js",
+            "Brain":            "extra/node-red-contrib-brain/brain/brain.js",
             "EdisonSerial":     "hardwareOutput/edisonSerial/edisonserial.js",
             "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
             "Button":           "hardwareOutput/button/button.js",

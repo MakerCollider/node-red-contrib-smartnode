@@ -6,7 +6,7 @@
     },
     "palette": {
         "label": {
-              "Motion": "Robot_Motion_Control"
+              "Robot": "Robot_Motion_Control"
         }
     }     
 }

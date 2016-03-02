@@ -3,10 +3,5 @@
         "label": {
             "palette": "Clarifai"
         }
-    },
-    "palette": {
-        "label": {
-              "Extra": "扩展节点"
-        }
-    }     
+    }    
 }

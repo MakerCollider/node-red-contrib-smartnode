@@ -6,7 +6,7 @@
     },
     "palette": {
         "label": {
-              "Sensor": "传感器"
+              "OtherSensor": "其它传感器"
         }
     }     
 }

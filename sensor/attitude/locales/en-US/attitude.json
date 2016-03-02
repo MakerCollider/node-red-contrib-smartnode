@@ -6,7 +6,7 @@
     },
     "palette": {
         "label": {
-              "Sensor": "Advanced_Sensor"
+              "OtherSensor": "OtherSensor"
         }
     }     
 }

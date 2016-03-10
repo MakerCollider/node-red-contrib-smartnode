@@ -1,0 +1,18 @@
+{
+    "Combine": {
+        "label": {
+            "name": "Combine",
+            "palette": "Combine",
+            "rules": "Rules",
+            "timeout": "Timeout",
+            "addrule": "Add",
+            "timeplace": "Second",
+            "placeholder": "Node name"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "Logic_Operation"
+        }
+    }     
+}

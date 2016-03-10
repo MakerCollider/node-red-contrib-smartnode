@@ -63,6 +63,7 @@
             "Math":             "logic/math/math-operations.js",
             "Toggle":           "logic/toggle/toggle.js",
             "SubString":        "logic/subString/substring.js",
+            "Combine":          "logic/combine/combine.js",
 
             "Driver":           "motion/driver/driver.js",
             "Motor":            "motion/motor/motor.js",

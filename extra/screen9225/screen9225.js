@@ -80,14 +80,16 @@ module.exports = function(RED) {
             console.log('upload completed');
             //get filename
             var filename = req.files.files.originalFilename || path.basename(req.files.files.path);
+
+            var targetPath = uploadPath + filename;
             
             //file dir
-            var fileDir = '';
-            if (req.query.type){
-                fileDir = req.query.type+'/';
-            }
-            //copy file to a public directory
-            var targetPath = uploadPath + fileDir + filename;
+            // var fileDir = '';
+            // if (req.query.type){
+            //     fileDir = req.query.type+'/';
+            // }
+            // //copy file to a public directory
+            // var targetPath = uploadPath + fileDir + filename;
             //console.log(req.files.files.ws.path);
             //console.log(path.dirname(__filename));
             //copy file

@@ -13,15 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
+
+var jsCamera = require('jsupm_camera');
+
 module.exports = function(RED) {
-    var domain = require('domain');
-
-    var d = domain.create();
-
-    d.on('error', function(e) {
-        console.log("error in camera:", e);
-    });
-    var jslib = require('jsupm_camera');
     function camera(config) {
         var node = this;
         node.log("Camera initalizing.......");
@@ -48,17 +43,14 @@ module.exports = function(RED) {
                 node.weidth = 160;
                 node.height = 120;
         }
-        var camera = new jslib.Camera(node.cameraId, node.weidth, node.height);
-        if(node.mode == 1)
-        {
+        var camera = new jsCamera.Camera(node.cameraId, node.weidth, node.height);
+        if(node.mode == 1){
             node.log("Picture mode!");
-            camera.stopCamera();
-            if(camera.startCamera())
-            {
+            //camera.stopCamera();
+            if(camera.startCamera()){
                 node.status({fill:"blue",shape:"dot",text:"Ready"});
             }
-            else
-            {
+            else{
                 node.log("Cannot open camera!");
                 node.status({fill:"red",shape:"dot",text:"Error"});
             }
@@ -80,6 +72,7 @@ module.exports = function(RED) {
             
             if(!isVaild){
                 node.log("Camera unplugged");
+                node.log("clear timer");
                 clearInterval(node.timer);
                 node.status({fill:"red", shape:"dot", text:"Unplugged"});
             }
@@ -90,85 +83,63 @@ module.exports = function(RED) {
 
         //Handle inputs
         node.on('input', function(msg) {
-            d.run(function () {
-                process.nextTick(function () {
-                    if(node.mode == 0)
-                    {
-                        node.log("Video mode!");
-                        if(Number(msg.payload) == 1)
-                        {
-                            node.log("Start Camera Timer.");
-                            if(camera.startCamera())
-                            {
-                                setTimeout(function(){}, 500);
-                                node.timer = setInterval(camera_timer, node.timerVal);
-                                node.status({fill:"green",shape:"dot",text:"Running"});
-                            }
-                            else
-                            {
-                                node.log("Cannot open camera!");
-                                node.status({fill:"red",shape:"dot",text:"Error"});
-                            }
+            if(node.mode == 0){
+                node.log("Video mode!");
+                if(Number(msg.payload) == 1){
+                    if(!camera.m_running){
+                        node.log("Start Camera Timer.");
+                        if(camera.startCamera()){
+                            node.timer = setInterval(camera_timer, node.timerVal);
+                            node.status({fill:"green",shape:"dot",text:"Running"});
                         }
-                        else
-                        {
-                            clearInterval(node.timer);
-                            camera.stopCamera();
-                            node.log("Stop Camera Timer.");
-                            node.status({fill:"red",shape:"dot",text:"Stop"});
-                        }
-                        //throw new Error("exception in nextTick callback");
-                    }
-                    else
-                    {
-                        //put write photo code here
-                        node.status({fill:"green",shape:"dot",text:"Shooting"});
-                        var isVaild = true;
-                        if(camera.m_running)
-                        {
-                            var ptrString;
-                            for(i = 0; i< 5; i++)
-                            {
-                                ptrString = camera.shoot();
-                            }
-                            
-                            if(ptrString == "")
-                            {
-                                isVaild = false;
-                            }
-                            else
-                            {
-                                msg =  {imagePtr:ptrString};
-                                var msg2 = {payload:"/home/root/shoot.png"};
-                                node.send([msg, msg2]);
-                                node.status({fill:"blue",shape:"dot",text:"Ready"});
-                            }
-                        }
-                        else
-                        {
-                            isVaild = false;
-                        }
-                        if(!isVaild)
-                        {
-                            node.log("Camera unplugged");
-                            node.status({fill:"red", shape:"dot", text:"Unplugged"});
+                        else{
+                            node.log("Cannot open camera!");
+                            node.status({fill:"red",shape:"dot",text:"Error"});
                         }
                     }
-                });
-            });
-            
+                }
+                else{
+                    clearInterval(node.timer);
+                    camera.stopCamera();
+                    node.log("Stop Camera Timer.");
+                    node.status({fill:"red",shape:"dot",text:"Stop"});
+                }
+            }
+            else{
+                //put write photo code here
+                node.status({fill:"green",shape:"dot",text:"Shooting"});
+                var isVaild = true;
+                if(camera.m_running){
+                    var ptrString;
+                    for(i = 0; i< 5; i++){
+                        ptrString = camera.shoot();
+                    }
+                    
+                    if(ptrString == ""){
+                        isVaild = false;
+                    }
+                    else{
+                        msg =  {imagePtr:ptrString};
+                        var msg2 = {payload:"/home/root/shoot.png"};
+                        node.send([msg, msg2]);
+                        node.status({fill:"blue",shape:"dot",text:"Ready"});
+                    }
+                }
+                else{
+                    isVaild = false;
+                }
+                if(!isVaild){
+                    node.log("Camera unplugged");
+                    node.status({fill:"red", shape:"dot", text:"Unplugged"});
+                }
+            }
         });
 
         node.on('close', function() {
-//            d.run(function () {
-//                process.nextTick(function () {
-                    //throw new Error("exception in nextTick callback");
-                    node.log("Stop Camera");
-                    clearInterval(node.timer);
-                    camera.stopCamera();
-                    node.status({fill:"red",shape:"dot",text:"Stop"});
-//                });
-//            });
+            node.log("Stop Camera");
+            clearInterval(node.timer);
+            camera.stopCamera();
+            node.status({fill:"red",shape:"dot",text:"Stop"});
         });
     }
     RED.nodes.registerType("Camera", camera);

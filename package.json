@@ -37,6 +37,7 @@
             "mraa-gpio-din":    "gpio/mraa-gpio-din/mraa-gpio-din.js",
             "mraa-gpio-dout":   "gpio/mraa-gpio-dout/mraa-gpio-dout.js",
             "mraa-gpio-pwm":    "gpio/mraa-gpio-pwm/mraa-gpio-pwm.js",
+	    "say":		"gpio/say/say.js",
             "SmartNode":        "smartNode/smartnode.js",
             "ScreenC":          "extra/screen9225/screen9225.js",
             "Clarifai":         "extra/clarifai/clarifai.js",

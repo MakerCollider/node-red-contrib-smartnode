@@ -65,7 +65,8 @@
       "mraa-gpio-ain": "mraa-gpio-ain.js",
       "mraa-gpio-din": "mraa-gpio-din.js",
       "mraa-gpio-dout": "mraa-gpio-dout.js",
-      "mraa-gpio-pwm": "mraa-gpio-pwm.js"
+      "mraa-gpio-pwm": "mraa-gpio-pwm.js",
+      "Say": "say.js"
     }
   },
   "optionalDependencies": {},

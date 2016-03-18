@@ -53,7 +53,7 @@
 
 
             "PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
-	    "I2cServo":		"hardwareOutput/I2cServo/I2cSerco.js",
+	    "I2cServo":		"hardwareOutput/I2cServo/I2cServo.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",

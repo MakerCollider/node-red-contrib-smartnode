@@ -49,7 +49,10 @@
             "Button":           "hardwareOutput/button/button.js",
             "Blink":            "hardwareOutput/blink/blink.js",
             "Led":              "hardwareOutput/led/led.js",
+
+
             "PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
+	    "I2cServo":		"hardwareOutput/I2cServo/I2cSerco.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
@@ -64,6 +67,7 @@
             "Toggle":           "logic/toggle/toggle.js",
             "SubString":        "logic/subString/substring.js",
             "Combine":          "logic/combine/combine.js",
+	    "random":		"logic/random/random.js",
 
             "Driver":           "motion/driver/driver.js",
             "Motor":            "motion/motor/motor.js",

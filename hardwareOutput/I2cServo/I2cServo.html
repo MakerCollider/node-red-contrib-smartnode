@@ -1,0 +1,91 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/javascript">
+    RED.nodes.registerType('I2cServo', {
+        category: 'HardwareOutput',
+        color: '#E2D96E',
+        defaults: {
+            name: {value: "Servo", required: false},
+            ServoType:{value:"",required:true},
+			ServoNumber:{value:"",required:true},
+            ServoSpeed:{value:"0",required:true},
+        },
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        label: function() {
+            return this.name || "I2cServo";
+        },
+        paletteLabel: function () {
+            return this.name||this._("I2cServo.label.palette");
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="I2cServo">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-ServoType"><i class="fa fa-tag"></i> ServoType</label>
+        <!--input type="number" id="node-input-ServoType"-->
+        <select id="node-input-ServoType">
+            <option value=0>Futaba S9156</option>
+            <option value=1>EMAX or JX</option>
+        </select>
+    </div>
+	<div class="form-row">
+        <label for="node-input-Address"><i class="fa fa-tag"></i> ServoNum</label>
+        <!--input type="number" id="node-input-ServoNumber"-->
+        <select id="node-input-ServoNumber">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
+            <option value=12>12</option>
+            <option value=13>13</option>
+            <option value=14>14</option>
+            <option value=15>15</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-Speed"><i class="fa fa-tag"></i> ServoSpeed</label>
+        <!--input type="number" id="node-input-ServoSpeed"-->
+        <select id="node-input-ServoSpeed">
+            <option value=0>0</option>
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+        </select>
+    </div>
+</script>
+

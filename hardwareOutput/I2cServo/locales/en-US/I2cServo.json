@@ -1,0 +1,7 @@
+{
+    "I2cServo": {
+        "label": {
+            "palette": "I2C舵机"
+        }
+    }    
+}

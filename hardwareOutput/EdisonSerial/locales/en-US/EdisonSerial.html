@@ -15,18 +15,23 @@
 -->
 
 <script type="text/xred" data-help-name="EdisonSerial">
-	<h3 id="edison-串口发送"><a name="edison-串口发送" href="#edison-串口发送"></a>Edison 串口发送</h3>
-	<p>本节点可以使用Edison的串口发送字符串</p>
-	<h4 id="配置参数"><a name="配置参数" href="#配置参数"></a>配置参数</h4>
+	<h3 id="edison-Serial"><a name="edison-Serial" href="#edison-Serial"></a>Edison Serial</h3>
+	<p>This node can send character string by Edison serial port.</p>
+	<h4 id="papameters"><a name="papameters" href="#papameters"></a>papameters</h4>
 	<ol>
-	<li>Name：节点名字</li><li>SerialBaudrate: 串口波特率</li><li>SerialDatabits：数据位</li><li>SerialParity：校验位</li><li>SerialStopbits：停止位</li></ol>
-	<h4 id="输入"><a name="输入" href="#输入"></a>输入</h4>
+	<li>Name：the name of this node</li>
+	<li>SerialBaudrate: Baudrate of this serial port</li>
+	<li>SerialDatabits：Databits of this serial port</li>
+	<li>SerialParity：Parity of this serial port</li>
+	<li>SerialStopbits：Stopbits os this serial port</li></ol>
+	<h4 id="Input"><a name="Input" href="#Input"></a>Input</h4>
 	<ol>
-	<li>msg.payload：待发送字符串</li></ol>
-	<h4 id="输出"><a name="输出" href="#输出"></a>输出</h4>
-	<p>无</p>
-	<h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
+	<li>msg.payload：the character string which needs to be sent</li></ol>
+	<h4 id="Output"><a name="Output" href="#Output"></a>Output</h4>
+	<p>Output : the data from edison serial port</p>
+	<h4 id="use method"><a name="use method" href="#use method"></a>use method</h4>
 	<ol>
-	<li>串口使用Arduino扩展板上的0,1管脚。</li><li>向节点传入<code>msg.payload</code>信息，节点每接收到一次就会发送一次。</li></ol>
+	<li>The serial port uses the 0,1 pin on the Arduino expansion board.</li>
+	<li>Send <code>msg.payload</code> to this node，edison serial port will get, data from Edison serial port will be sent behind this node.</li></ol>
 </script>
 

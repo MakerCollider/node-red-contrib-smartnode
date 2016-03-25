@@ -1,0 +1,32 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-help-name="CToggle">
+<h3 id="condition-toggle"><a name="condition-toggle" href="#condition-toggle"></a>Condition Toggle</h3>
+<p>Condition Toggle</p>
+<h4 id="config"><a name="config" href="#config"></a>Config</h4>
+<ol>
+<li>Name: Name of node</li><li>Rules: condition topic and the value.</li></ol>
+<h4 id="input"><a name="input" href="#input"></a>Input</h4>
+<ol>
+<li>msg.*: any</li></ol>
+<h4 id="output"><a name="output" href="#output"></a>Output</h4>
+<ol>
+<li>msg.*: any(only when toggle is on)</li></ol>
+<h4 id="howto"><a name="howto" href="#howto"></a>HowTo</h4>
+<ol>
+<li>Add rules in config window.</li><li>Connect input, output and then deploy.</li><li>When the node get all conditions, the node will send any message it recieved.</li><li>When any of conditions is false, the node will not send any message to the next node.</li><li>The con
+</script>

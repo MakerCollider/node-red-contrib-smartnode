@@ -70,6 +70,7 @@
             "SubString":        "logic/subString/substring.js",
             "Combine":          "logic/combine/combine.js",
 	    "random":		"logic/random/random.js",
+            "CToggle":          "logic/ctoggle/ctoggle.js",
 
             "Driver":           "motion/driver/driver.js",
             "Motor":            "motion/motor/motor.js",

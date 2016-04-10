@@ -1,0 +1,18 @@
+{
+    "outputJudge": {
+        "label": {
+            "name": "名称",
+            "palette": "输出判定",
+            "rules": "判定参数",
+            "addbutton": "增加",
+            "judgeType": "判定规则",
+            "resultValue": "结果值",
+            "placeholder": "节点名称"
+        }
+    },
+    "palette": {
+        "label": {
+              "brain": "神经网络"
+        }
+    }     
+}

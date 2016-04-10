@@ -1,0 +1,24 @@
+{
+    "dataCollect": {
+        "label": {
+            "name": "名称",
+            "palette": "数据采集",
+            "in-rules": "输入参数",
+            "out-rules": "输出参数",
+            "send-cmd": "发送指令",
+            "addbutton": "增加",
+            "inGroupNumber":"输入",
+            "outGroupNumber":"输出",
+            "form": "保留维数",
+            "placeholder": "节点名称",
+            "inGroupNumberplaceholder": "例如 1",
+            "outGroupNumberplaceholder": "例如 1",
+            "cmdplaceholder": "指令名称"
+        }
+    },
+    "palette": {
+        "label": {
+              "brain": "神经网络"
+        }
+    }     
+}

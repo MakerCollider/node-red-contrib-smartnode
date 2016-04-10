@@ -1,0 +1,15 @@
+{
+    "outputJudge": {
+        "label": {
+            "name": "名称",
+            "palette": "输出判定",
+            "rules": "判定参数",
+            "addbutton": "增加"
+        }
+    },
+    "palette": {
+        "label": {
+              "brain": "神经网络"
+        }
+    }     
+}

@@ -1,0 +1,15 @@
+{
+    "multiInData": {
+        "label": {
+            "name": "名称",
+            "palette": "多路数据输入",
+            "rules": "输入参数",
+            "addbutton": "增加",
+        }
+    },
+    "palette": {
+        "label": {
+              "brain": "神经网络"
+        }
+    }     
+}

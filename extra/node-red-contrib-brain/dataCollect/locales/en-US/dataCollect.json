@@ -9,7 +9,7 @@
             "addbutton": "增加",
             "inGroupNumber":"输入",
             "outGroupNumber":"输出",
-            "form": "保留维数",
+            "form": "保留参数",
             "placeholder": "节点名称",
             "inGroupNumberplaceholder": "例如 1",
             "outGroupNumberplaceholder": "例如 1",

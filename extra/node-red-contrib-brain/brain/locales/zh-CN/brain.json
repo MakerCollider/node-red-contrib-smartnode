@@ -1,0 +1,19 @@
+{
+    "brain": {
+        "label": {
+            "palette": "机器人",
+            "name": "名称",
+            "brainType": "类型",
+            "learningRate":"学习速率",
+            "hiddenLayers":"隐层",
+            "errorThresh":"错误阈值",
+            "iterations":"迭代次数",
+            "logPeriod":"日志周期"
+        }
+    },
+    "palette": {
+        "label": {
+              "brain": "神经网络"
+        }
+    }     
+}

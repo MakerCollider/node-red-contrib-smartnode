@@ -6,52 +6,55 @@
     outputs: 1,
     defaults: {
       name: { value: 'brain' },
-      brainType: { value: 'training' },
+      brainType: { value: 'train' },
       learningRate: { value: 0.3 },
       hiddenLayers: { value: '3,4' },
       errorThresh: { value: 0.005 },
       iterations: { value: 20000 },
       logPeriod: { value: 10 }
     },
-    label: function(){
-      return this.name || 'brain'
+    label: function() {
+        return this.name||"brain";
+    },
+    paletteLabel: function () {
+        return this.name||this._("brain.label.palette");
     }
   })
 </script>
 
 <script type="text/x-red" data-template-name="brain">
   <div class="form-row">
-    <label for="node-input-name">name</label>
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="brain.label.name"></span></label>
     <input type="text" id="node-input-name">
   </div>
 
   <div class="form-row">
-    <label for="node-input-brainType">type</label>
+    <label for="node-input-brainType"><i class="fa fa-list"></i> <span data-i18n="brain.label.brainType"></span></label>
     <select for="node-input-brainType" id="node-input-brainType">
-    <option value ="training">training</option>
+    <option value ="train">train</option>
     <option value ="run">run</option>
     </select>
   </div>
 
   <div class="form-row">
-    <label for="node-input-learningRate">learningRate</label>
+    <label for="node-input-learningRate"><i class="fa fa-clock-o"></i> <span data-i18n="brain.label.learningRate"></span></label>
     <input type="text" id="node-input-learningRate">
   </div>
 
   <div class="form-row">
-    <label for="node-input-hiddenLayers">hiddenLayers</label>
+    <label for="node-input-hiddenLayers"><i class="fa fa-sign-in"></i> <span data-i18n="brain.label.hiddenLayers"></span></label>
     <input type="text" id="node-input-hiddenLayers">
   </div>
   <div class="form-row">
-    <label for="node-input-errorThresh">errorThresh</label>
+    <label for="node-input-errorThresh"><i class="fa fa-clock-o"></i> <span data-i18n="brain.label.errorThresh"></span></label>
     <input type="text" id="node-input-errorThresh">
   </div>
   <div class="form-row">
-    <label for="node-input-iterations">iterations</label>
+    <label for="node-input-iterations"><i class="fa fa-clock-o"></i> <span data-i18n="brain.label.iterations"></span></label>
     <input type="text" id="node-input-iterations">
   </div>
   <div class="form-row">
-    <label for="node-input-logPeriod">logPeriod</label>
+    <label for="node-input-logPeriod"><i class="fa fa-clock-o"></i> <span data-i18n="brain.label.logPeriod"></span></label>
     <input type="text" id="node-input-logPeriod">
   </div>
 </script>

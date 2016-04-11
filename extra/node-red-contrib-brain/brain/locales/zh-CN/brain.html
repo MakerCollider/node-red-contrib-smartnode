@@ -1,0 +1,30 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/x-red" data-help-name="brain">
+<h3 id="机器人节点"><a name="机器人节点" href="#机器人节点"></a>机器人节点</h3>
+<p>本节点通过运用神经网络来进行对机器人训练,使得机器人具备自主学习的能力。</p>
+<h4 id="配置参数"><a name="配置参数" href="#配置参数"></a>配置参数</h4>
+<ol>
+<li>名称：节点名称</li>
+<li>类型：分为训练和运行两种,训练会产生神经网络数据。</li>
+<li>学习速率：权值wights被更新的数量</li>
+<li>隐层：定义神经网络的隐层。这是一个正整数的列表,1 for each hidden layer.用逗号分隔。</li>
+<li>错误阈值：</li>
+<li>迭代次数：训练的迭代次数,如果设置的是非0那么这个网络能够终止的比较早。</li>
+<li>日志周期：迭代一次所需时间毫秒ms。</li>
+</ol>
+</script>

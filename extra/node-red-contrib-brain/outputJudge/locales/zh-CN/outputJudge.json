@@ -6,7 +6,7 @@
             "rules": "判定参数",
             "addbutton": "增加",
             "judgeType": "判定规则",
-            "resultValue": "结果值",
+            "resultValue": "结果参数名",
             "placeholder": "节点名称"
         }
     },

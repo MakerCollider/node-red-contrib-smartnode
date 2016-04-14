@@ -18,7 +18,8 @@ function mqttBoker() {
     var mqtt = require("mqtt");
 
     // Config node state
-    this.brokerurl="mqtt://www.makercollider.com:1883";
+    //this.brokerurl="mqtt://www.makercollider.com:1883";
+    this.brokerurl="mqtt://mqtt.smartnode.io:1883";
     this.connected = false;
     this.connecting = false;
     this.options = {};
@@ -34,7 +35,7 @@ function mqttBoker() {
     this.register = function(mqttNode){
         node.users[mqttNode.id] = mqttNode;
         if (Object.keys(node.users).length === 1) {
-                node.connect();
+            node.connect();
         }
     };
     this.deregister = function(mqttNode){

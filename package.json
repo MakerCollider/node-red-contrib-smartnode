@@ -7,6 +7,7 @@
                      "Edison"
                     ],
     "dependencies": {
+        "ftp": "*",
         "Buffer": "*",
         "bindings": "*",
         "connect-multiparty": "*",
@@ -49,7 +50,8 @@
             "multiInData":      "extra/node-red-contrib-brain/multiInData/multiInData.js",
             "dataCollect":      "extra/node-red-contrib-brain/dataCollect/dataCollect.js",
             "outputJudge":      "extra/node-red-contrib-brain/outputJudge/outputJudge.js",
-
+            "upgrade":           "extra/upgrade/upgrade.js",
+            
             "EdisonSerial":     "hardwareOutput/EdisonSerial/EdisonSerial.js",
             "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
             "Button":           "hardwareOutput/button/button.js",

@@ -77,6 +77,10 @@
                     data = data.replace("{progress}","");
                     setEditorValue(data);
                 }
+                else if (data.indexOf('{current_version}')!=-1){
+                    data = data.replace("{current_version}","");
+                    $("#node-input-currentVersion").val(data);
+                }
                 else if (data.indexOf('{version_list_start}')!=-1){
                     data = data.replace("{version_list_start}","");
                     delete this.editor;
@@ -260,6 +264,10 @@
   <div class="form-row">
      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="upgrade.label.name"></span></label>
     <input type="text" id="node-input-name">
+  </div>
+  <div class="form-row">
+     <label for="node-input-currentVersion"><i class="fa fa-tag"></i> <span data-i18n="upgrade.label.current-version"></span></label>
+    <input type="text" id="node-input-currentVersion" readonly>
   </div>
   <div class="form-row">
      <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="upgrade.label.versions"></span></label>

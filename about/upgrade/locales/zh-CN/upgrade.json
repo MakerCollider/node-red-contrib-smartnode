@@ -2,7 +2,8 @@
     "upgrade": {
         "label": {
             "name": "名称",
-            "versions": "版本",
+            "current-version":"当前版本",
+            "versions": "可选版本",
             "button-download": "下载",
             "button-install": "安装",
             "button-recovery": "恢复",

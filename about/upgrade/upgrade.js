@@ -18,6 +18,16 @@ module.exports = function(RED){
         function ftpGetVersionLists(ws){
             var ftpc = new ftpClient();
             ftpc.on('ready', function() {
+                fs.readFile("version",'utf-8',function(err,data){  
+                    if (err){  
+                        console.log("read version error");  
+                    }
+                    else{  
+                        console.log(data);
+                        ws.send('{current_version}'+data);
+                    }  
+                });
+
                 ftpc.list(dirPath,function(err, list) {
                     if (err) {
                         throw err;
@@ -36,7 +46,7 @@ module.exports = function(RED){
                     console.log(JSON.stringify(fileArray));
                     ws.send('{versions}'+JSON.stringify(fileArray));
                     ws.send('{version_list_finished}加载完成');
-                    ftpc.end();
+                    ftpc.end();  
                 });
             });
             // connect to localhost:21 as anonymous
@@ -88,7 +98,7 @@ module.exports = function(RED){
                         writeStream.end();
                         ftpc.end();
                         var endTime = Date.now();
-                        var totalTime = '共用时：' + (endTime - startTime) / 1000 + '秒。';
+                        var totalTime = '共用时：' + Math.ceil((endTime - startTime) / 1000) + '秒。';
                         ws.send(totalTime);
                         ws.send('{download_finished}下载完成！');
                     });
@@ -153,12 +163,15 @@ module.exports = function(RED){
             var ls = cp.exec(cmd);
 
             ls.stdout.on('data', function (data) {
-                installStatus = 1
+                installStatus = 1;
                 console.log('stdout: ' + data);
+                if (data =='## 13.1 ## Start smartnode service'){
+                    ws.send('{install_finished}'+data);
+                }
             });
 
             ls.stderr.on('data', function (data) {
-                installStatus = 0
+                installStatus = 0;
                 console.log('stderr: ' + data);
             });
 

@@ -165,8 +165,9 @@ module.exports = function(RED){
             ls.stdout.on('data', function (data) {
                 installStatus = 1;
                 console.log('stdout: ' + data);
+                ws.send('{install_finished}'+data);
                 if (data =='## 13.1 ## Start smartnode service'){
-                    ws.send('{install_finished}'+data);
+                    ws.send('{install_finished}安装成功！');
                 }
             });
 

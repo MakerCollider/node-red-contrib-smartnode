@@ -6,7 +6,7 @@
     },
     "palette": {
         "label": {
-              "Version": "版本信息"
+              "about": "关于SmartNode"
         }
     }     
 }

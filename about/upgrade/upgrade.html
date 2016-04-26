@@ -1,14 +1,18 @@
 <script type="text/javascript">
   RED.nodes.registerType('upgrade', {
-    category: 'extra',
+    category: 'about',
     color: '#a6bbcf',
     inputs: 0,
     outputs: 0,
+    icon: "light.png",
     defaults: {
       name: { value: 'upgrade' }
     },
     label: function(){
       return this.name || 'upgrade'
+    },
+    paletteLabel: function () {
+        return this.name||this._("upgrade.label.palette");
     },
     oneditprepare: function () {
         initEditor(''); 
@@ -41,7 +45,10 @@
         $("#node-input-install").val("安装");
         var btnDownload = $("#node-input-download");
         btnDownload.click(function() {
-            downloadVersion();
+            var result = confirm('版本更新后之前的数据将被清除,是否确认该操作！');
+            if(result){  
+                downloadVersion();
+            }
         });
 
         var btnInstall = $("#node-input-install");
@@ -56,7 +63,7 @@
         }
 
         function wsConnect() {
-            var text = appendMsg('正在连接服务器...');
+            var text = appendMsg('正在连接远程版本服务器...');
             initEditor(text);  
             var wsUri = "ws:";
             var loc = window.location;

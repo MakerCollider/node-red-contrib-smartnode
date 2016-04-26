@@ -39,7 +39,8 @@
             "mraa-gpio-dout":   "gpio/mraa-gpio-dout/mraa-gpio-dout.js",
             "mraa-gpio-pwm":    "gpio/mraa-gpio-pwm/mraa-gpio-pwm.js",
             
-            "SmartNode":        "smartNode/smartnode.js",
+            "SmartNode":        "about/smartNode/smartnode.js",
+            "Upgrade":          "about/upgrade/upgrade.js",
             
             "ScreenC":          "extra/screen9225/screen9225.js",
             "Clarifai":         "extra/clarifai/clarifai.js",
@@ -50,7 +51,6 @@
             "multiInData":      "extra/node-red-contrib-brain/multiInData/multiInData.js",
             "dataCollect":      "extra/node-red-contrib-brain/dataCollect/dataCollect.js",
             "outputJudge":      "extra/node-red-contrib-brain/outputJudge/outputJudge.js",
-            "upgrade":           "extra/upgrade/upgrade.js",
             
             "EdisonSerial":     "hardwareOutput/EdisonSerial/EdisonSerial.js",
             "BreathLed":        "hardwareOutput/breathLed/breathLed.js",

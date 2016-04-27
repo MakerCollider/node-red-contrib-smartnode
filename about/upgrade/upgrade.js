@@ -18,7 +18,7 @@ module.exports = function(RED){
         function ftpGetVersionLists(ws){
             var ftpc = new ftpClient();
             ftpc.on('ready', function() {
-                fs.readFile("version",'utf-8',function(err,data){  
+                fs.readFile("/home/root/version",'utf-8',function(err,data){  
                     if (err){  
                         console.log("read version error");  
                     }
@@ -40,7 +40,10 @@ module.exports = function(RED){
                         fileList.id = i;
                         fileList.name = list[i].name;
                         fileList.size = list[i].size;
-                        fileArray.push(fileList);
+
+                        if (filterStableVersion(list[i].name)){
+                            fileArray.push(fileList);
+                        }
                     };
 
                     console.log(JSON.stringify(fileArray));
@@ -51,6 +54,24 @@ module.exports = function(RED){
             });
             // connect to localhost:21 as anonymous
             ftpc.connect(ftpOptions);
+        }
+        
+        function filterStableVersion(versionName){
+            //versionName = 'SmartNode-1.1.3.install';
+            var version = versionName.replace('SmartNode-','');
+            version = version.replace('.install','');
+            var data = version.split('.');
+            if (parseInt(data[0])>0 && parseInt(data[1])>=1){
+                if (parseInt(data[2])>4){
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
         }
 
         function ftpDownLoad(ws,file){
@@ -165,8 +186,8 @@ module.exports = function(RED){
             ls.stdout.on('data', function (data) {
                 installStatus = 1;
                 console.log('stdout: ' + data);
-                ws.send('{install_finished}'+data);
-                if (data =='## 13.1 ## Start smartnode service'){
+
+                if (data.trim() =='## 13.1 ## Start smartnode service'){
                     ws.send('{install_finished}安装成功！');
                 }
             });

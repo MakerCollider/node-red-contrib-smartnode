@@ -45,12 +45,13 @@
         $("#node-input-install").val("安装");
         var btnDownload = $("#node-input-download");
         btnDownload.click(function() {
-            var result = confirm('版本更新后之前的数据将被清除,是否确认该操作！');
+            var result = confirm('版本更新后将会清除以前的数据,是否要执行该操作！');
             if(result){  
                 downloadVersion();
             }
         });
-
+        
+        var installStatus = 0;
         var btnInstall = $("#node-input-install");
         btnInstall.click(function() {
             installVersion();
@@ -166,12 +167,13 @@
                 }
                 else if (data.indexOf('{install_finished}')!=-1){
                     data = data.replace("{install_finished}","");
+                    data = data + '\nSmartNode服务正在重启...';
                     delete this.editor;
                     var text = appendMsg(data);
                     initEditor(text);
-                    $("#node-input-install").attr("disabled",false);
-                    setButtonClass($("#node-input-install"),1);
+
                     $("#node-input-install").val("安装");
+                    installStatus = 1;
                 }
                 else{
                     delete this.editor;
@@ -187,7 +189,11 @@
             };
             ws.onclose = function() {
                 socketStatus = 0;
-                var text = appendMsg('连接失败');
+                var msg = '连接失败';
+                if (installStatus == 1){
+                   msg = '断开服务连接！';
+                }
+                var text = appendMsg(msg);
                 initEditor(text);   
                 $("#node-input-download").attr("disabled",false);
                 setButtonClass($("#node-input-download"),1);

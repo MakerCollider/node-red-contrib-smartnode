@@ -62,7 +62,7 @@ module.exports = function(RED){
             version = version.replace('.install','');
             var data = version.split('.');
             if (parseInt(data[0])>0 && parseInt(data[1])>=1){
-                if (parseInt(data[2])>4){
+                if (parseInt(data[2])>=4){
                     return true;
                 }
                 else{

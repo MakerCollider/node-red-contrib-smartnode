@@ -15,11 +15,13 @@ module.exports = function(RED){
         var dirPath = '/SmartNode_Build/Stable/';
         var ftpOptions = {'host':'114.215.140.168'};
         var versionName = '';
+        var rootDir = getCurrDirPath();
+
         function ftpGetVersionLists(ws){
             var ftpc = new ftpClient();
             ftpc.on('ready', function() {
-                fs.readFile("/home/root/version",'utf-8',function(err,data){  
-                    if (err){  
+                fs.readFile(rootDir+'version','utf-8',function(err,data){  
+                    if (err){
                         console.log("read version error");  
                     }
                     else{  
@@ -54,6 +56,11 @@ module.exports = function(RED){
             });
             // connect to localhost:21 as anonymous
             ftpc.connect(ftpOptions);
+        }
+
+        function getCurrDirPath(){
+            var rootDir = path.dirname(__filename)+ '/../../../../../';
+            return rootDir;
         }
         
         function filterStableVersion(versionName){
@@ -153,8 +160,9 @@ module.exports = function(RED){
                 versionName = file.name;
             }
 
-            var cmd = 'cd /home/root && chmod a+x '+versionName;
-            console.log(file);
+            //var cmd = 'cd /home/root && chmod a+x '+versionName;
+            var cmd = 'cd '+rootDir+' && chmod a+x '+versionName;
+            console.log(cmd);
 
             ws.send('{install_start}开始安装新版本...');
             var ls = cp.exec(cmd);
@@ -179,7 +187,8 @@ module.exports = function(RED){
 
         function installExtract(ws,filename){
             var installStatus = 1; // 1成功 0错误
-            var cmd = 'cd /home/root && ./'+filename;
+            //var cmd = 'cd /home/root && ./'+filename;
+            var cmd = 'cd '+rootDir+' && ./'+filename;
             console.log(cmd);
             var ls = cp.exec(cmd);
 

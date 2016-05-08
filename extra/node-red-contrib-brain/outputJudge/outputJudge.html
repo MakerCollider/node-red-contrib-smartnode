@@ -1,4 +1,4 @@
-<!--
+/**
  * Copyright 2015, 2015 MakerCollider.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
--->
+ **/
 
 <script type="text/x-red" data-template-name="outputJudge">
     <div class="form-row">
@@ -52,7 +52,7 @@
         category: 'brain',
         defaults: {
             name: {value:""},
-            rules: {value:[{v:""}]},
+            rules: {value:[{name:"",value:0},]},
             judgeType: {value:"1", required: true},
             resultValue: {value:"", required: true}
         },
@@ -75,6 +75,10 @@
 
                 var valueField = $('<input/>',{class:"node-input-rule-value",type:"text",style:"margin-left: 5px; width: 145px;"}).appendTo(row);
 
+                $('<div/>',{style:"display:inline-block; width: 30px; text-align:center;"}).text("to").appendTo(row);
+
+                var valueField2 = $('<input/>',{class:"node-input-rule-to-value",type:"text",style:"margin-left: 5px; width: 50px;"}).appendTo(row);
+
                 var finalspan = $('<span/>',{style:"float: right;margin-right: 10px;"}).appendTo(row);
                 finalspan.append(' &#8594; <span class="node-input-rule-index">'+i+'</span> ');
                 
@@ -95,6 +99,7 @@
 
                 $("#node-input-rule-container").append(container);
                 valueField.val(rule.name);
+                valueField2.val(rule.value);
             }
             
             //add input param rule
@@ -117,8 +122,9 @@
                 rules.each(function(i) {
                     var rule = $(this);
                     var n = rule.find(".node-input-rule-value").val();
-                    if(n.length > 0){
-                        var r = {name:n};
+                    var m = rule.find(".node-input-rule-to-value").val();
+                    if (n.length > 0){
+                        var r = {name:n,value:m};
                         node.rules.push(r);
                     }
                 });

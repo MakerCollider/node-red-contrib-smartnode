@@ -42,8 +42,7 @@ module.exports = function(RED){
 
             var outData = {};
             if (currentkey != null){
-                outData[node.resultValue] = parseInt(currentkey);
-                msg.payload = outData;
+                msg[node.resultValue] = currentkey;
                 node.send(msg);
             }
 

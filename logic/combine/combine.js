@@ -15,12 +15,14 @@
  **/
 
 module.exports = function(RED) {
+    "use strict";
     function Combine(n) {
         RED.nodes.createNode(this, n);
         var node = this;
 
         this.rules = [];
         this.receivedNumber = 0;
+        this.lastReceiveNumber = 0;
         for (var i=0; i<n.rules.length; i+=1) {
             if(n.rules[i].hasOwnProperty("name")){
                 if(n.rules[i].name.length > 0){
@@ -59,6 +61,7 @@ module.exports = function(RED) {
 
             node.send(msgSend);
             node.receivedNumber = 0;
+            node.lastReceiveNumber = 0;
 
             var status = node.receivedNumber + "/" + node.rules.length + "  " + stat;
             node.status({fill:"green",shape:"dot",text:status});
@@ -73,8 +76,6 @@ module.exports = function(RED) {
         }
 
         this.on('input', function (msg) {
-            clearTimeout(node.sendAll);
-            
             for (var i=0; i<node.rules.length; i+=1) {
                 if(msg[node.rules[i].name] != null){
                     node.rules[i].value = msg[node.rules[i].name];
@@ -88,12 +89,14 @@ module.exports = function(RED) {
             if(node.receivedNumber == node.rules.length){
                 sendMsg();
             }
-            else{
+            else if(node.lastReceiveNumber != node.receivedNumber) {
                 var status = node.receivedNumber + "/" + node.rules.length + "  Waitting";
                 node.status({fill:"green",shape:"dot",text:status});
                 if(this.timeout > 0){
+                    clearTimeout(node.sendAll);
                     node.sendAll = setTimeout(sendMsg, this.timeout);
                 }
+                node.lastReceiveNumber = node.receivedNumber;
             }
         });
 

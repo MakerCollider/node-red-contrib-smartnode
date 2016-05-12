@@ -41,11 +41,17 @@ module.exports = function(RED){
                 node.send(msg)
             } 
             else {
-
+                var trainData;
+                if (typeof(msg.payload) == 'string'){
+                    trainData = JSON.parse(msg.payload);
+                }
+                if (typeof(msg.payload) == 'object'){
+                    trainData = msg.payload;
+                }
                 node.status({fill: 'yellow',shape: 'dot',text: 'training'});
                 var trainStream = net.createTrainStream({
                     floodCallback: function() {
-                        flood(trainStream, msg.trainData);
+                        flood(trainStream, trainData);
                     },
                     doneTrainingCallback: function(obj) {
                         node.status({fill: 'green',shape: 'dot',text: 'trainning done'});
@@ -56,7 +62,7 @@ module.exports = function(RED){
                     }
                 });
 
-                flood(trainStream, msg.trainData);
+                flood(trainStream, trainData);
 
                 function flood(stream, data) {
                     for (var i = 0; i < data.length; i++) {

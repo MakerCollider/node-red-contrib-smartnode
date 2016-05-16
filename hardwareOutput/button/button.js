@@ -14,73 +14,63 @@
  * limitations under the License.
  **/
 
-module.exports = function(RED) {
-    var checkPin = require("node-red-contrib-smartnode/extends/check_pin");
-    var groveSensor = require("jsupm_grove");
+module.exports = function (RED) {
+    "use strict";
+    //var checkPin = require("node-red-contrib-smartnode/extends/check_pin");
+    var ArduinoFirmata = require('arduino-firmata');
+
     function button(config) {
         RED.nodes.createNode(this, config);
         this.digitalPin = config.digitalPin;
         this.impulse = config.impulse;
         var node = this;
-        var buttonValue = null;
-        node.digitalPin = node.digitalPin>>>0;
-        var key = 'P'+node.digitalPin;
-        if (checkPin.getDigitalPinValue(key)==1){
-            node.status({fill: "red", shape: "dot", text: "pin repeat"});
-            console.log('Button digital pin ' + node.digitalPin +' repeat');
-            return;
-        }
-        else if (checkPin.getDigitalPinValue(key)==0){
-            checkPin.setDigitalPinValue(key, 1); 
-            node.status({fill: "blue", shape: "ring", text: "pin check pass"});
-            console.log('Button digital pin ' + node.digitalPin +' OK');
-        }
-        else{
-            node.status({fill: "blue", shape: "ring", text: "Unknown"});  
-            console.log('unknown pin' + node.digitalPin + ' key value' + checkPin.getDigitalPinValue(key));   
-            return; 
-        }        
+        var flow = this.context().flow;
 
-        var button = new groveSensor.GroveButton(node.digitalPin);                 
-	var myinterval = setInterval(readButtonValue,100);
-        this.on('close', function() {
-                clearInterval(myinterval);
-            onOffStatus = 0;                                          
-                var msg = { payload:0 };                                  
-                //send the result                                         
-                node.status({fill: "red", shape: "ring", text: "turn off"});
-                node.send(msg);
-            checkPin.initDigitalPin();  //init pin 
-        });	
-    var count;
-    var lastStatus = 0;
-    function readButtonValue(){
-	buttonValue = button.value();
-        if(1 == buttonValue){
-            count++;
-        }else {
-            count = 0;
-            if(lastStatus != 0)
-            {                  
-                var msg = { payload:0 };            
-                //send the result  
-                node.status({fill: "red", shape: "ring", text: "turn off"});                 
-                node.send(msg);                        
-                lastStatus = 0;
-            }
+        if (!(flow.get('arduino') || 0)) {
+            node.log('haha');
+            node.arduino = new ArduinoFirmata().connect();
+            flow.set('arduino', node.arduino);
+            flow.set('arduinoCount', 1);
+        } else {
+            node.log('arduino exists');
+            flow.set('arduinoCount', flow.get('arduinoCount') + 1);
+            node.arduino = flow.get('arduino');
         }
-        if(count >= (config.impulse/100))
-        {
-            if(lastStatus != 1)
-            {
-                var msg = { payload:1 };            
-                //send the result  
-                node.status({fill: "red", shape: "dot", text: "turn on"}); 
-                node.send(msg);                     
-                lastStatus = 1;
+
+        node.arduino.on('connect', function () {
+            node.log("Connected to " + node.arduino.serialport_name);
+            node.log("board version: " + node.arduino.boardVersion);
+
+            node.status({fill: "blue", shape: "dot", text: "Ready"});
+
+            node.arduino.pinMode(node.digitalPin, ArduinoFirmata.INPUT);
+
+            node.arduino.on('digitalChange', function (arg) {
+                node.log(node.digitalPin + ": " + arg.pin);
+                if (Number(arg.pin) === Number(node.digitalPin)) {
+                    if (Number(arg.value) === 1) {
+                        node.status({fill: "green", shape: "dot", text: "turn on"});
+                    } else {
+                        node.status({fill: "red", shape: "dot", text: "turn off"});
+                    }
+                    var msg = {payload: Number(arg.value)};
+                    node.send(msg);
+                }
+            });
+        });
+
+        this.on('close', function () {
+            node.log('close');
+            if (flow.get('arduinoCount') === 1) {
+                node.log('ArduinoCount: all clear');
+                node.arduino.reset();
+                node.arduino.close();
+                delete node.arduino;
+                flow.set('arduino', 0);
+            } else {
+                flow.set('arduinoCount', flow.get('arduinoCount') - 1);
             }
-        }
-    }
+        });
     }
     RED.nodes.registerType("Button", button);
-}
+};

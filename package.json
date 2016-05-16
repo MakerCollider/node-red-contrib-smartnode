@@ -2,91 +2,27 @@
     "name":         "node-red-contrib-smartnode",
     "version":      "1.0.16",
     "keywords":     ["node-red",
-                     "node",
-                     "intel",
-                     "Edison"
-                    ],
+        "node",
+        "intel",
+        "Edison"
+    ],
     "dependencies": {
-        "ftp": "*",
-        "Buffer": "*",
-        "bindings": "*",
-        "connect-multiparty": "*",
-        "ejs": "*",
-	"express": "*",
-	"fs": "*",
-	"jsupm_camera": ">=0.0.1",
-        "jsupm_facedetect": ">=0.0.1",
-        "jsupm_numberdetect": ">=0.0.1",
-        "jsupm_geometry": ">=0.0.1",
-        "jsupm_img2base64": ">=0.0.1",
-	"jsupm_mpu9150": ">=0.0.1",
-	"jsupm_ojl298": ">=0.0.1",
-	"jsupm_screenspi9225": ">=0.0.1",
-	"morgan": "*",
-	"node-red-contrib-smartnode-hook": "*",
-	"path": "*",
-        "pkginfo": "*"
+        //"node-red-node-arduino": "*"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
     },
-    
-    "node-red":     {
-        "nodes":{
-            "mraa-gpio-ain":    "gpio/mraa-gpio-ain/mraa-gpio-ain.js",
-            "mraa-gpio-din":    "gpio/mraa-gpio-din/mraa-gpio-din.js",
-            "mraa-gpio-dout":   "gpio/mraa-gpio-dout/mraa-gpio-dout.js",
-            "mraa-gpio-pwm":    "gpio/mraa-gpio-pwm/mraa-gpio-pwm.js",
-            
-            "SmartNode":        "about/smartNode/smartnode.js",
-            "Upgrade":          "about/upgrade/upgrade.js",
-            
-            "ScreenC":          "extra/screen9225/screen9225.js",
-            "Clarifai":         "extra/clarifai/clarifai.js",
-            "wechat":           "extra/wechat/wechat.js",
-            "WeChatPic":        "extra/weChatPic/weChatPic.js",
-            "PlayAudio":        "extra/playAudio/playAudio.js",
-            "Brain":            "extra/node-red-contrib-brain/brain/brain.js",
-            "multiInData":      "extra/node-red-contrib-brain/multiInData/multiInData.js",
-            "dataCollect":      "extra/node-red-contrib-brain/dataCollect/dataCollect.js",
-            "outputJudge":      "extra/node-red-contrib-brain/outputJudge/outputJudge.js",
-            
-            "EdisonSerial":     "hardwareOutput/EdisonSerial/EdisonSerial.js",
-            "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
+
+    "node-red": {
+        "nodes": {
             "Button":           "hardwareOutput/button/button.js",
-            "Blink":            "hardwareOutput/blink/blink.js",
-            "Led":              "hardwareOutput/led/led.js",
-            "say":              "hardwareOutput/say/say.js",
-            "PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
-	    "I2cServo":		"hardwareOutput/I2cServo/I2cServo.js",
-
+            //"Led":              "hardwareOutput/led/led.js",
+            //"Toggle":           "logic/toggle/toggle.js",
             "Camera":           "imageProcessing/camera/camera.js",
-            "Geometry":         "imageProcessing/geometry/geometry.js",
-            "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
-            "NumberDetect":     "imageProcessing/numberDetect/numberdetect.js",
-            "Image2Stream":     "imageProcessing/image2Stream/image2Stream.js",
-
-            "add-strings":      "logic/addString/add-strings.js",
-            "change-sign":      "logic/changeSign/change-sign.js",
-            "change-type":      "logic/changeType/change-type.js",
-            "Math":             "logic/math/math-operations.js",
-            "Toggle":           "logic/toggle/toggle.js",
-            "SubString":        "logic/subString/substring.js",
-            "Combine":          "logic/combine/combine.js",
-	    "random":		"logic/random/random.js",
-            "CToggle":          "logic/ctoggle/ctoggle.js",
-
-            "Driver":           "motion/driver/driver.js",
-            "Motor":            "motion/motor/motor.js",
-            "RobotHead-Init":   "motion/robotHead/robotHeadInit/robotHeadInit.js",
-            "RobotHead-Smile":  "motion/robotHead/robotHeadSmile/robotHeadSmile.js",
-            "RobotHead-Sad":    "motion/robotHead/robotHeadSad/robotHeadSad.js",
-            "RobotHead-Random": "motion/robotHead/robotHeadRandom/robotHeadRandom.js",
-
-            "Attitude":         "sensor/attitude/attitude.js",
-
-            "DiaplayImage":     "io/disp.js"
+            //"FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
+            //"Image2Stream":     "imageProcessing/image2Stream/image2Stream.js",
+            //"PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
         }
     },
     "author": {

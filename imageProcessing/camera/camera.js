@@ -14,9 +14,8 @@
  * limitations under the License.
  **/
 
-var jsCamera = require('jsupm_camera');
-
 module.exports = function(RED) {
+    var jsCamera = require('./camera.node');
     function camera(config) {
         var node = this;
         node.log("Camera initalizing.......");
@@ -58,7 +57,7 @@ module.exports = function(RED) {
 
         function camera_timer(){
             var isVaild = true;
-            if(camera.m_running){
+            if(camera.isOpened()){
                 var ptrString = camera.read();
                 if(ptrString == ""){
                     isVaild = false;
@@ -86,7 +85,7 @@ module.exports = function(RED) {
             if(node.mode == 0){
                 node.log("Video mode!");
                 if(Number(msg.payload) == 1){
-                    if(!camera.m_running){
+                    if(!camera.isOpened()){
                         node.log("Start Camera Timer.");
                         if(camera.startCamera()){
                             node.timer = setInterval(camera_timer, node.timerVal);
@@ -109,7 +108,7 @@ module.exports = function(RED) {
                 //put write photo code here
                 node.status({fill:"green",shape:"dot",text:"Shooting"});
                 var isVaild = true;
-                if(camera.m_running){
+                if(camera.isOpened()){
                     var ptrString;
                     for(i = 0; i< 5; i++){
                         ptrString = camera.shoot();

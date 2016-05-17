@@ -1,0 +1,12 @@
+{
+    "Toggle": {
+        "label": {
+            "palette": "Toggle"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "Logic_Operation"
+        }
+    }     
+}

@@ -1,0 +1,18 @@
+{
+    "Combine": {
+        "label": {
+            "name": "融合",
+            "palette": "融合",
+            "rules": "规则",
+            "timeout": "超时",
+            "addrule": "增加",
+            "timeplace": "秒",
+            "placeholder": "节点名称"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
+}

@@ -1,0 +1,12 @@
+{
+    "change-type": {
+        "label": {
+            "palette": "Change-Type"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "Logic_Operation"
+        }
+    }     
+}

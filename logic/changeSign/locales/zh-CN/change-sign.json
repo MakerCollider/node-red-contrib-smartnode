@@ -1,0 +1,12 @@
+{
+    "change-sign": {
+        "label": {
+            "palette": "改变符号"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
+}

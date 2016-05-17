@@ -1,0 +1,16 @@
+{
+    "CToggle": {
+        "label": {
+            "name": "CToggle",
+            "palette": "CToggle",
+            "rules": "Rules",
+            "addrule": "Add",
+            "placeholder": "Node name"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "Logic_Operation"
+        }
+    }     
+}

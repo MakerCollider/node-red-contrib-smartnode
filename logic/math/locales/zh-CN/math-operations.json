@@ -1,0 +1,12 @@
+{
+    "Math": {
+        "label": {
+            "palette": "数学运算"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
+}

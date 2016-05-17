@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('substring',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            Name: {value:""},
+			From:{value:"0", required: true},
+			To:{value:"0", required: true}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"Substring";
+        },
+        paletteLabel: function () {
+            return this.name||this._("substring.label.palette");
+        }
+		
+    });
+</script>
+
+<script type="text/x-red" data-template-name="substring">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-Name" placeholder="Name">
+    </div>
+	<div class="form-row">
+		<label for="node-input-From"><i class="fa fa-tag"></i>From</label>
+        <input type="number" id="node-input-From" placeholder="From" min="0">
+    </div>
+
+	<div class="form-row">
+		<label for="node-input-to"><i class="fa fa-tag"></i>To</label>
+        <input type="number" id="node-input-To" placeholder="To" min="0">
+    </div>
+
+</script>

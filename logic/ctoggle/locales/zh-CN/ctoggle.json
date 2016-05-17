@@ -1,0 +1,16 @@
+{
+    "CToggle": {
+        "label": {
+            "name": "条件开关",
+            "palette": "条件开关",
+            "rules": "规则",
+            "addrule": "增加",
+            "placeholder": "节点名称"
+        }
+    },
+    "palette": {
+        "label": {
+              "Logic": "逻辑运算"
+        }
+    }     
+}

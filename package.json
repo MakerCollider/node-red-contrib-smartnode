@@ -1,6 +1,7 @@
 {
     "name":                 "node-red-contrib-smartnode",
     "version":              "1.1.0",
+    "main":                 "index.js",
     "description":          "SmartNode node package, provided by MakerCollider",
     "keywords":             ["node-red", "node", "smartnode", "makercollider"],
     "homepage":             "http://www.smartnode.io/",
@@ -14,8 +15,23 @@
         "type": "git",
         "url":  "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
     },
-    "dependencies":         {"johnny-five": "*"},
+    "dependencies":         {
+        "johnny-five": "*",
+        "node-pre-gyp": "0.6.x"
+    },
+    "devDependencies": {
+        "aws-sdk": "2.x"
+    },
+    "scripts": {
+        "preinstall": "npm install node-pre-gyp",
+        "install": "node-pre-gyp install --fallback-to-build"
+    },
     "os":                   ["win32"],
+    "binary": {
+        "module_name": "sn_addon",
+        "module_path": "./lib/",
+        "host": "https://github.com/MakerCollider/node-red-contrib-smartnode/releases/{version}/"
+    },
     "node-red": {
         "nodes": {
             "Button":           "hardwareOutput/button/button.js",

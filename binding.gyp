@@ -1,16 +1,16 @@
 {
     "targets": [
         {
-            "target_name": "camera",
+            "target_name": "sn_addon",
             "sources": [
-                "./src/camera.cc",
-                "./src/camera_class.cxx"
+                "./src/camera/camera.cc",
+                "./src/camera/camera_class.cxx"
             ],
             'include_dirs': [
                 '$(OPENCV_DIR)/include',
             ],
             'link_settings': {
-                'library_dirs': ['$(OPENCV_DIR)/x64/vc12/lib'],
+                'library_dirs': ["$(OPENCV_DIR)/<(target_arch)/vc12/lib"],
                 'libraries': [
                     "-lopencv_core310", 
                     "-lopencv_videoio310", 
@@ -23,6 +23,17 @@
                     'AdditionalOptions': [ '/EHsc' ]
                 }
             }
+        },
+        {
+            "target_name": "copy_binary",
+            "type":"none",
+            "dependencies" : [ "sn_addon" ],
+            "copies": [
+                {
+                    "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
+                    "destination": "<(module_path)"
+                }
+            ]
         }
     ]
 }

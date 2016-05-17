@@ -1,7 +1,7 @@
 {
-    "interceptedsting": {
+    "substring": {
         "label": {
-            "palette": "InterceptedSting"
+            "palette": "substring"
         }
     }
 }

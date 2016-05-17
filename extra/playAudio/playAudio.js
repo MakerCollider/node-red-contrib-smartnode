@@ -139,7 +139,7 @@ module.exports = function(RED) {
         node.status({fill:"blue", shape:"dot",text:"ready"});
 
         this.on('input', function(msg) {
-            var value = Number(msg.payload)-1;
+            var value = Number(msg.payload);
             if(value in node.rules){
                 fileStr = node.rules[value].v;
                 if(fileStr.substr(-3, 3) == "WAV" || fileStr.substr(-3, 3) == "wav"){

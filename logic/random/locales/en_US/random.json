@@ -1,7 +1,7 @@
 {
-    "randomnumbergenerate": {
+    "random": {
         "label": {
-            "palette": "RandomnumberGenerate"
+            "palette": "Random"
         }
     }
 }

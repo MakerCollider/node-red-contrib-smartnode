@@ -1,12 +1,12 @@
 {
     "RobotHead-Init": {
         "label": {
-            "palette": "机器人表情初始化"
+            "palette": "RobotHead-Init"
         }
     },
     "palette": {
         "label": {
-              "Robot": "机器人"
+              "Robot": "Robot"
         }
     }     
 }

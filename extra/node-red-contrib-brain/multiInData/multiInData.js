@@ -18,7 +18,6 @@ module.exports = function(RED){
             var arrData = Object.keys(_G_inMultiData);
             if (arrData.length == node.rules.length){
                 msg.payload = _G_inMultiData;
-                collect.clearInMultiData();
                 node.send(msg);
             }
 

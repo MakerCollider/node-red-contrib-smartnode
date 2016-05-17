@@ -1,12 +1,12 @@
 {
     "RobotHead-Random": {
         "label": {
-            "palette": "机器人表情随机变化"
+            "palette": "RobotHead-Random"
         }
     },
     "palette": {
         "label": {
-              "Robot": "机器人"
+              "Robot": "Robot"
         }
     }     
 }

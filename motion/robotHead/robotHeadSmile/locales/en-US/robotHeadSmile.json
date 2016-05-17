@@ -1,12 +1,12 @@
 {
     "RobotHead-Smile": {
         "label": {
-            "palette": "机器人微笑"
+            "palette": "RobotHead-Smile"
         }
     },
     "palette": {
         "label": {
-              "Robot": "机器人"
+              "Robot": "Robot"
         }
     }     
 }

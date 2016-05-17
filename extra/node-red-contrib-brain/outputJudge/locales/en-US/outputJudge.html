@@ -15,21 +15,21 @@
 -->
 
 <script type="text/x-red" data-help-name="outputJudge">
-<h3 id="数据判定节点"><a name="数据判定节点" href="#数据判定节点"></a>数据判定节点</h3>
-<p>本节点用于将从输入的数据中选择一个最优值并输出</p>
-<h4 id="配置参数"><a name="配置参数" href="#配置参数"></a>配置参数</h4>
+<h3 id="Data Judge node"><a name="Data Judge node" href="#Data Judge node"></a>Data Judge node</h3>
+<p>This node will select an optimal value from the input datas and output it.</p>
+<h4 id="Configuration parameters"><a name="Configuration parameters" href="#Configuration parameters"></a>Configuration parameters</h4>
 <ol>
-<li>名称：节点名称</li>
-<li>判定参数：要求该参数名称必须与本节点的输入数据中参数名一致</li>
-<li>判定规则：可按最大值和最小值选取</li>
-<li>结果参数名：输出结果的参数名称</li>
+<li>name：The node name</li>
+<li>rules：It requires the parameter name must be consistent with the parameter nameof the node input data.</li>
+<li>judgeType：Maximum and minimum values can be selected</li>
+<li>resultValue：The output parameter names</li>
 </ol>
-<h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
+<h4 id="Usage"><a name="Usage" href="#Usage"></a>Usage</h4>
 <ol>
-<li>使用前先用debug节点将本节点的输入数据打印输出,数据格式为例：{a:0.2334,b:0.3444,c:0.5.656}。</li>
-<li>在<strong>判定参数</strong>中增加并设置要判定的数据参数,与本节点的输入数据中参数名一致。</li>
-<li>在<strong>判定规则</strong>中设置规则,可选择按最大值或最小值选取。</li>
-<li>设定输出数据的参数名称。例：名称为name,则输出结果为{'name':a}</li>
-<li><strong>部署</strong></li>
+<li>Before use, you should use the debug node to printout the input data of this node, data format is like ：{a:0.2334,b:0.3444,c:0.5.656}。</li>
+<li>In <strong>rules</strong>, you should add and set the data parameters which need to be judged, the parameter name must be consistent with the parameter nameof the node input data.</li>
+<li>In <strong>judgeType</strong>, you can set the rules, choose that select by maximum or minimum value.</li>
+<li>Set parameter name of the output data.For example：name is 'name',the output result is {'name':a}</li>
+<li><strong>deploy</strong></li>
 </ol>
 </script>

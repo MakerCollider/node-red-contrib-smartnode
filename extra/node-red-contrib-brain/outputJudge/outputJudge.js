@@ -24,17 +24,17 @@ module.exports = function(RED){
                     if (node.judgeType == 1){
                         if (inData[node.rules[i].name] > currentValue){
                             currentValue = inData[node.rules[i].name];
-                            currentkey = node.rules[i].value;
+                            currentkey = node.rules[i].name;
                         }
                     }
                     else{
                         if (currentValue == 0){
                             currentValue = inData[node.rules[i].name];
-                            currentkey = node.rules[i].value;
+                            currentkey = node.rules[i].name;
                         }
                         else if (inData[node.rules[i].name] <= currentValue){
                             currentValue = inData[node.rules[i].name];
-                            currentkey = node.rules[i].value;
+                            currentkey = node.rules[i].name;
                         }
                     }
                 }
@@ -42,7 +42,8 @@ module.exports = function(RED){
 
             var outData = {};
             if (currentkey != null){
-                msg[node.resultValue] = currentkey;
+                outData[node.resultValue] = currentkey;
+                msg.payload = JSON.stringify(outData);
                 node.send(msg);
             }
 

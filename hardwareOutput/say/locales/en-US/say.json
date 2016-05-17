@@ -1,12 +1,12 @@
-{
+﻿{
     
 	"say": {
         
 		"label": {
-            
-			"palette": "say"
-        
-			}
-    
+            		"palette": "Text-to-Speech"
+       
 		}
+
+   	 }
+ 
 }

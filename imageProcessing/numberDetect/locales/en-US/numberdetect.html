@@ -15,34 +15,37 @@
 -->
 
 <script type="text/xred" data-help-name="NumberDetect">
-<h3 id="数字识别节点">数字识别节点</h3>
+<h3 id="NumberDetect Node">NumberDetect Node</h3>
 
-<p>本节点可以对数字0~9进行识别。</p>
+<p>The node can identify numbers from 0 to 9.</p>
 
-<h4 id="参数配置">参数配置</h4>
+<h4 id="Parameter Configuration">Parameter Configuration</h4>
 
 <ol>
-<li>Name：节点名称</li>
+<li>Name：The node name</li>
 </ol>
 
-<h4 id="输入量">输入量</h4>
+<h4 id="Input">Input</h4>
 
 <ol>
-<li>msg.imagePtr：指向Mat的图像指针</li>
+<li>msg.imagePtr：The image pointer pointing Mat</li>
 </ol>
 
-<h4 id="输出量">输出量</h4>
+<h4 id="Output">Output</h4>
 
 <ol>
-<li>msg.payload：识别出的数字值</li>
-<li>msg.imagePtr：预处理后的图像数据包</li>
+<li>msg.payload：The identified number </li>
+<li>msg.imagePtr：The image data packet after pretreatment</li> <!-- The image -->
 </ol>
 
-<h4 id="使用方法">使用方法</h4>
+<h4 id="Usage">Usage</h4>
 
 <ol>
-<li>输入接上camera节点，配置好数字识别节点，即可输出识别的数字值。若不识别，msg.payload输出-1。</li>
-<li>msg.imagePtr为预处理后的图像</li>
+<li>Input node connected camera, configure the digital identification node correctly, you can output a digital value recognition. If can't be recognized, msg.payload outputs -1.</li>
+<li>msg.imagePtr is the image packet after pretreatment</li>
 </ol>
 </script>
+<!--<code>msg.imagePtrThe</code> input sent by the camera node to this node to start working. There are two outputs: 
+	<li><code>msg.payload</code> is the first output that contains the number of the identified numbers.</li>
+	<li><code>msg.imagePtr</code> is the second output that contains the image sent by the camera</li></ol> -->
 

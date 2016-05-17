@@ -1,8 +1,8 @@
 {
     "wechat": {
         "label": {
-            "palette-in": "收微信",
-            "palette-out": "发微信"
+            "palette-in": "wechat in",
+            "palette-out": "wechat out"
         }
     }  
 }

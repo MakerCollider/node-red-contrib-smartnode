@@ -1,0 +1,12 @@
+{
+    "mraa-gpio-din": {
+        "label": {
+            "palette": "Digital input"
+        }
+    },
+    "palette": {
+        "label": {
+              "gpio": "General Purpose Input Output"
+        }
+    }     
+}

@@ -1,17 +1,12 @@
 {
     "upgrade": {
         "label": {
-            "name": "名称",
-            "versions": "版本",
-            "button-download": "下载",
-            "button-install": "安装",
-            "button-recovery": "恢复",
-            "palette": "版本升级"
+            "palette": "version upgrade"
         }
     },
     "palette": {
         "label": {
-              "Version": "版本信息"
+              "Version": "Version Information"
         }
     }      
 }

@@ -1,0 +1,12 @@
+{
+    "mraa-gpio-ain": {
+        "label": {
+            "palette": "Universal Analog Input"
+        }
+    },
+    "palette": {
+        "label": {
+              "gpio": "General Purpose Input Output"
+        }
+    }     
+}

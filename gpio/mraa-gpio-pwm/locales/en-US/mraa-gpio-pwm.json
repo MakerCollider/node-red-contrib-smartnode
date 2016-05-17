@@ -1,0 +1,12 @@
+{
+    "mraa-gpio-pwm": {
+        "label": {
+            "palette": "PWM outputs"
+        }
+    },
+    "palette": {
+        "label": {
+              "gpio": "General Purpose Input Output"
+        }
+    }     
+}

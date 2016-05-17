@@ -1,12 +1,12 @@
 {
     "dispImg": {
         "label": {
-            "palette": "DisplayImage"
+            "palette": "dispImg"
         }
     },
     "dispGauge": {
         "label": {
-            "palette": "DisplayGauge"
+            "palette": "dispGauge"
         }
     },
     "palette": {

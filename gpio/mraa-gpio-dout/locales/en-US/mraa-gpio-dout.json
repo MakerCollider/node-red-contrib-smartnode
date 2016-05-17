@@ -1,0 +1,12 @@
+{
+    "mraa-gpio-dout": {
+        "label": {
+            "palette": "Digital Output"
+        }
+    },
+    "palette": {
+        "label": {
+              "gpio": "General Purpose Input Output"
+        }
+    }     
+}

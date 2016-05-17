@@ -23,8 +23,7 @@ module.exports = function(RED) {
         var node = this;
         node.log('start RobotHead-Random');
 
-        var stat = 0;
-        var wait;
+        var wait = null;
         node.status({fill: 'red', shape:'dot', text: 'Ready'});
 
         node.on('input', function(msg) {
@@ -34,15 +33,19 @@ module.exports = function(RED) {
                 node.log('send #3P' + rand + '#4P' + rand + 'T'+node.time);
                 node.send({'payload': "#3P" + rand + "#4P" + rand + "T" + node.time + "\r\n"});
             }
-            if(stat == 0)
+            if(msg.payload == 1)
             {
-                wait = setInterval(interval, node.time);
-                stat = 1;
+                if(wait == null)
+                {
+                    wait = setInterval(interval, node.time);
+                }
             } else {
-                clearInterval(wait);
-                node.log("Receive msg 0");
-                node.status({fill: 'red', shape:'dot', text: 'Ready'});
-                stat = 0;
+                if(wait != null)
+                {
+                    clearInterval(wait);
+                    node.log("Receive msg 0");
+                    node.status({fill: 'red', shape:'dot', text: 'Ready'});
+                }
             }
         });
         /*sendStat();*/

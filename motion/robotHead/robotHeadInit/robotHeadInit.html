@@ -20,7 +20,7 @@
     defaults: {
       name:  {value:"RobotHead-Init"}  
     },
-    inputs:0,
+    inputs:1,
     outputs:1, // how many callbacks of cameraInit
     icon: "light.png",
     label: function() {
@@ -28,16 +28,7 @@
     },
     paletteLabel: function () {
             return this.name||this._("RobotHead-Init.label.palette");
-    },
-    button: {
-
-      onclick: function(){
-
-        d3.xhr("inject/"+this.id).post(function(err,resp) {
-        });
-      }
     }
-
   });
 
 </script>

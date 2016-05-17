@@ -22,7 +22,7 @@
       name:  {value:"RobotHead-Random"},
       time:  {value: 500}   
     },
-    inputs:0,
+    inputs:1,
     outputs:1, // how many callbacks of cameraInit
     icon: "light.png",
     label: function() {
@@ -30,18 +30,8 @@
     },
     paletteLabel: function () {
             return this.name||this._("RobotHead-Random.label.palette");
-    },
-    button: {
-
-      onclick: function(){
-
-        d3.xhr("inject/"+this.id).post(function(err,resp) {
-        });
-      }
     }
-
   });
-
 </script>
 
 <script type="text/x-red" data-template-name="RobotHead-Random">

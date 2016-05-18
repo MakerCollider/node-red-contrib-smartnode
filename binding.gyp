@@ -25,12 +25,18 @@
             }
         },
         {
-            "target_name": "copy_binary",
+            "target_name": "copy_files",
             "type":"none",
             "dependencies" : [ "sn_addon" ],
             "copies": [
                 {
-                    "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
+                    "files": [
+                        "<(PRODUCT_DIR)/<(module_name).node",
+                        "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_core310.dll",
+                        "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_videoio310.dll",
+                        "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_imgproc310.dll",
+                        "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_imgcodecs310.dll",
+                    ],
                     "destination": "<(module_path)"
                 }
             ]

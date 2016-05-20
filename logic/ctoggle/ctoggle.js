@@ -34,6 +34,11 @@ module.exports = function(RED) {
         var status = node.receivedNumber + "/" + node.rules.length + "  Close";
         this.status({fill:"red",shape:"dot",text:status});
 
+        // var globalcontext = this.context().global;
+        // var board = globalcontext.get("j5board");
+        // node.log(board.isConnected);
+        // node.log(node.context);
+
         this.on('input', function (msg) {
             var exist = false;
             for (var i=0; i<node.rules.length; i+=1) {

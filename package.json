@@ -28,9 +28,10 @@
     },
     "os":                   ["win32"],
     "binary": {
-        "module_name": "sn_addon",
-        "module_path": "./lib/",
-        "host": "https://github.com/MakerCollider/node-red-contrib-smartnode/releases/{version}/"
+        "module_name":  "sn_addon",
+        "module_path":  "./lib/",
+        "host":         "https://github.com/MakerCollider/node-red-contrib-smartnode/",
+        "remote_path":  "releases/download/v{version}/"
     },
     "node-red": {
         "nodes": {

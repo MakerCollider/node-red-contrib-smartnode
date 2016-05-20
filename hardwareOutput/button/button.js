@@ -14,63 +14,75 @@
  * limitations under the License.
  **/
 
-module.exports = function (RED) {
-    "use strict";
-    //var checkPin = require("node-red-contrib-smartnode/extends/check_pin");
-    var ArduinoFirmata = require('arduino-firmata');
+module.exports = function init(RED) {
+    'use strict';
+    var serialport = require('serialport');
+    var five = require('johnny-five');
+    function button(n) {
+        RED.nodes.createNode(this, n);
+        this.nodebot = RED.nodes.getNode(n.board);
+        if (typeof this.nodebot === "object") {
+            var node = this;
 
-    function button(config) {
-        RED.nodes.createNode(this, config);
-        this.digitalPin = config.digitalPin;
-        this.impulse = config.impulse;
-        var node = this;
-        var flow = this.context().flow;
+            node.status({fill: "red", shape: "ring", text: "connecting"});
 
-        if (!(flow.get('arduino') || 0)) {
-            node.log('haha');
-            node.arduino = new ArduinoFirmata().connect();
-            flow.set('arduino', node.arduino);
-            flow.set('arduinoCount', 1);
-        } else {
-            node.log('arduino exists');
-            flow.set('arduinoCount', flow.get('arduinoCount') + 1);
-            node.arduino = flow.get('arduino');
-        }
-
-        node.arduino.on('connect', function () {
-            node.log("Connected to " + node.arduino.serialport_name);
-            node.log("board version: " + node.arduino.boardVersion);
-
-            node.status({fill: "blue", shape: "dot", text: "Ready"});
-
-            node.arduino.pinMode(node.digitalPin, ArduinoFirmata.INPUT);
-
-            node.arduino.on('digitalChange', function (arg) {
-                node.log(node.digitalPin + ": " + arg.pin);
-                if (Number(arg.pin) === Number(node.digitalPin)) {
-                    if (Number(arg.value) === 1) {
-                        node.status({fill: "green", shape: "dot", text: "turn on"});
-                    } else {
-                        node.status({fill: "red", shape: "dot", text: "turn off"});
-                    }
-                    var msg = {payload: Number(arg.value)};
-                    node.send(msg);
-                }
+            node.nodebot.on('ioready', function () {
+                node.status({fill: "green", shape: "dot", text: "connected"});
             });
-        });
+            node.nodebot.on('networkReady', function () {
+                node.status({fill: "yellow", shape: "ring", text: "connecting..."});
+            });
+            node.nodebot.on('networkError', function () {
+                node.status({fill: "red", shape: "dot", text: "disconnected"});
+            });
+            node.nodebot.on('ioError', function (err) {
+                node.status({fill: "red", shape: "dot", text: "error"});
+                node.warn(err);
+            });
 
-        this.on('close', function () {
-            node.log('close');
-            if (flow.get('arduinoCount') === 1) {
-                node.log('ArduinoCount: all clear');
-                node.arduino.reset();
-                node.arduino.close();
-                delete node.arduino;
-                flow.set('arduino', 0);
-            } else {
-                flow.set('arduinoCount', flow.get('arduinoCount') - 1);
-            }
-        });
+            node.nodebot.on("ioready", function () {
+                /*******************Edit*******************/
+                var vbutton = new five.Button({
+                    pin: n.digitalPin
+                });
+
+                vbutton.on("down", function () {
+                    var msg = {payload: 1};
+                    node.send(msg);
+                });
+
+                vbutton.on("up", function () {
+                    var msg = {payload: 0};
+                    node.send(msg);
+                });
+                /*******************Edit*******************/
+            });
+        } else {
+            this.warn("nodebot not configured");
+        }
     }
     RED.nodes.registerType("Button", button);
+
+    function listArduinoPorts(callback) {
+        return serialport.list(function (err, ports) {
+            if (err) {
+                return callback(err);
+            }
+            var devices = [];
+            var i;
+            for (i = 0; i < ports.length; i += 1) {
+                if (/usb|acm|com\d+/i.test(ports[i].comName)) {
+                    devices.push(ports[i].comName);
+                }
+            }
+            return callback(null, devices);
+        });
+    }
+
+    //routes
+    RED.httpAdmin.get("/gpioserialports", RED.auth.needsPermission("arduino.read"), function (req, res) {
+        listArduinoPorts(function (err, ports) {
+            res.json(ports);
+        });
+    });
 };

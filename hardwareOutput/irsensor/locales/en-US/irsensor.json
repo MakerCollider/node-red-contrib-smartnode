@@ -1,0 +1,12 @@
+{
+    "IRSensor": {
+        "label": {
+            "palette": "IRSensor"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "HardwareOutput"
+        }
+    }     
+}

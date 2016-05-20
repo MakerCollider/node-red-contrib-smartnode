@@ -36,6 +36,8 @@
     "node-red": {
         "nodes": {
             "Button":           "hardwareOutput/button/button.js",
+            "IRSensor":           "hardwareOutput/irsensor/irsensor.js",
+
             "Camera":           "imageProcessing/camera/camera.js",
 
             "say":              "hardwareOutput/say/say.js",

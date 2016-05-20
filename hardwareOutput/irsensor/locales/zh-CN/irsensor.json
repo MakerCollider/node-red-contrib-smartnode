@@ -1,0 +1,12 @@
+{
+    "IRSensor": {
+        "label": {
+            "palette": "红外接近开关"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }     
+}

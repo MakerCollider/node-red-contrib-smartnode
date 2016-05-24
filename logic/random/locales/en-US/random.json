@@ -1,7 +1,7 @@
-{
+{//random.label.palette
     "random": {
         "label": {
-            "palette": "Random"
+            "palette": "random"
         }
     }
 }

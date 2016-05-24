@@ -47,6 +47,7 @@
             "wechat":           "extra/wechat/wechat.js",
             "WeChatPic":        "extra/weChatPic/weChatPic.js",
             "PlayAudio":        "extra/playAudio/playAudio.js",
+            "Mijoystick":       "extra/Mijoystick/Mijoystick.js",
             "Brain":            "extra/node-red-contrib-brain/brain/brain.js",
             "multiInData":      "extra/node-red-contrib-brain/multiInData/multiInData.js",
             "dataCollect":      "extra/node-red-contrib-brain/dataCollect/dataCollect.js",

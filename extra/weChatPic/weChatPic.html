@@ -1,0 +1,56 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<script type="text/javascript">
+    RED.nodes.registerType('WeChatPic', {
+        category: 'social',
+        color: '#E2D96E',
+        inputs: 1,
+        outputs: 0,
+        icon: "light.png",
+        defaults: {
+            accountid: {value: "", required: false},
+            imagepath: {value: "", required: false}
+        },
+        label: function() {
+            return this.name || "WeChatPic";
+        },
+        paletteLabel: function () {
+            return this._("WeChatPic.label.palette");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+            var node = this;
+            node.accountid = this.accountid;
+            node.imagepath = this.imagepath;
+        }
+    });
+
+
+
+</script>
+
+<script type="text/x-red" data-template-name="WeChatPic">
+    <div class="form-row">
+        <label for="node-input-accountid"><i class="fa fa-tag"></i> Account ID</label>
+        <input type="text" id="node-input-accountid" placeholder="Account ID">
+    </div>
+    <div class="form-row">
+        <label for="node-input-imagepath"><i class="fa fa-bookmark"></i> Image Path</label>
+        <input type="text" id="node-input-imagepath" placeholder="/root/tmp/temp.jpg">
+    </div>
+</script>
+

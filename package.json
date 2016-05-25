@@ -16,6 +16,7 @@
         "url":  "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
     },
     "dependencies":         {
+        "mqtt": "1.10.x",
         "say": "0.9.x",
         "serialport": "3.1.x",
         "johnny-five": "0.9.x",
@@ -52,7 +53,10 @@
             "SubString":        "logic/subString/substring.js",
             "Combine":          "logic/combine/combine.js",
             "random":           "logic/random/random.js",
-            "CToggle":          "logic/ctoggle/ctoggle.js"
+            "CToggle":          "logic/ctoggle/ctoggle.js",
+
+            "wechat":           "extra/wechat/wechat.js",
+            "WeChatPic":        "extra/weChatPic/weChatPic.js"
         }
     }
 }

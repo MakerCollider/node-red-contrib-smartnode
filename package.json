@@ -16,7 +16,9 @@
         "url":  "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
     },
     "dependencies":         {
-        "johnny-five": "*",
+        "say": "0.9.x",
+        "serialport": "3.1.x",
+        "johnny-five": "0.9.x",
         "node-pre-gyp": "0.6.x"
     },
     "devDependencies": {

@@ -1,0 +1,37 @@
+<script type="text/javascript">
+    RED.nodes.registerType('M2MServer',{
+        category: 'edge',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"M2MServer"}
+        },
+        inputs: 0,
+        outputs: 1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return this.name||"M2MServer";
+        },
+        paletteLabel: function () {
+            return this.name||this._("M2MServer.label.palette");
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="M2MServer">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="M2MServer.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]M2MServer.label.placeholder">
+    </div>
+
+</script>
+
+
+<script type="text/x-red" data-help-name="M2MServer">
+    <p>M2MServer node</p>
+</script>
+

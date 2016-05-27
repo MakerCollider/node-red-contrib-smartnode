@@ -1,0 +1,22 @@
+{
+    "profile": {
+        "label": {
+            "name": "名称",
+            "appkey": "appkey",
+            "deviceId": "设备ID",
+            "palette": "profile",
+            "rules": "服务列表",
+            "attrRules": "属性列表",
+            "serviceName": "名称",
+            "serviceAttr": "属性",
+            "addbutton": "增加",
+            "backbutton": "返回",
+            "placeholder": "节点名称"
+        }
+    },
+    "palette": {
+        "label": {
+              "edge": "edge"
+        }
+    }     
+}

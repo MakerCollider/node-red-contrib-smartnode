@@ -1,0 +1,17 @@
+{
+    "M2MEdge": {
+        "label": {
+            "name": "名称",
+            "palette": "M2MEdge",
+            "devicelist": "设备列表",
+            "manageButton": "管理设备",
+            "placeholder": "节点名称",
+            "palette": "M2MEdge"
+        }
+    },
+    "palette": {
+        "label": {
+              "edge": "edge"
+        }
+    }     
+}

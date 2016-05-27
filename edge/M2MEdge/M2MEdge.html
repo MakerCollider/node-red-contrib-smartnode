@@ -1,0 +1,237 @@
+<script type="text/javascript">
+    RED.nodes.registerType('M2MEdgeIn',{
+        category: 'edge',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"M2MEdge"},
+            device: {value:"",required:true},
+            deviceId:{value:""}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "white-globe.png",
+        label: function() {
+            return this.name||"M2MEdge";
+        },
+        paletteLabel: function () {
+            return this.name||this._("M2MEdge.label.palette");
+        },
+        oneditprepare: function() {
+            that = this;
+            var deviceList;
+            var ws;
+            var socketStatus = 0;
+            if (socketStatus == 0){
+                wsConnect(); 
+            }
+
+            function wsConnect() {
+                var wsUri = "ws:";
+                var loc = window.location;
+                wsUri += "//" + loc.host+'/';
+                wsUri = wsUri.replace("1880","8081");
+                ws = new WebSocket(wsUri);
+                ws.onmessage = function(msg) {
+                    var data = msg.data;
+                    console.log(data);
+                    if (data.indexOf('$list$')!=-1){
+                        data = data.replace("$list$","");
+                        data = JSON.parse(data);
+                        appendDeviceSelect(data);
+                    }
+                };
+                ws.onopen = function() {
+                    socketStatus = 1;
+                    console.log('ok');
+                    ws.send("{deviceList}");
+                };
+                ws.onclose = function() {
+                    socketStatus = 0;
+                    console.log('no');
+                };
+                ws.onerror = function(err) {  
+                    socketStatus = 0;
+                    console.log("Error: " + err); 
+                };
+            }
+
+            var selectField = $('#node-input-device');
+            function appendDeviceSelect(list){
+                
+                for (var i in list) {
+                    var _val = JSON.stringify(list[i]);
+                    selectField.append($("<option></option>").val(_val).text('edge-'+list[i].id));
+                }
+                
+                selectField.find("option").filter(function() {
+                    var dev = JSON.parse($(this).val());
+                    return dev.id == that.deviceId;
+                }).attr('selected',true);
+
+                $('#node-input-name').val('device'+that.deviceId);
+
+                selectField.change(function (){
+                    if ($(this).val() != null){
+                        var dev = JSON.parse($(this).val());
+                        $('#node-input-deviceId').val(dev.id);
+                        $('#node-input-name').val('device'+dev.id);
+                        setDeviceManageUrl();
+                    }
+                });
+                
+                setDeviceManageUrl();
+            }
+
+            function setDeviceManageUrl(){
+                if (selectField.val() != null){
+                    var dev = JSON.parse(selectField.val());
+                    var deviceUrl = 'http://'+dev.devInfo.address+':1880';
+                    $('#node-input-href-manage').attr("target","_blank");
+                    $('#node-input-href-manage').attr("href",deviceUrl);
+                }
+            }
+
+        },
+        oneditsave: function() {}
+    });
+
+    RED.nodes.registerType('M2MEdgeOut',{
+        category: 'edge',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"M2MEdge"},
+            device: {value:"",required:true},
+            deviceId:{value:""}
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "white-globe.png",
+        align: "right",
+        label: function() {
+            return this.name||"M2MEdge";
+        },
+        paletteLabel: function () {
+            return this.name||this._("M2MEdge.label.palette");
+        },
+        oneditprepare: function() {
+            that = this;
+            var deviceList;
+            var ws;
+            var socketStatus = 0;
+            if (socketStatus == 0){
+                wsConnect(); 
+            }
+
+            function wsConnect() {
+                var wsUri = "ws:";
+                var loc = window.location;
+                wsUri += "//" + loc.host+'/';
+                wsUri = wsUri.replace("1880","8081");
+                ws = new WebSocket(wsUri);
+                ws.onmessage = function(msg) {
+                    var data = msg.data;
+                    console.log(data);
+                    if (data.indexOf('$list$')!=-1){
+                        data = data.replace("$list$","");
+                        data = JSON.parse(data);
+                        appendDeviceSelect(data);
+                    }
+                };
+                ws.onopen = function() {
+                    socketStatus = 1;
+                    console.log('ok');
+                    ws.send("{deviceList}");
+                };
+                ws.onclose = function() {
+                    socketStatus = 0;
+                    console.log('no');
+                };
+                ws.onerror = function(err) {  
+                    socketStatus = 0;
+                    console.log("Error: " + err); 
+                };
+            }
+
+            var selectField = $('#node-input-device');
+            function appendDeviceSelect(list){
+                
+                for (var i in list) {
+                    var _val = JSON.stringify(list[i]);
+                    selectField.append($("<option></option>").val(_val).text('edge-'+list[i].id));
+                }
+                
+                selectField.find("option").filter(function() {
+                    var dev = JSON.parse($(this).val());
+                    return dev.id == that.deviceId;
+                }).attr('selected',true);
+
+                $('#node-input-name').val('device'+that.deviceId);
+
+                selectField.change(function (){
+                    if ($(this).val() != null){
+                        var dev = JSON.parse($(this).val());
+                        $('#node-input-deviceId').val(dev.id);
+                        $('#node-input-name').val('device'+dev.id);
+                        setDeviceManageUrl();
+                    }
+                });
+                
+                setDeviceManageUrl();
+            }
+
+            function setDeviceManageUrl(){
+                if (selectField.val() != null){
+                    var dev = JSON.parse(selectField.val());
+                    var deviceUrl = 'http://'+dev.devInfo.address+':1880';
+                    $('#node-input-href-manage').attr("target","_blank");
+                    $('#node-input-href-manage').attr("href",deviceUrl);
+                }
+            }
+        },
+        oneditsave: function() {}
+    });
+</script>
+
+<script type="text/x-red" data-template-name="M2MEdgeIn">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="M2MEdge.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]M2MEdge.label.placeholder">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-list"></i><span data-i18n="M2MEdge.label.devicelist"></span></label>
+        <select type="text" id="node-input-device" style="width: 200px;">
+        </select>
+        <input type="hidden" id="node-input-deviceId">
+        <a id="node-input-href-manage" class="editor-button" style="margin-top: 7px; margin-left: 5px;"><i class="fa fa-wrench"></i> <span data-i18n="M2MEdge.label.manageButton"></span></a>
+    </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="M2MEdgeIn">
+    <p>M2MEdge node</p>
+</script>
+
+
+<script type="text/x-red" data-template-name="M2MEdgeOut">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="M2MEdge.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]M2MEdge.label.placeholder">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-device"><i class="fa fa-wrench"></i> Device</label>
+        <select type="text" id="node-input-device" style="width: 200px;">
+        </select>
+        <input type="hidden" id="node-input-deviceId">
+        <a id="node-input-href-manage" class="editor-button" style="margin-top: 7px; margin-left: 5px;"><i class="fa fa-wrench"></i> <span data-i18n="M2MEdge.label.manageButton"></span></a>
+    </div>
+</script>
+
+
+<script type="text/x-red" data-help-name="M2MEdgeOut">
+    <p>M2MEdge node</p>
+</script>
+

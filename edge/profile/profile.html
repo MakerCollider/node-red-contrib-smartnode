@@ -1,0 +1,248 @@
+<!-- IOT input node -->
+<script type="text/javascript">
+    RED.nodes.registerType('profile',{
+        category: 'edge',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"profile"},
+            appkey: {value:""},
+            deviceId: {value:""},
+            rules: {value:[{name:""}]},
+            attrRules: {value:[{name:"",parent:""}]}
+            //inputs: {value:1}
+        },
+        inputs: 0,
+        outputs: 0,
+        icon: "debug.png",
+        label: function() {
+            return this.name||"profile";
+        },
+        paletteLabel: function () {
+            return this.name||this._("profile.label.palette");
+        },
+        oneditprepare: function() {
+            if (this.attrRules == undefined){
+                this.attrRules = [];
+            }
+
+            that = this;
+            var currSer = '';
+            function generateRule(i,rule) {
+                var container = $('<li/>',{style:"background: #fff; margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
+
+                var row = $('<div/>').appendTo(container);
+                $('<i style="color: #eee; cursor: move;" class="node-input-rule-handle fa fa-bars"></i>').appendTo(row);
+                $('<div/>',{style:"display:inline-block; width: 30px; text-align: left;"}).text(that._("profile.label.serviceName")).appendTo(row);
+
+                var valueField = $('<input/>',{class:"node-input-rule-value",type:"text",style:"margin-left: 5px; width: 200px;"}).appendTo(row);
+
+
+                var attrButton = $('<a/>',{href:"#",class:"editor-button", style:"margin-top: 7px; margin-left: 5px;"}).appendTo(row);
+                $('<i/>',{class:"fa fa-pencil"}).appendTo(attrButton);
+
+                attrButton.click(function() {
+                        currSer =$(this).parent().children(".node-input-rule-value").val();
+                        console.log(currSer);
+
+                        $("#node-input-rule-title").parent().hide();
+                        $("#node-input-rule-container").parent().hide();
+                        $("#node-input-add-rule").parent().hide();
+
+                        $("#node-input-attr-rule-title").parent().show();
+                        $("#node-input-attr-rule-container-div").parent().show();
+                        $("#node-input-add-attr-rule").parent().show();
+
+                       // console.log(that.attrRules);
+                        //init
+
+                        $("#node-input-attr-rule-container").html('');
+                        var j = 1;
+                        var arrayRules = Array();
+                        for (var i=0;i<that.attrRules.length;i++) {
+                            var rule = that.attrRules[i];
+                            if (rule.parent  == currSer){
+                                var serObject = {};
+                                serObject.key = j;
+                                serObject.value = rule;
+                                arrayRules.push(serObject);
+                                j++;
+                            }
+                        }
+
+                        for (var i=0;i<arrayRules.length;i++) {
+                            generateAttrRule(arrayRules[i].key,arrayRules[i].value);
+                        };
+
+                        console.log(arrayRules);
+                });
+
+                var finalspan = $('<span/>',{style:"float: right;margin-right: 10px;"}).appendTo(row);
+                finalspan.append(' &#8594; <span class="node-input-rule-index">'+i+'</span> ');
+                
+                var deleteButton = $('<a/>',{href:"#",class:"editor-button editor-button-small", style:"margin-top: 7px; margin-left: 5px;"}).appendTo(finalspan);
+                $('<i/>',{class:"fa fa-remove"}).appendTo(deleteButton);
+                
+                
+                deleteButton.click(function() {
+                    container.css({"background":"#fee"});
+                    container.fadeOut(300, function() {
+                        $(this).remove();
+                        $("#node-input-rule-container").children().each(function(i) {
+                            $(this).find(".node-input-rule-index").html(i+1);
+                        });
+
+                    });
+                });
+
+                $("#node-input-rule-container").append(container);
+                valueField.val(rule.name);
+            }
+
+            //attr
+            function generateAttrRule(i,rule) {
+                var container = $('<li/>',{style:"background: #fff; margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
+
+                var row = $('<div/>').appendTo(container);
+                $('<i style="color: #eee; cursor: move;" class="node-input-rule-handle fa fa-bars"></i>').appendTo(row);
+                $('<div/>',{style:"display:inline-block; width: 30px; text-align: left;"}).text(that._("profile.label.serviceName")).appendTo(row);
+
+                var valueField = $('<input/>',{class:"node-input-rule-value",type:"text",style:"margin-left: 5px; width: 200px;"}).appendTo(row);
+
+                var valueHiddenField = $('<input/>',{class:"node-input-rule-hidden-value",type:"hidden"}).appendTo(row);
+
+                var finalspan = $('<span/>',{style:"float: right;margin-right: 10px;"}).appendTo(row);
+                finalspan.append(' &#8594; <span class="node-input-rule-index">'+i+'</span> ');
+                
+                var deleteButton = $('<a/>',{href:"#",class:"editor-button editor-button-small", style:"margin-top: 7px; margin-left: 5px;"}).appendTo(finalspan);
+                $('<i/>',{class:"fa fa-remove"}).appendTo(deleteButton);
+                
+                
+                deleteButton.click(function() {
+                    container.css({"background":"#fee"});
+                    container.fadeOut(300, function() {
+                        $(this).remove();
+                        $("#node-input-attr-rule-container").children().each(function(i) {
+                            $(this).find(".node-input-rule-index").html(i+1);
+                        });
+
+                    });
+                });
+
+                $("#node-input-attr-rule-container").append(container);
+                valueField.val(rule.name);
+                valueHiddenField.val(rule.parent);
+            }
+            
+            //add rule
+            $("#node-input-add-rule").click(function() {
+                generateRule($("#node-input-rule-container").children().length+1,{name:""});
+                $("#node-input-rule-container-div").scrollTop($("#node-input-rule-container-div").get(0).scrollHeight);
+            });
+
+            //add rule
+            $("#node-input-add-attr-rule").click(function() {
+                console.log(currSer);
+                generateAttrRule($("#node-input-attr-rule-container").children().length+1,{name:"",parent:currSer});
+                $("#node-input-attr-rule-container-div").scrollTop($("#node-input-attr-rule-container-div").get(0).scrollHeight);
+            });
+
+            $("#node-input-back-rule").click(function() {
+                $("#node-input-rule-title").parent().show();
+                $("#node-input-rule-container").parent().show();
+                $("#node-input-add-rule").parent().show();
+
+                $("#node-input-attr-rule-title").parent().hide();
+                $("#node-input-attr-rule-container-div").parent().hide();
+                $("#node-input-add-attr-rule").parent().hide();
+            });
+            
+            //init
+            for (var i=0;i<this.rules.length;i++) {
+                var rule = this.rules[i];
+                generateRule(i+1,rule);
+            }
+
+        },
+        oneditsave: function() {
+            function saveRules(e) {
+                var rules = $("#node-input-rule-container").children();
+                var node = e;
+                node.rules= [];
+                rules.each(function(i) {
+                    var rule = $(this);
+                    var n = rule.find(".node-input-rule-value").val();
+                    if (n.length > 0){
+                        var r = {name:n};
+                        node.rules.push(r);
+                    }
+                });
+            }
+
+            function saveAttrRules(e) {
+                var rules = $("#node-input-attr-rule-container").children();
+                var node = e;
+                node.attrRules= [];
+                rules.each(function(i) {
+                    var rule = $(this);
+                    var n = rule.find(".node-input-rule-value").val();
+                    var p = rule.find(".node-input-rule-hidden-value").val();
+                    console.log(p);
+                    if (n.length > 0){
+                        var r = {name:n,parent:p};
+                        node.attrRules.push(r);
+                    }
+                });
+            }
+            saveRules(this);
+            saveAttrRules(this);
+
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="profile">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="profile.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]profile.label.placeholder">
+    </div>
+    <div class="form-row">
+        <label for="node-input-appkey"><i class="fa fa-tag"></i> <span data-i18n="profile.label.appkey"></span></label>
+        <input type="text" id="node-input-appkey" data-i18n="[placeholder]profile.label.placeholder">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceId"><i class="fa fa-tag"></i> <span data-i18n="profile.label.deviceId"></span></label>
+        <input type="text" id="node-input-deviceId" data-i18n="[placeholder]profile.label.placeholder">
+    </div>
+    <div class="form-row" style="margin-bottom:0;">
+        <label id="node-input-rule-title"><i class="fa fa-list"></i> <span  data-i18n="profile.label.rules"></span></label>
+    </div>
+    <div class="form-row node-input-rule-container-row" style="margin-bottom: 0px;">
+        <div id="node-input-rule-container-div" style="box-sizing: border-box; border-radius: 5px; height: 200px; padding: 5px; border: 1px solid #ccc; overflow-y:scroll;">
+            <ol id="node-input-rule-container" style=" list-style-type:none; margin: 0;"></ol>
+        </div>
+    </div>
+    <div class="form-row">
+        <a href="#" class="editor-button editor-button-small" id="node-input-add-rule" style="margin-top: 4px;"><i class="fa fa-plus"></i> <span data-i18n="profile.label.addbutton"></span></a>
+    </div>
+
+    <div class="form-row" style="margin-bottom:0;display:none;">
+        <label id="node-input-attr-rule-title"><i class="fa fa-list"></i> <span data-i18n="profile.label.attrRules"></span></label>
+    </div>
+    <div class="form-row node-input-rule-container-row" style="margin-bottom: 0px;display:none;">
+        <div id="node-input-attr-rule-container-div" style="box-sizing: border-box; border-radius: 5px; height: 200px; padding: 5px; border: 1px solid #ccc; overflow-y:scroll;">
+            <ol id="node-input-attr-rule-container" style=" list-style-type:none; margin: 0;"></ol>
+        </div>
+    </div>
+    <div class="form-row" style="display:none;">
+        <a href="#" class="editor-button editor-button-small" id="node-input-add-attr-rule" style="margin-top: 4px;"><i class="fa fa-plus"></i> <span data-i18n="profile.label.addbutton"></span></a>
+        <a href="#" class="editor-button editor-button-small" id="node-input-back-rule" style="margin-top: 4px;">&#8592; <span data-i18n="profile.label.backbutton"></span></a>
+    </div>
+
+</script>
+
+
+<script type="text/x-red" data-help-name="profile">
+    <p>Edge device shadow node</p>
+</script>
+

@@ -1,0 +1,16 @@
+{
+    "dev_info": {
+        "appKey": "app1234",
+        "id": "1111",
+        "name": "edison",
+        "lwm2m" : {
+            "server" : {
+                "addr": "172.16.1.29",
+                "port": "5683"
+            }
+        }
+    },
+    "led": {
+        "on": 0
+    }
+}

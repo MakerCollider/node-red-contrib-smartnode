@@ -1,0 +1,79 @@
+<!-- IOT input node -->
+<script type="text/javascript">
+    RED.nodes.registerType('edgeIn',{
+        category: 'edge',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"edge Input"},
+            service: {value:""},
+            attribute: {value:""}
+        },
+        inputs:0,
+        outputs:1,
+        icon: "bridge.png",
+        label: function() {
+            return this.name;
+        },
+        oneditprepare: function() {
+        },
+        oneditsave: function() {
+
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="edgeIn">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="edge name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="icon-tag"></i> Service</label>
+        <input type="text" id="node-input-service" placeholder="service name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-attribute"><i class="icon-tag"></i> Attribute</label>
+        <input type="text" id="node-input-attribute" placeholder="Attribute name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="edgeIn">
+    <p>Edge device shadow node</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('edgeOut',{
+        category: 'edge',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:"edge Output"},
+            service: {value:""},
+            attribute: {value:""}
+        },
+        inputs:1,
+        outputs:0,
+        icon: "bridge.png",
+        align: "right",
+        label: function() {
+            return this.name;
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="edgeOut">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="edge name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-service"><i class="icon-tag"></i> Service</label>
+        <input type="text" id="node-input-service" placeholder="service name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-attribute"><i class="icon-tag"></i> Attribute</label>
+        <input type="text" id="node-input-attribute" placeholder="Attribute name">
+    </div>
+</script>
+<script type="text/x-red" data-help-name="edgeOut">
+    <p>Edge device shadow node</p>
+</script>
+

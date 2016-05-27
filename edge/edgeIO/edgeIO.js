@@ -23,6 +23,7 @@ module.exports = function(RED) {
                 flag = true;
             }
             if (checkEdgeProfile(profile,edge) && flag == true){
+                var msg = {};
                 msg.payload = val;
                 node.send(msg);
             } 

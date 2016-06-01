@@ -4,14 +4,18 @@
             "name": "名称",
             "appkey": "appkey",
             "deviceId": "设备ID",
-            "palette": "设备profile",
+            "serverAddr": "服务器IP",
+            "palette": "profile",
             "rules": "服务列表",
             "attrRules": "属性列表",
             "serviceName": "名称",
             "serviceAttr": "属性",
             "addbutton": "增加",
             "backbutton": "返回",
-            "placeholder": "节点名称"
+            "placeholder": "edge",
+            "appkey-placeholder": "app1234",
+            "deviceId-placeholder": "101",
+            "server-placeholder": "192.168.42.1"
         }
     },
     "palette": {

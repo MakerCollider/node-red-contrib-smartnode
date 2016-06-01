@@ -34,6 +34,11 @@
     
     "node-red":     {
         "nodes":{
+            "M2MServer":        "edge/M2MServer/M2MServer.js",
+            "M2MEdge":          "edge/M2MEdge/M2MEdge.js",
+            "edgeIO":           "edge/edgeIO/edgeIO.js",
+            "profile":          "edge/profile/profile.js",
+
             "mraa-gpio-ain":    "gpio/mraa-gpio-ain/mraa-gpio-ain.js",
             "mraa-gpio-din":    "gpio/mraa-gpio-din/mraa-gpio-din.js",
             "mraa-gpio-dout":   "gpio/mraa-gpio-dout/mraa-gpio-dout.js",
@@ -60,7 +65,7 @@
             "Led":              "hardwareOutput/led/led.js",
             "say":              "hardwareOutput/say/say.js",
             "PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
-	    "I2cServo":		"hardwareOutput/I2cServo/I2cServo.js",
+	        "I2cServo":		    "hardwareOutput/I2cServo/I2cServo.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
@@ -75,7 +80,7 @@
             "Toggle":           "logic/toggle/toggle.js",
             "SubString":        "logic/subString/substring.js",
             "Combine":          "logic/combine/combine.js",
-	    "random":		"logic/random/random.js",
+	        "random":		    "logic/random/random.js",
             "CToggle":          "logic/ctoggle/ctoggle.js",
 
             "Driver":           "motion/driver/driver.js",

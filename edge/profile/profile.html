@@ -5,10 +5,13 @@
         color: '#a6bbcf',
         defaults: {
             name: {value:"profile"},
-            appkey: {value:""},
-            deviceId: {value:""},
+            appkey: {value:"",required:true},
+            deviceName: {value:"",required:true},
+            deviceId: {value:"",required:true},
+            serverAddr: {value:"",required:true},
             rules: {value:[{name:""}]},
-            attrRules: {value:[{name:"",parent:""}]}
+            attrRules: {value:[{name:"",parent:""}]},
+            currentAttrRules: {value:[{name:"",parent:""}]}
             //inputs: {value:1}
         },
         inputs: 0,
@@ -24,9 +27,8 @@
             if (this.attrRules == undefined){
                 this.attrRules = [];
             }
-
             that = this;
-            var currSer = '';
+            var currentSer = '';
             function generateRule(i,rule) {
                 var container = $('<li/>',{style:"background: #fff; margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
 
@@ -41,9 +43,7 @@
                 $('<i/>',{class:"fa fa-pencil"}).appendTo(attrButton);
 
                 attrButton.click(function() {
-                        currSer =$(this).parent().children(".node-input-rule-value").val();
-                        console.log(currSer);
-
+                        currentSer = $(this).parent().children(".node-input-rule-value").val();
                         $("#node-input-rule-title").parent().hide();
                         $("#node-input-rule-container").parent().hide();
                         $("#node-input-add-rule").parent().hide();
@@ -52,15 +52,14 @@
                         $("#node-input-attr-rule-container-div").parent().show();
                         $("#node-input-add-attr-rule").parent().show();
 
-                       // console.log(that.attrRules);
                         //init
-
                         $("#node-input-attr-rule-container").html('');
                         var j = 1;
                         var arrayRules = Array();
                         for (var i=0;i<that.attrRules.length;i++) {
+
                             var rule = that.attrRules[i];
-                            if (rule.parent  == currSer){
+                            if (rule.parent  == currentSer){
                                 var serObject = {};
                                 serObject.key = j;
                                 serObject.value = rule;
@@ -70,10 +69,12 @@
                         }
 
                         for (var i=0;i<arrayRules.length;i++) {
-                            generateAttrRule(arrayRules[i].key,arrayRules[i].value);
+                        	if (currentSer == arrayRules[i].value.parent){
+                        		generateAttrRule(arrayRules[i].key,arrayRules[i].value);
+                        	}
                         };
 
-                        console.log(arrayRules);
+                        //console.log(arrayRules);
                 });
 
                 var finalspan = $('<span/>',{style:"float: right;margin-right: 10px;"}).appendTo(row);
@@ -141,8 +142,8 @@
 
             //add rule
             $("#node-input-add-attr-rule").click(function() {
-                console.log(currSer);
-                generateAttrRule($("#node-input-attr-rule-container").children().length+1,{name:"",parent:currSer});
+                //console.log(currentSer);
+                generateAttrRule($("#node-input-attr-rule-container").children().length+1,{name:"",parent:currentSer});
                 $("#node-input-attr-rule-container-div").scrollTop($("#node-input-attr-rule-container-div").get(0).scrollHeight);
             });
 
@@ -181,21 +182,87 @@
             function saveAttrRules(e) {
                 var rules = $("#node-input-attr-rule-container").children();
                 var node = e;
-                node.attrRules= [];
+                node.currentAttrRules= [];
                 rules.each(function(i) {
                     var rule = $(this);
                     var n = rule.find(".node-input-rule-value").val();
                     var p = rule.find(".node-input-rule-hidden-value").val();
-                    console.log(p);
                     if (n.length > 0){
                         var r = {name:n,parent:p};
-                        node.attrRules.push(r);
+                        node.currentAttrRules.push(r);
                     }
                 });
+                
+                //delete parent
+                var delParents = [];
+                delParents = getDiffRulesParent(node.rules,node.attrRules,delParents);
+
+
+                for (var i = 0;i< delParents.length;i++) {
+                	clearRulesByParent(node.attrRules,delParents[i]);
+                }
+
+                var currentAttrRules = node.currentAttrRules;
+                if (currentAttrRules.length>0){
+                    clearRulesByParent(node.attrRules,currentAttrRules[0].parent);
+                }
+                for (var r in currentAttrRules) {
+                    if (checkAttrRules(node.attrRules,currentAttrRules[r]) == false){
+                    	node.attrRules.push(currentAttrRules[r]);
+                    }
+                }
+
+                clearNullRules(node.attrRules);
             }
+
+            function checkAttrRules(attrRules,currentAttrRule){
+	            for (var r in attrRules) {
+	            	if (attrRules[r].name == '' || attrRules[r].parent == ''){
+	            		return true;
+	            	}
+	                if (attrRules[r].name == currentAttrRule.name && attrRules[r].parent == currentAttrRule.parent){
+	                    return true;
+	                }
+	            }
+	            return false;
+	        }
+
+	        function clearNullRules(rules){
+	        	for (var r in rules) {
+                    if (rules[r].name == '' || rules[r].parent == ''){
+                    	rules.splice(r,1);
+                    }
+                }
+	        }
+
+	        function clearRulesByParent(rules,parent){
+	        	for (var r in rules) {
+                    if (rules[r].parent == parent){
+                    	rules.splice(r,1);
+                    }
+                }
+	        }
+
+	        function getDiffRulesParent(rules,attrRules,dels){
+                for (var cr in attrRules) {
+                	if (checkDiffRulesChild(rules,attrRules[cr]) == false){
+                        dels.push(attrRules[cr].parent);
+                	}
+                }
+                return dels;
+	        }
+
+	        function checkDiffRulesChild(rules,attrRule){
+                for (var r in rules) {
+                	if  (attrRule.parent == rules[r].name){
+                	    return true;
+                	}
+                }
+                return false;
+	        }
+
             saveRules(this);
             saveAttrRules(this);
-
         }
     });
 </script>
@@ -208,11 +275,19 @@
     </div>
     <div class="form-row">
         <label for="node-input-appkey"><i class="fa fa-tag"></i> <span data-i18n="profile.label.appkey"></span></label>
-        <input type="text" id="node-input-appkey" data-i18n="[placeholder]profile.label.placeholder">
+        <input type="text" id="node-input-appkey" data-i18n="[placeholder]profile.label.appkey-placeholder">
+    </div>
+    <div class="form-row">
+        <label for="node-input-deviceName"><i class="fa fa-tag"></i> <span data-i18n="profile.label.deviceName"></span></label>
+        <input type="text" id="node-input-deviceName" data-i18n="[placeholder]profile.label.deviceName-placeholder">
     </div>
     <div class="form-row">
         <label for="node-input-deviceId"><i class="fa fa-tag"></i> <span data-i18n="profile.label.deviceId"></span></label>
-        <input type="text" id="node-input-deviceId" data-i18n="[placeholder]profile.label.placeholder">
+        <input type="text" id="node-input-deviceId" data-i18n="[placeholder]profile.label.deviceId-placeholder">
+    </div>
+    <div class="form-row">
+        <label for="node-input-serverAddr"><i class="fa fa-tag"></i> <span data-i18n="profile.label.serverAddr"></span></label>
+        <input type="text" id="node-input-serverAddr" data-i18n="[placeholder]profile.label.server-placeholder">
     </div>
     <div class="form-row" style="margin-bottom:0;">
         <label id="node-input-rule-title"><i class="fa fa-list"></i> <span  data-i18n="profile.label.rules"></span></label>

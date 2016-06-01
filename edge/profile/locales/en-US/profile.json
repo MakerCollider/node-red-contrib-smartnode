@@ -3,7 +3,9 @@
         "label": {
             "name": "名称",
             "appkey": "appkey",
+            "deviceName": "设备名称",
             "deviceId": "设备ID",
+            "serverAddr": "服务器IP",
             "palette": "profile",
             "rules": "服务列表",
             "attrRules": "属性列表",
@@ -11,7 +13,11 @@
             "serviceAttr": "属性",
             "addbutton": "增加",
             "backbutton": "返回",
-            "placeholder": "节点名称"
+            "placeholder": "节点名称",
+            "deviceName-placeholder": "edison",
+            "appkey-placeholder": "app1234",
+            "deviceId-placeholder": "101",
+            "server-placeholder": "192.168.42.1"
         }
     },
     "palette": {

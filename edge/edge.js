@@ -256,9 +256,10 @@ Edge.prototype.set = function(serviceName, attrName, val, noNotify) {
     }
     var ids = this.name2Id([serviceName, attrName]);
 
-    if(ids.length != 2)
+    if(ids.length != 2){
         console.log("can not find /" + serviceName + "/" + attrName);
         return;
+    }
 
     //console.log("set " + url + "  " + JSON.stringify(ids));
     //lwm2mClient.registry.setResource(url, ids[1], val, handleObjectFunction);

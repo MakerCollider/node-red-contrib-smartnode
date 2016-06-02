@@ -14,7 +14,6 @@ namespace mc
     {
     private:
         cv::VideoCapture m_camera;
-        cv::Mat m_rawImage;
         unsigned char m_cameraId;
         double m_width;
         double m_height;
@@ -24,12 +23,16 @@ namespace mc
         std::mutex m_mutex;
 
     private:
-        static void ptr2String(void* in_ptr, std::string &in_str);
-        static bool string2Ptr(std::string &in_str, void** in_ptr);
+        void ptr2String(void* in_ptr, std::string &in_str);
+        bool string2Ptr(std::string &in_str, void** in_ptr);
 
         bool checkCamera(int in_videoID);
-        static void* grabFunc(void* in_data);
         void stopCamera();
+
+        static void* grabFunc(void* in_data);
+
+    public:
+        static cv::Mat m_rawImage;
 
     public:
         static void Init(v8::Local<v8::Object> exports);

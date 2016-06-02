@@ -65,7 +65,7 @@ module.exports = function (RED) {
                 if (ptrString === "") {
                     isVaild = false;
                 }
-                var msg = {imagePtr: ptrString};
+                var msg = {topic: "imageStr", imagePtr: ptrString};
                 node.send(msg);
             } else {
                 isVaild = false;
@@ -114,8 +114,8 @@ module.exports = function (RED) {
                     if (ptrString === "") {
                         isVaild = false;
                     } else {
-                        msg = {imagePtr: ptrString};
-                        var msg2 = {payload: "/home/root/shoot.png"};
+                        msg = {topic: "imageStr", imagePtr: ptrString};
+                        var msg2 = {topic: "shoot", payload: "/home/root/shoot.png"};
                         node.send([msg, msg2]);
                         node.status({fill: "blue", shape: "dot", text: "Ready"});
                     }

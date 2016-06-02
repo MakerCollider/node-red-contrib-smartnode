@@ -5,6 +5,7 @@
             "sources": [
                 "./src/sn_addon.cc",
                 "./src/camera/camera_class.cxx",
+                "./src/facedetect/facedetect_class.cxx",
             ],
             'include_dirs': [
                 '$(OPENCV_DIR)/include',
@@ -12,8 +13,9 @@
             'link_settings': {
                 'library_dirs': ["$(OPENCV_DIR)/<(target_arch)/vc12/lib"],
                 'libraries': [
-                    "-lopencv_core310", 
-                    "-lopencv_videoio310", 
+                    "-lopencv_core310",
+                    "-lopencv_highgui310",
+                    "-lopencv_videoio310",
                     "-lopencv_imgcodecs310",
                     "-lopencv_objdetect310",
                     "-lopencv_imgproc310"
@@ -35,6 +37,7 @@
                     "files": [
                         "<(PRODUCT_DIR)/<(module_name).node",
                         "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_core310.dll",
+                        "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_highgui310.dll",
                         "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_videoio310.dll",
                         "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_imgproc310.dll",
                         "$(OPENCV_DIR)/<(target_arch)/vc12/bin/opencv_imgcodecs310.dll",

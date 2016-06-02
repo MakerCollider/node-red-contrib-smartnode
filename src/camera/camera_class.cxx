@@ -20,6 +20,8 @@ namespace mc
 
     Persistent<Function> Camera::constructor;
 
+    cv::Mat Camera::m_rawImage = cv::Mat::zeros(3, 3, CV_32F);
+
     Camera::Camera(unsigned char in_cameraId, double in_width, double in_height)
     {
         m_running = false;
@@ -76,27 +78,28 @@ namespace mc
 
     void Camera::ptr2String(void* in_ptr, std::string &in_str)
     {
-        static unsigned long ptr2Number;
+        static unsigned long long ptr2Number;
         std::stringstream number2Stream;
 
-        ptr2Number = (unsigned long)in_ptr;
+        ptr2Number = (unsigned long long)in_ptr;
         number2Stream << ptr2Number;
-        in_str = "Camera:" + number2Stream.str();
+        //in_str = "Camera:" + number2Stream.str();
+        in_str = number2Stream.str();
     }
 
     bool Camera::string2Ptr(std::string &in_str, void** in_ptr)
     {
-        static std::string head;
-        static std::string strCut;
+        //static std::string head;
+        //static std::string strCut;
         static std::istringstream strStream;
-        static unsigned long number;
+        static unsigned long long number;
 
-        head.assign(in_str, 0, 7);
-        if(head != "Camera:")
-            return false;
+        // head.assign(in_str, 0, 7);
+        // if(head != "Camera:")
+        //     return false;
 
-        strCut.assign(in_str, 7, in_str.length());
-        strStream.str(strCut);
+        // strCut.assign(in_str, 7, in_str.length());
+        strStream.str(in_str);
         strStream >> number;
         *in_ptr = (void*)(number);
         return true;
@@ -194,8 +197,8 @@ namespace mc
         obj->m_mutex.lock();
         if(obj->m_running)
         {
-            obj->m_camera.retrieve(obj->m_rawImage);
-            ptr2String((void*)&(obj->m_rawImage), ptrString);
+            obj->m_camera.retrieve(m_rawImage);
+            obj->ptr2String((void*)(&m_rawImage), ptrString);
         }
         obj->m_mutex.unlock();
         
@@ -212,10 +215,9 @@ namespace mc
         obj->m_mutex.lock();
         if(obj->m_running)
         {
-            //m_camera.retrieve(m_rawImage);
-            obj->m_camera.read(obj->m_rawImage);
-            cv::imwrite("shoot.png", obj->m_rawImage);
-            ptr2String((void*)&(obj->m_rawImage), ptrString);
+            obj->m_camera.read(m_rawImage);
+            cv::imwrite("shoot.png", m_rawImage);
+            obj->ptr2String((void*)&(m_rawImage), ptrString);
         }
         obj->m_mutex.unlock();
 

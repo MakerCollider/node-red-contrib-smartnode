@@ -10,7 +10,7 @@ using v8::Object;
 
 void InitAll(Local<Object> exports) {
   Camera::Init(exports);
-  //FaceDetect::Init(exports);
+  FaceDetect::Init(exports);
 }
 
 NODE_MODULE(sn_addon, InitAll)

@@ -47,6 +47,19 @@
                     "destination": "<(module_path)"
                 }
             ]
+        },
+                {
+            "target_name": "copy_haarcascade_files",
+            "type":"none",
+            "dependencies" : [ "sn_addon" ],
+            "copies": [
+                {
+                    "files": [
+                        "$(OPENCV_DIR)/etc/haarcascades/haarcascade_frontalface_alt.xml",
+                    ],
+                    "destination": "<(module_path)/../haarcascade"
+                }
+            ]
         }
     ]
 }

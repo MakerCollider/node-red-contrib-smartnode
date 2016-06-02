@@ -1,0 +1,12 @@
+{
+    "FaceDetect": {
+        "label": {
+            "palette": "面部检测"
+        }
+    },
+    "palette": {
+        "label": {
+              "MultiMedia": "多媒体"
+        }
+    }     
+}

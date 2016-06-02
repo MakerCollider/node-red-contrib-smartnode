@@ -1,0 +1,42 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/xred" data-help-name="FaceDetect">
+	<h3 id="FaceDetect"><a name="FaceDetect" href="#FaceDetect"></a>FaceDetect</h3>
+	<p>The node uses the camera and OpenCV to face recognition in the adequate light conditions,it can recognize multiple individuals face.</p>
+	<h4 id="Configuration parameters"><a name="Configuration parameters" href="#Configuration parameters"></a>Configuration parameters</h4>
+	<ol>
+	<li>Name：The node name</li></ol>
+	<h4 id="Input"><a name="Input" href="#Input"></a>Input</h4>
+	<ol>
+	<li>msg.imagePtr：The image data packet</li></ol>
+	<h4 id="Output1"><a name="Output1" href="#Output1"></a>Output1</h4>
+	<ol>
+	<li>msg.payload：The number of people face</li></ol> <!-- number of detected faces -->
+	<h4 id="Output2"><a name="Output2" href="#Output2"></a>Output2</h4>
+	<ol>
+	<li>msg.imagePtr：The image data packet</li></ol>
+	<h4 id="Usage"><a name="Usage" href="#Usage"></a>Usage</h4>
+	<ol>
+	<li>Plug the camera into Edison's USB port.</li>
+	<li>When using, send to the node <code>msg.geometry</code>message，node start detecting faces.</li> 
+	<li><code>msg.payload</code>value is the number of detected faces.</li>
+	<li>Output2，the output is formatted string, style is <code>Camera:xxxxxxxx</code>，among them, <code>xxxxxxx</code> is <code>cv:Mat</code>type of indicators，with the images that the camera has read.</li></ol>
+</script>
+<!--<code>msg.imagePtrThe</code> input sent by the camera node to this node to start working. There are two outputs: 
+	<li><code>msg.payload</code> is the first output that contains the number of the detected faces.</li>
+	<li><code>msg.imagePtr</code> is the second output that contains the image sent by the camera</li></ol> -->
+

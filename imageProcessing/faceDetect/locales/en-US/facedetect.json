@@ -1,0 +1,12 @@
+{
+    "FaceDetect": {
+        "label": {
+            "palette": "FaceDetect"
+        }
+    },
+    "palette": {
+        "label": {
+              "MultiMedia": "MultiMedia"
+        }
+    }     
+}

@@ -97,10 +97,12 @@ namespace mc
     {
         Isolate* isolate = args.GetIsolate();
         FaceDetect* obj = ObjectWrap::Unwrap<FaceDetect>(args.Holder());
-        Local<Function> cons = Local<Function>::New(isolate, constructor);
+
+        String::Utf8Value utf8Value(args[0]->ToString());
+        std::string filePath = std::string(*utf8Value);
 
         bool result = false;
-        if(!obj->face_cascade.load("haarcascade_frontalface_alt.xml"))
+        if(!obj->face_cascade.load(filePath))
         {
             std::cout << "can not find face_cascade_file!" << std::endl;
             result = false;

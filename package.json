@@ -42,6 +42,7 @@
             "IRSensor":           "hardwareOutput/irsensor/irsensor.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
+            "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
 
             "say":              "hardwareOutput/say/say.js",
 

@@ -1,0 +1,16 @@
+<script type="text/xred" data-help-name="Image2base64">
+<h3 id="image2stream"><a name="image2stream" href="#image2stream"></a>Image2Stream</h3>
+<p>This node convert image data to base64 stream(with header)</p>
+<h4 id="param"><a name="param" href="#param"></a>Param</h4>
+<ol>
+<li>Name：Node name</li></ol>
+<h4 id="input"><a name="input" href="#input"></a>Input</h4>
+<ol>
+<li>msg.imagePtr：Image to convert</li></ol>
+<h4 id="output"><a name="output" href="#output"></a>Output</h4>
+<ol>
+<li>msg.payload：Base64 stream</li></ol>
+<h4 id="howto"><a name="howto" href="#howto"></a>HowTo</h4>
+<ol>
+<li>Send <code>msg.imagePtr</code> message to this node, and the node will convert the image to base64 stream.</li><li><code>msg.imagePtr</code> is a formatted message, like <code>Camera:xxxxxxxx</code>, <code>xxxxxxx</code> is a pointer of <code>cv:Mat</code> type value.</li></ol>
+</script>

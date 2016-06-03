@@ -1,6 +1,6 @@
 {
     "name":                 "node-red-contrib-smartnode",
-    "version":              "1.1.1",
+    "version":              "1.1.2",
     "main":                 "index.js",
     "description":          "SmartNode node package, provided by MakerCollider",
     "keywords":             ["node-red", "node", "smartnode", "makercollider"],
@@ -44,6 +44,7 @@
             "Camera":           "imageProcessing/camera/camera.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
             "GeometryDetect":   "imageProcessing/geometryDetect/geometryDetect.js",
+            "Image2base64":     "imageProcessing/image2base64/image2base64.js",
 
             "say":              "hardwareOutput/say/say.js",
 

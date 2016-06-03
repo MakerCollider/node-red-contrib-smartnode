@@ -1,0 +1,12 @@
+{
+    "Image2base64": {
+        "label": {
+            "palette": "图像转Base64"
+        }
+    },
+    "palette": {
+        "label": {
+              "MultiMedia": "多媒体"
+        }
+    }     
+}

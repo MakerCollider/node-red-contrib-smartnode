@@ -24,8 +24,8 @@
 ####使用方法
 1. 连接摄像头或者使用机身自带的摄像头
 2. 设置运行模式、摄像头编号、Shoot模式时的文件的名字，图像获取周期
-3. 在**Video**模式中，当输入的**payload**为1时，摄像头开启，并定时输出图像数据
-4. 在**Shoot**模式中，当输入的**payload**为1时，摄像头拍摄一张图片并输出保存的路径
+3. 在**Video**模式中，当输入的**payload**为1时，摄像头开启，输出1定时输出图像数据
+4. 在**Shoot**模式中，当输入的**payload**为1时，摄像头拍摄一张图片并从输出2输出保存的路径，从输出1输出图像数据
 
 
 ###Camera
@@ -54,5 +54,5 @@ This node can get image from camera and send it out
 ####Howto
 1. Setup camera
 2. Set node mode, camera id, timerval and image name.
-3. In **Video** mode, the node will send out image pointer periodically
-4. In **Shoot** mode, the node will capture an image and send out the image file path
+3. In **Video** mode, the node will send out image pointer periodically from ouput1
+4. In **Shoot** mode, the node will capture an image and send out the image file path from output2 and send image pointer from output1

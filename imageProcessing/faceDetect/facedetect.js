@@ -26,21 +26,21 @@ module.exports = function(RED) {
 
         var facedetect = new sn_addon.FaceDetect();
         facedetect.initFaceDetect(path.resolve(path.join(__dirname,
-                                    '../../haarcascade/haarcascade_frontalface_alt.xml')));
+                                    '../../lib/haarcascade/haarcascade_frontalface_alt.xml')));
 
         node.log("FaceDetect prepared.");
         node.status({fill:"green",shape:"dot",text:"Running"});
 
         //Handle inputs
         node.on('input', function(msg) {
-            if((typeof msg.imagePtr) != "string")
+            if(msg.topic === "imageStr" && ((typeof msg.payload) != "string"))
             {
                 this.log("Input Error!");
                 node.status({fill:"red", shape:"dot", text:"InputError"});
             }
             else
             {
-                var faceResult = facedetect.detect(msg.imagePtr);
+                var faceResult = facedetect.detect(msg.payload);
                 var msg1 = {topic: "faceNumber", payload: faceResult.result};
                 var msg2 = {topic: "imageStr", payload: faceResult.imageStr};
                 node.send([msg1, msg2]);

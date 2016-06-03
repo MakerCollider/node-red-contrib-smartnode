@@ -18,6 +18,7 @@ module.exports = function (RED) {
     'use strict';
     var binary = require('node-pre-gyp');
     var path = require('path');
+    var fs = require('fs');
     var binding_path = binary.find(path.resolve(path.join(__dirname, '../../package.json')));
     var sn_addon = require(binding_path);
     function camera(config) {
@@ -28,6 +29,16 @@ module.exports = function (RED) {
         node.frameConfig = Number(config.frameConfig);
         node.mode = Number(config.mode);
         node.timerVal = Number(config.timerVal);
+
+        node.imageName = config.imageName;
+        node.shootPath = path.join(__dirname, "../../../../public/shoot/");
+        try {
+            fs.mkdirSync(node.shootPath);
+        } catch(e) {
+
+        };
+
+        node.shootFilePath = node.shootPath + node.imageName + ".png";
         var timer;
         switch (Number(config.frameConfig)) {
         case 0:
@@ -65,7 +76,7 @@ module.exports = function (RED) {
                 if (ptrString === "") {
                     isVaild = false;
                 }
-                var msg = {topic: "imageStr", imagePtr: ptrString};
+                var msg = {topic: "imageStr", payload: ptrString};
                 node.send(msg);
             } else {
                 isVaild = false;
@@ -107,15 +118,15 @@ module.exports = function (RED) {
                 node.status({fill: "green", shape: "dot", text: "Shooting"});
                 var isVaild = true;
                 if (node.camera.isOpened()) {
-                    var ptrString;
+                    var ptrString, i;
                     for (i = 0; i < 5; i += 1) {
-                        ptrString = node.camera.shoot();
+                        ptrString = node.camera.shoot(node.shootFilePath);
                     }
                     if (ptrString === "") {
                         isVaild = false;
                     } else {
-                        msg = {topic: "imageStr", imagePtr: ptrString};
-                        var msg2 = {topic: "shoot", payload: "/home/root/shoot.png"};
+                        msg = {topic: "imageStr", payload: ptrString};
+                        var msg2 = {topic: "shoot", payload: node.shootFilePath};
                         node.send([msg, msg2]);
                         node.status({fill: "blue", shape: "dot", text: "Ready"});
                     }

@@ -60,7 +60,7 @@ namespace mc
 
         if (args.IsConstructCall())
         {
-            unsigned char value1 = args[0]->IsUndefined() ? 0 : args[0]->NumberValue();
+            unsigned char value1 = static_cast<unsigned char>(args[0]->IsUndefined() ? 0 : args[0]->NumberValue());
             double value2 = args[1]->IsUndefined() ? 0 : args[1]->NumberValue();
             double value3 = args[2]->IsUndefined() ? 0 : args[2]->NumberValue();
             Camera* obj = new Camera(value1, value2, value3);
@@ -215,8 +215,11 @@ namespace mc
         obj->m_mutex.lock();
         if(obj->m_running)
         {
+            String::Utf8Value utf8Value(args[0]->ToString());
+            std::string in_filePath = std::string(*utf8Value);
+            // std::cout << in_filePath << std::endl;
             obj->m_camera.read(m_rawImage);
-            cv::imwrite("shoot.png", m_rawImage);
+            cv::imwrite(in_filePath, m_rawImage);
             obj->ptr2String((void*)&(m_rawImage), ptrString);
         }
         obj->m_mutex.unlock();

@@ -57,7 +57,7 @@
                     "files": [
                         "$(OPENCV_DIR)/etc/haarcascades/haarcascade_frontalface_alt.xml",
                     ],
-                    "destination": "<(module_path)/../haarcascade"
+                    "destination": "<(module_path)/haarcascade"
                 }
             ]
         }

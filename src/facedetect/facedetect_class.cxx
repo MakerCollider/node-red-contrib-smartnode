@@ -165,8 +165,8 @@ namespace mc
                 in_rawImage->copyTo(obj->m_rawImage);
                 in_rawImage->copyTo(obj->m_finalImage);
                 result = static_cast<double>(obj->getFace());
-                cv::imshow("res", obj->m_finalImage);
-                cv::waitKey(1);
+                // cv::imshow("res", obj->m_finalImage);
+                // cv::waitKey(1);
                 obj->ptr2String((void*)&obj->m_finalImage, ptrString);
             }
             else

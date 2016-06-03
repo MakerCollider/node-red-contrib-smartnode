@@ -1,21 +1,43 @@
-###识别
-
-本节点使用摄像头和OpenCV进行人脸识别，在光照充足的情况下，可以识别多个人脸。
+###人脸识别
+本节用于识别人脸
 
 ####配置参数
 1. Name：节点名字
 
 ####输入
-1. msg.imgPtr：图像数据包
+1. topic: 数据类型，值为**imageStr**
+2. payload: 图像指针，类型为cv::Mat
 
 ####输出1
-1. msg.payload：人脸个数
+1. topic: 数据类型，值为**faceNumber**
+2. payload：人脸个数
 
 ####输出2
-1. msg.imagePtr：图像数据包
+1. topic: 数据类型，值为**imageStr**
+2. payload: 图像指针，类型为cv::Mat
 
 ####使用方法
-1. 将摄像头插入Edison的USB口。
-2. 使用时，向节点传入`msg.imagePtr`消息，节点开始检测人脸。
-3. `msg.payload`的值为人脸个数，如果值为'-1'，则说明传入的信息有误。
-4. 输出2，输出内容为格式化字符串，样式为`Camera:xxxxxxxx`，其中`xxxxxxx`为`cv:Mat`类型的指针，存有摄像头读取到的图像。
+1. 输出2中的图像会标识出识别到的人脸
+
+
+###FaceDetect
+
+This node can detect face form camera
+
+####Config
+1. Name: Node name
+
+####Input
+1. topic: message type, the value is **imageStr**
+2. payload: image pointer, the type is cv::Mat
+
+####Output1
+1. topic: message type, the value is **faceNumber**
+2. payload: face number
+
+####Output2
+1. topic: message type, the value is **imageStr**
+2. payload: image pointer, the type is cv::Mat
+
+####Howto
+1. The image in output2 circles the detected faces.

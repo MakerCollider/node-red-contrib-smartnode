@@ -6,6 +6,7 @@
                 "./src/sn_addon.cc",
                 "./src/camera/camera_class.cxx",
                 "./src/facedetect/facedetect_class.cxx",
+                "./src/geometrydetect/geometrydetect_class.cxx"
             ],
             'include_dirs': [
                 '$(OPENCV_DIR)/include',

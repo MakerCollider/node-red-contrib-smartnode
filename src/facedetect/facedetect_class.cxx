@@ -182,6 +182,7 @@ namespace mc
         }
         else
         {
+            std::cout << "FaceDetect::detect ---> input args error" << std::endl;
             args.GetReturnValue().Set(cons->NewInstance(0, NULL));
         }
     }

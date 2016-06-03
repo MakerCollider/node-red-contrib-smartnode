@@ -212,17 +212,24 @@ namespace mc
 
         std::string ptrString = "";
 
-        obj->m_mutex.lock();
-        if(obj->m_running)
+        if(!args[0]->IsUndefined())
         {
-            String::Utf8Value utf8Value(args[0]->ToString());
-            std::string in_filePath = std::string(*utf8Value);
-            // std::cout << in_filePath << std::endl;
-            obj->m_camera.read(m_rawImage);
-            cv::imwrite(in_filePath, m_rawImage);
-            obj->ptr2String((void*)&(m_rawImage), ptrString);
+            obj->m_mutex.lock();
+            if(obj->m_running)
+            {
+                String::Utf8Value utf8Value(args[0]->ToString());
+                std::string in_filePath = std::string(*utf8Value);
+                // std::cout << in_filePath << std::endl;
+                obj->m_camera.read(m_rawImage);
+                cv::imwrite(in_filePath, m_rawImage);
+                obj->ptr2String((void*)&(m_rawImage), ptrString);
+            }
+            obj->m_mutex.unlock();
         }
-        obj->m_mutex.unlock();
+        else
+        {
+            ptrString = "path error";
+        }
 
         args.GetReturnValue().Set(v8::String::NewFromUtf8(isolate, ptrString.c_str()));
     }

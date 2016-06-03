@@ -43,6 +43,7 @@
 
             "Camera":           "imageProcessing/camera/camera.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
+            "GeometryDetect":   "imageProcessing/geometryDetect/geometryDetect.js",
 
             "say":              "hardwareOutput/say/say.js",
 

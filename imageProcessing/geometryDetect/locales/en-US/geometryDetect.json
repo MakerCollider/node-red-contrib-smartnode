@@ -1,0 +1,12 @@
+{
+    "GeometryDetect": {
+        "label": {
+            "palette": "Geometry"
+        }
+    },
+    "palette": {
+        "label": {
+              "MultiMedia": "MultiMedia"
+        }
+    }     
+}

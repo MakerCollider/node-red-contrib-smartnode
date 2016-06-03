@@ -1,0 +1,36 @@
+<!--
+  Copyright 2015 Maker Collider
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<script type="text/xred" data-help-name="GeometryDetect">
+<h3 id="GeometryDetect"><a name="GeometryDetect" href="#GeometryDetect"></a>GeometryDetect</h3>
+<p>This node can detect circle and geometry from camera</p>
+<h4 id="config"><a name="config" href="#config"></a>Config</h4>
+<ol>
+<li>Name: Node name</li></ol>
+<h4 id="input"><a name="input" href="#input"></a>Input</h4>
+<ol>
+<li>topic: message type, the value is <strong>imageStr</strong></li><li>payload: image pointer, the type is cv::Mat</li></ol>
+<h4 id="output1"><a name="output1" href="#output1"></a>Output1</h4>
+<ol>
+<li>topic: message type, the value is <strong>geometryType</strong></li><li>payload: geometry type</li></ol>
+<h4 id="output2"><a name="output2" href="#output2"></a>Output2</h4>
+<ol>
+<li>topic: message type, the value is <strong>imageStr</strong></li><li>payload: image pointer, the type is cv::Mat</li></ol>
+<h4 id="howto"><a name="howto" href="#howto"></a>Howto</h4>
+<ol>
+<li>The <strong>payload</strong> of output1 has 4 values: 0(input error), 1(no result), 2(rectangle), 3(circle)</li></ol>
+</script>
+

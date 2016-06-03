@@ -1,0 +1,12 @@
+{
+    "GeometryDetect": {
+        "label": {
+            "palette": "几何形状识别"
+        }
+    },
+    "palette": {
+        "label": {
+              "MultiMedia": "多媒体"
+        }
+    }     
+}

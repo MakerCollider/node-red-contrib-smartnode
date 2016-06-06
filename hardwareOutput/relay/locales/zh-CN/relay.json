@@ -1,0 +1,12 @@
+{
+    "relay": {
+        "label": {
+            "palette": "继电器"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }     
+}

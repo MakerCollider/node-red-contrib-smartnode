@@ -1,0 +1,12 @@
+{
+    "Piezo": {
+        "label": {
+            "palette": "蜂鸣器"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }     
+}

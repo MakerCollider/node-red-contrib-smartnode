@@ -18,7 +18,7 @@ module.exports = function init(RED) {
     'use strict';
     var serialport = require('serialport');
     var five = require('johnny-five');
-    function button(n) {
+    function Relay(n) {
         RED.nodes.createNode(this, n);
         this.nodebot = RED.nodes.getNode(n.board);
         if (typeof this.nodebot === "object") {
@@ -42,33 +42,36 @@ module.exports = function init(RED) {
 
             node.nodebot.on("ioready", function () {
                 five.Board.cache.push(node.nodebot.board);
-                
-                /*******************Edit*******************/
 
-                var vbutton = new five.Button({
+                /*******************Edit*******************/
+                var vrelay = new five.Relay({
+                    //controller: "PCA9685",
                     pin: n.digitalPin
                 });
 
-                vbutton.on("down", function () {
-                    var msg = {payload: 1};
-                    node.send(msg);
-                });
-
-                vbutton.on("up", function () {
-                    var msg = {payload: 0};
-                    node.send(msg);
+                node.on('input', function(msg){
+                    if (msg.payload==1)
+                    {
+                    node.log("Relay ON");
+                    vrelay.on();
+                    }           
+                    else if (msg.payload==0)
+                    {
+                    node.log("Relay OFF");
+                    vrelay.off();
+                    }
                 });
                 /*******************Edit*******************/
-            });
 
-            node.on("close", function () {
-                five.Board.cache.pop();
+                node.on("close", function () {
+                    five.Board.cache.pop();
+                });
             });
         } else {
             this.warn("nodebot not configured");
         }
     }
-    RED.nodes.registerType("Button", button);
+    RED.nodes.registerType("Relay", Relay);
 
     function listArduinoPorts(callback) {
         return serialport.list(function (err, ports) {

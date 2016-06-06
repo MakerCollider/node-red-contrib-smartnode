@@ -36,7 +36,7 @@ module.exports = function(RED) {
             node.status({fill: 'red', shape:'dot', text: 'off'});
         }
 
-        var atlas = global.atlas;
+        //var atlas = global.atlas;
 
         function sendStat() {
             var val = stat ? 1 : 0;
@@ -45,7 +45,7 @@ module.exports = function(RED) {
             node.send({'payload': val});
 
             setStat(stat);
-            atlas.emit('toggleQuery', stat);
+            //atlas.emit('toggleQuery', stat);
 
             stat = !stat;
         }
@@ -54,19 +54,19 @@ module.exports = function(RED) {
             sendStat();
         });
 
-        atlas.on('toggle', function(data) {
-            node.log('recv remote toggle');
-            sendStat();
-        });
+        // atlas.on('toggle', function(data) {
+        //     node.log('recv remote toggle');
+        //     sendStat();
+        // });
 
-        atlas.on('toggleQuery', function() {
-            atlas.emit('toggleQuery', stat);
-        })
+        // atlas.on('toggleQuery', function() {
+        //     atlas.emit('toggleQuery', stat);
+        // })
 
-        atlas.genHtml.save({
-            'name': 'toggle',
-            'html': 'toggle.html'
-        });
+        // atlas.genHtml.save({
+        //     'name': 'toggle',
+        //     'html': 'toggle.html'
+        // });
 
         /*sendStat();*/
    }

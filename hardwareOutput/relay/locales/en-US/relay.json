@@ -1,0 +1,12 @@
+{
+    "Relay": {
+        "label": {
+            "palette": "Relay"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "HardwareOutput"
+        }
+    }     
+}

@@ -3,13 +3,10 @@
         "label": {
             "name": "名称",
             "palette": "M2MEdge",
-            "rules": "Device列表",
-            "attrRules": "规则",
-            "serviceName": "名称",
-            "serviceAttr": "属性",
-            "addbutton": "增加",
-            "backbutton": "返回",
-            "placeholder": "节点名称"
+            "devicelist": "设备列表",
+            "manageButton": "管理设备",
+            "placeholder": "节点名称",
+            "palette": "M2MEdge"
         }
     },
     "palette": {

@@ -7,6 +7,7 @@
                      "Edison"
                     ],
     "dependencies": {
+        "lwm2m-node-lib": "*",
         "ftp": "*",
         "Buffer": "*",
         "bindings": "*",

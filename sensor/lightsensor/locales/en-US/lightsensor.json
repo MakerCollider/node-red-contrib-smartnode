@@ -1,0 +1,12 @@
+﻿{
+    "LightSensor": {
+        "label": {
+            "palette": "LightSensor"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "HardwareOutput"
+        }
+    }     
+}

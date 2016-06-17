@@ -18,7 +18,7 @@ module.exports = function init(RED) {
     'use strict';
     var serialport = require('serialport');
     var five = require('johnny-five');
-    function Piezo(n) {
+    function LightSensor(n) {
         RED.nodes.createNode(this, n);
         this.nodebot = RED.nodes.getNode(n.board);
         if (typeof this.nodebot === "object") {
@@ -44,23 +44,12 @@ module.exports = function init(RED) {
                 five.Board.cache.push(node.nodebot.board);
 
                 /*******************Edit*******************/
-                var vpiezo = new five.Piezo({
-                    pin: n.digitalPin
-                });
+                var LightSensor = new five.Light("A" + n.analogPin);
 
-                node.on('input', function(msg) {
-                    if (msg.payload==1) {
-                        node.log("Piezo ON");
-
-                        vpiezo.play({
-                            // song is composed by a string of notes
-                            // a default beat is set, and the default octave is used
-                            // any invalid note is read as "no note"
-                            song: "C4 D4 E4 F4 G4 A4 B4",
-                            beats: 1 / 4,
-                            tempo: 50
-                        });
-                    }
+                LightSensor.on("change", function() {
+                    //node.log("Light value: " + this.level);
+                    var msg = {payload: this.level};
+                    node.send(msg);
                 /*******************Edit*******************/
                 });
 
@@ -72,7 +61,7 @@ module.exports = function init(RED) {
             this.warn("nodebot not configured");
         }
     }
-    RED.nodes.registerType("Piezo", Piezo);
+    RED.nodes.registerType("LightSensor", LightSensor);
 
     function listArduinoPorts(callback) {
         return serialport.list(function (err, ports) {

@@ -1,0 +1,12 @@
+﻿{
+    "LightSensor": {
+        "label": {
+            "palette": "模拟环境光线传感器"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }     
+}

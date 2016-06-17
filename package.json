@@ -44,6 +44,8 @@
             "Piezo":            "hardwareOutput/piezo/piezo.js",
             "Relay":            "hardwareOutput/relay/relay.js",
 
+            "LightSensor":      "sensor/lightsensor/lightsensor.js",
+
             "Camera":           "imageProcessing/camera/camera.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
             "GeometryDetect":   "imageProcessing/geometryDetect/geometryDetect.js",

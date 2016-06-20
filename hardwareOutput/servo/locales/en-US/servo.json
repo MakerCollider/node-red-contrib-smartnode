@@ -1,0 +1,12 @@
+{
+    "Servo": {
+        "label": {
+            "palette": "Servo"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "HardwareOutput"
+        }
+    }     
+}

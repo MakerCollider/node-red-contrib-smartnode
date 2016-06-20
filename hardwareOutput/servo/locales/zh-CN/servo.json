@@ -1,0 +1,12 @@
+{
+    "Servo": {
+        "label": {
+            "palette": "舵机"
+        }
+    },
+    "palette": {
+        "label": {
+              "HardwareOutput": "硬件输出"
+        }
+    }     
+}

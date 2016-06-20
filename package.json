@@ -41,6 +41,7 @@
             "Led":              "hardwareOutput/led/led.js",
             "Piezo":            "hardwareOutput/piezo/piezo.js",
             "Relay":            "hardwareOutput/relay/relay.js",
+            "Servo":            "hardwareOutput/servo/servo.js",
 
             "Button":           "sensor/button/button.js",
             "IRSensor":         "sensor/irsensor/irsensor.js",

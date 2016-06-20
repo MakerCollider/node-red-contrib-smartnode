@@ -1,0 +1,12 @@
+﻿{
+    "Motion": {
+        "label": {
+            "palette": "motion"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "sensor"
+        }
+    }     
+}

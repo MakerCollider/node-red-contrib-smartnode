@@ -1,0 +1,12 @@
+{
+    "IRSwitch": {
+        "label": {
+            "palette": "infrared switch"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "sensor"
+        }
+    }     
+}

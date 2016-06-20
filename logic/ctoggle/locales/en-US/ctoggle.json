@@ -1,8 +1,8 @@
 {
     "CToggle": {
         "label": {
-            "name": "CToggle",
-            "palette": "CToggle",
+            "name": "ctoggle",
+            "palette": "ctoggle",
             "rules": "Rules",
             "addrule": "Add",
             "placeholder": "Node name"
@@ -12,5 +12,5 @@
         "label": {
               "Logic": "Logic_Operation"
         }
-    }     
+    }
 }

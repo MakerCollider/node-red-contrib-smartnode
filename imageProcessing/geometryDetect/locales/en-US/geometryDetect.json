@@ -1,12 +1,12 @@
 {
     "GeometryDetect": {
         "label": {
-            "palette": "Geometry"
+            "palette": "geometry detect"
         }
     },
     "palette": {
         "label": {
-              "MultiMedia": "MultiMedia"
+              "MultiMedia": "multi media"
         }
     }     
 }

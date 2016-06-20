@@ -1,0 +1,12 @@
+{
+    "Moisture": {
+        "label": {
+            "palette": "moisture"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "sensor"
+        }
+    }     
+}

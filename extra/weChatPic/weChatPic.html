@@ -16,7 +16,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('WeChatPic', {
         category: 'social',
-        color: '#E2D96E',
+        color: '#3FADB5',
         inputs: 1,
         outputs: 0,
         icon: "light.png",
@@ -25,7 +25,7 @@
             imagepath: {value: "", required: false}
         },
         label: function() {
-            return this.name || "WeChatPic";
+            return this.name || "wechat picture";
         },
         paletteLabel: function () {
             return this._("WeChatPic.label.palette");

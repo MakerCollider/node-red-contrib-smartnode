@@ -1,12 +1,12 @@
 {
     "Piezo": {
         "label": {
-            "palette": "Piezo"
+            "palette": "piezo"
         }
     },
     "palette": {
         "label": {
-              "HardwareOutput": "HardwareOutput"
+              "Actuator": "actuator"
         }
     }     
 }

@@ -1,12 +1,12 @@
 {
     "Button": {
         "label": {
-            "palette": "Button"
+            "palette": "button"
         }
     },
     "palette": {
         "label": {
-              "Sensor": "Sensor"
+              "Sensor": "sensor"
         }
     }     
 }

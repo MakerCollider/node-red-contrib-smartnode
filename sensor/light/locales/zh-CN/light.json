@@ -1,0 +1,12 @@
+﻿{
+    "Light": {
+        "label": {
+            "palette": "光线传感器"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
+}

@@ -6,7 +6,7 @@
     },
     "palette": {
         "label": {
-              "HardwareOutput": "硬件输出"
+              "Actuator": "硬件输出"
         }
     }     
 }

@@ -1,0 +1,12 @@
+﻿{
+    "Motion": {
+        "label": {
+            "palette": "运动传感器"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
+}

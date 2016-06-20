@@ -1,0 +1,12 @@
+{
+    "Temperature": {
+        "label": {
+            "palette": "温度传感器"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
+}

@@ -1,0 +1,12 @@
+﻿{
+    "Light": {
+        "label": {
+            "palette": "light"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "sensor"
+        }
+    }     
+}

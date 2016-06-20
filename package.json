@@ -43,27 +43,28 @@
             "Relay":            "hardwareOutput/relay/relay.js",
             "Servo":            "hardwareOutput/servo/servo.js",
 
-            "Button":           "sensor/button/button.js",
-            "IRSensor":         "sensor/irsensor/irsensor.js",
-            "LightSensor":      "sensor/lightsensor/lightsensor.js",
+            "Light":            "sensor/light/light.js",
             "Touch":            "sensor/touch/touch.js",
-
+            "Button":           "sensor/button/button.js",
+            "Motion":           "sensor/motion/motion.js",
+            "IRSwitch":         "sensor/irswitch/irswitch.js",
+            
             "Camera":           "imageProcessing/camera/camera.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
-            "GeometryDetect":   "imageProcessing/geometryDetect/geometryDetect.js",
             "Image2base64":     "imageProcessing/image2base64/image2base64.js",
+            "GeometryDetect":   "imageProcessing/geometryDetect/geometryDetect.js",
 
             "say":              "hardwareOutput/say/say.js",
 
+            "Math":             "logic/math/math-operations.js",
+            "Toggle":           "logic/toggle/toggle.js",
+            "random":           "logic/random/random.js",
+            "Combine":          "logic/combine/combine.js",
+            "CToggle":          "logic/ctoggle/ctoggle.js",
+            "SubString":        "logic/subString/substring.js",
             "add-strings":      "logic/addString/add-strings.js",
             "change-sign":      "logic/changeSign/change-sign.js",
             "change-type":      "logic/changeType/change-type.js",
-            "Math":             "logic/math/math-operations.js",
-            "Toggle":           "logic/toggle/toggle.js",
-            "SubString":        "logic/subString/substring.js",
-            "Combine":          "logic/combine/combine.js",
-            "random":           "logic/random/random.js",
-            "CToggle":          "logic/ctoggle/ctoggle.js",
 
             "wechat":           "extra/wechat/wechat.js",
             "WeChatPic":        "extra/weChatPic/weChatPic.js"

@@ -1,12 +1,12 @@
 {
     "Servo": {
         "label": {
-            "palette": "Servo"
+            "palette": "servo"
         }
     },
     "palette": {
         "label": {
-              "HardwareOutput": "HardwareOutput"
+              "Actuator": "actuator"
         }
     }     
 }

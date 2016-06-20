@@ -1,12 +1,12 @@
 {
     "Touch": {
         "label": {
-            "palette": "TouchSensor"
+            "palette": "touch"
         }
     },
     "palette": {
         "label": {
-              "Sensor": "Sensor"
+              "Sensor": "sensor"
         }
     }     
 }

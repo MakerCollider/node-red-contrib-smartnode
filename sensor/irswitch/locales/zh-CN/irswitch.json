@@ -1,0 +1,12 @@
+{
+    "IRSwitch": {
+        "label": {
+            "palette": "红外接近开关"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
+}

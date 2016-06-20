@@ -1,0 +1,12 @@
+{
+    "Temperature": {
+        "label": {
+            "palette": "temperature"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "sensor"
+        }
+    }     
+}

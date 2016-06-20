@@ -1,12 +1,12 @@
 {
     "Relay": {
         "label": {
-            "palette": "Relay"
+            "palette": "relay"
         }
     },
     "palette": {
         "label": {
-              "HardwareOutput": "HardwareOutput"
+              "Actuator": "actuator"
         }
     }     
 }

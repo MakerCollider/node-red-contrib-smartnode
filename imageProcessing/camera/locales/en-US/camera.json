@@ -1,12 +1,12 @@
 {
     "Camera": {
         "label": {
-            "palette": "Camera"
+            "palette": "camera"
         }
     },
     "palette": {
         "label": {
-              "MultiMedia": "MultiMedia"
+              "MultiMedia": "multi media"
         }
     }     
 }

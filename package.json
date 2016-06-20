@@ -38,13 +38,14 @@
     },
     "node-red": {
         "nodes": {
-            "Button":           "hardwareOutput/button/button.js",
-            "IRSensor":         "hardwareOutput/irsensor/irsensor.js",
             "Led":              "hardwareOutput/led/led.js",
             "Piezo":            "hardwareOutput/piezo/piezo.js",
             "Relay":            "hardwareOutput/relay/relay.js",
 
+            "Button":           "sensor/button/button.js",
+            "IRSensor":         "sensor/irsensor/irsensor.js",
             "LightSensor":      "sensor/lightsensor/lightsensor.js",
+            "Touch":            "sensor/touch/touch.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",

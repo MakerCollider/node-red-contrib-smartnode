@@ -1,7 +1,7 @@
-﻿{
-    "LightSensor": {
+{
+    "LM35": {
         "label": {
-            "palette": "模拟环境光线传感器"
+            "palette": "按钮"
         }
     },
     "palette": {

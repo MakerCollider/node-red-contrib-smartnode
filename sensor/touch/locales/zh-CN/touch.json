@@ -1,7 +1,7 @@
-﻿{
-    "LightSensor": {
+{
+    "Touch": {
         "label": {
-            "palette": "模拟环境光线传感器"
+            "palette": "数字触摸传感器"
         }
     },
     "palette": {

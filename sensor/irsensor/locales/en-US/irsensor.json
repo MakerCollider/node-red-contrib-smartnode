@@ -1,12 +1,12 @@
 {
     "IRSensor": {
         "label": {
-            "palette": "红外接近开关"
+            "palette": "IRSensor"
         }
     },
     "palette": {
         "label": {
-              "HardwareOutput": "硬件输出"
+              "Sensor": "Sensor"
         }
     }     
 }

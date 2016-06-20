@@ -1,12 +1,12 @@
 {
     "Button": {
         "label": {
-            "palette": "Button"
+            "palette": "按钮"
         }
     },
     "palette": {
         "label": {
-              "HardwareOutput": "HardwareOutput"
+              "Sensor": "传感器"
         }
     }     
 }

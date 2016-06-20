@@ -15,7 +15,7 @@
 -->
 
 <!-- Edit -->
-<script type="text/x-red" data-template-name="IRSensor">
+<script type="text/x-red" data-template-name="Touch">
     <div class="form-row">
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input type="text" id="node-input-name" placeholder="Name">
@@ -53,11 +53,6 @@
           <option value=18>18(A4)</option>
           <option value=19>19(A5)</option>
       </select>
-    </div>
-
-    <div class="form-row">
-      <label for="node-input-impulse"><i class="fa fa-tag"></i> Impulse</label>
-      <input type="number" id="node-input-impulse">
     </div>
 </script>
 <!-- Edit -->
@@ -175,13 +170,13 @@
 
 <script type="text/javascript">
 /*******************Edit*******************/
-  RED.nodes.registerType('IRSensor',{
-      category: 'HardwareOutput',
+  RED.nodes.registerType('Touch',{
+      category: 'Sensor',
       color: '#E2D96E',
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
-        name: {value: ""},
-        digitalPin: {value: "2", required: false},
+        name: {value: "Touch"},
+        digitalPin: {value: "2", required: false}
       },
       inputs:0,
       outputs:1,
@@ -190,7 +185,7 @@
           return this.name +' D' + this.digitalPin;
       },
       paletteLabel: function () {
-          return this.name||this._("IRSensor.label.palette");
+          return this.name||this._("Touch.label.palette");
       },
       /***do not delete***/
       oneditprepare: function() {

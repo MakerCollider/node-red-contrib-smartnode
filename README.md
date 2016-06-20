@@ -8,6 +8,7 @@ the pacakge require node-red enviroment.
 #Install
 1. Clone this repo to node-red/node_modules, and change branch to **lattepanda**.
 2. run this command in **node-red-contrib-smartnode**
+
     ```bash
     npm install --production
     ```

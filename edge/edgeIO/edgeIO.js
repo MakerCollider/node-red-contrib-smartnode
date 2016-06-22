@@ -1,6 +1,9 @@
 module.exports = function(RED) {
+	var Edge = require(__dirname + '/../edge.js');
+    var edge = new Edge(__dirname + '/../profile.json'); 
     var fs = require("fs");
     var file = __dirname + '/../profile.json'; 
+
 
     function edgeInNode(config) {
         this.name = config.name;

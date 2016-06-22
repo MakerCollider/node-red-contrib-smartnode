@@ -54,11 +54,7 @@
             "WeChatPic":        "extra/weChatPic/weChatPic.js",
             "PlayAudio":        "extra/playAudio/playAudio.js",
             "Mijoystick":       "extra/Mijoystick/Mijoystick.js",
-            "Brain":            "extra/node-red-contrib-brain/brain/brain.js",
-            "multiInData":      "extra/node-red-contrib-brain/multiInData/multiInData.js",
-            "dataCollect":      "extra/node-red-contrib-brain/dataCollect/dataCollect.js",
-            "outputJudge":      "extra/node-red-contrib-brain/outputJudge/outputJudge.js",
-            
+
             "EdisonSerial":     "hardwareOutput/EdisonSerial/EdisonSerial.js",
             "BreathLed":        "hardwareOutput/breathLed/breathLed.js",
             "Button":           "hardwareOutput/button/button.js",

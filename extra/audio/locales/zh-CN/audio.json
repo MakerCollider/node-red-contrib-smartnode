@@ -1,0 +1,12 @@
+{
+    "Audio": {
+        "label": {
+            "palette": "音乐"
+        }
+    },
+    "palette": {
+        "label": {
+              "MultiMedia": "多媒体"
+        }
+    }     
+}

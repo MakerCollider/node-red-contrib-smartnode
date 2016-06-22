@@ -16,11 +16,14 @@
         "url":  "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
     },
     "dependencies":         {
-        "mqtt": "1.10.x",
         "say": "0.9.x",
+        "mqtt": "1.10.x",
+        "morgan": "1.7.x",
+        "mplayer": "2.1.x",
         "serialport": "3.1.x",
         "johnny-five": "0.9.x",
-        "node-pre-gyp": "0.6.x"
+        "node-pre-gyp": "0.6.x",
+        "connect-multiparty": "2.0.x"
     },
     "devDependencies": {
         "aws-sdk": "2.x"
@@ -67,7 +70,8 @@
             "change-type":      "logic/changeType/change-type.js",
 
             "wechat":           "extra/wechat/wechat.js",
-            "WeChatPic":        "extra/weChatPic/weChatPic.js"
+            "WeChatPic":        "extra/weChatPic/weChatPic.js",
+            "audio":            "extra/audio/audio.js"
         }
     }
 }

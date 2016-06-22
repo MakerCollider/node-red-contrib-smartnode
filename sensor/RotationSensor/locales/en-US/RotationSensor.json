@@ -1,0 +1,12 @@
+﻿{
+    "RotationSensor": {
+        "label": {
+            "palette": "Rotation"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "Sensor"
+        }
+    }     
+}

@@ -1,0 +1,12 @@
+﻿{
+    "RotationSensor": {
+        "label": {
+            "palette": "300度模拟旋转角度传感器"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
+}

@@ -50,7 +50,11 @@
             "Touch":            "sensor/touch/touch.js",
             "Button":           "sensor/button/button.js",
             "Motion":           "sensor/motion/motion.js",
+            "Rotation":         "sensor/RotationSensor/RotationSensor.js",
             "IRSwitch":         "sensor/irswitch/irswitch.js",
+            "Sound":            "sensor/soundSensor/soundSensor.js",
+            "Temperature":      "sensor/temperature/temperature.js",
+            "Moisture":         "sensor/moisture/moisture.js",
             
             "Camera":           "imageProcessing/camera/camera.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",

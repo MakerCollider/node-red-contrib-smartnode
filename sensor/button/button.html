@@ -46,6 +46,7 @@
           <option value=11>11</option>
           <option value=12>12</option>
           <option value=13>13</option>
+          <!--
           <option value=14>14(A0)</option>
           <option value=15>15(A1)</option>
           <option value=16>16(A2)</option>
@@ -165,6 +166,10 @@
       <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
       <input type="text" id="node-config-input-name" placeholder="Name">
   </div>
+  <div class="form-row">
+      <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+      <input type="text" id="node-config-input-name" placeholder="Name">
+  </div>
 </script>
 
 
@@ -176,7 +181,8 @@
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
         name: {value: "Button"},
-        digitalPin: {value: "2", required: false}
+        digitalPin: {value: "2", required: false},
+        impulse: {value: "500", required: false}
       },
       inputs:0,
       outputs:1,

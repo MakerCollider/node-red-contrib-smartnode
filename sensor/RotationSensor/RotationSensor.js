@@ -18,7 +18,7 @@ module.exports = function init(RED) {
     'use strict';
     var serialport = require('serialport');
     var five = require('johnny-five');
-    function Temperature(n) {
+    function RotationSensor(n) {
         RED.nodes.createNode(this, n);
         this.nodebot = RED.nodes.getNode(n.board);
         if (typeof this.nodebot === "object") {
@@ -42,32 +42,44 @@ module.exports = function init(RED) {
 
             node.nodebot.on("ioready", function () {
                 five.Board.cache.push(node.nodebot.board);
-                
+
                 /*******************Edit*******************/
+                
+
                 //five.Board().on("ready", function() {
                     
                 //});
-                var temperature = new five.Thermometer({
-                    controller: "LM35",
-                    pin: "A" + n.analogPin
-                });
+                console.log(n.analogPin);
+                var rotation = new five.Sensor({
+                        pin: "A" + n.analogPin
+                       //pin: n.analogPin
+                    });
 
-                temperature.on("change", function(value) {
-                   // var msg = {payload: this.celsius, topic: "Celsius"};
-                    var msg = {payload: value};
-                    node.send(msg);
+                var judge = 0;
+
+                rotation.on("change", function() {
+                    var degree = this.scaleTo([0,300]);
+                    if(judge != degree)
+                    {
+                        judge = degree;
+                        var msg = {payload: degree};
+                        node.send(msg);
+                    }
+                    
                 });
+                
                 /*******************Edit*******************/
-            });
+               
 
-            node.on("close", function () {
-                five.Board.cache.pop();
+                node.on("close", function () {
+                    five.Board.cache.pop();
+                });
             });
         } else {
             this.warn("nodebot not configured");
         }
     }
-    RED.nodes.registerType("Temperature", Temperature);
+    RED.nodes.registerType("RotationSensor", RotationSensor);
 
     function listArduinoPorts(callback) {
         return serialport.list(function (err, ports) {

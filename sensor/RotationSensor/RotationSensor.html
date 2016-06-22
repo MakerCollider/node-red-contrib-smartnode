@@ -15,7 +15,7 @@
 -->
 
 <!-- Edit -->
-<script type="text/x-red" data-template-name="Temperature">
+<script type="text/x-red" data-template-name="RotationSensor">
     <div class="form-row">
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input type="text" id="node-input-name" placeholder="Name">
@@ -32,12 +32,28 @@
       <label for="node-input-analogPin"><i class="fa fa-tag"></i> Analog Pin</label>
       <!--input type="number" id="node-input-digitalPin"-->
       <select id="node-input-analogPin">
-        <option value=0>A0</option>
-        <option value=1>A1</option>
-        <option value=2>A2</option>
-        <option value=3>A3</option>
-        <option value=4>A4</option>
-        <option value=5>A5</option>
+          <option value=0>0</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
+          <!--
+          <option value=6>6</option>
+          <option value=7>7</option>
+          <option value=8>8</option>
+          <option value=9>9</option>
+          <option value=10>10</option>
+          <option value=11>11</option>
+          <option value=12>12</option>
+          <option value=13>13</option>
+          <option value=14>14(A0)</option>
+          <option value=15>15(A1)</option>
+          <option value=16>16(A2)</option>
+          <option value=17>17(A3)</option>
+          <option value=18>18(A4)</option>
+          <option value=19>19(A5)</option>
+          -->
       </select>
     </div>
 
@@ -161,23 +177,23 @@
 
 <script type="text/javascript">
 /*******************Edit*******************/
-  RED.nodes.registerType('Temperature',{
+  RED.nodes.registerType('RotationSensor',{
       category: 'Sensor',
       color: '#3FADB5',
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
-        name: {value: "Temperature"},
-        analogPin: {value: "2", required: false},
+        name: {value: "Rotation"},
+        analogPin: {value: "0", required: false},
         impulse: {value: "500", required: false}
       },
-      inputs:0,
-      outputs:1,
+      inputs: 0,
+      outputs: 1,
       icon: "light.png",
       label: function() {
           return this.name +' A' + this.analogPin;
       },
       paletteLabel: function () {
-          return this.name||this._("Temperature.label.palette");
+          return this.name||this._("RotationSensor.label.palette");
       },
       /***do not delete***/
       oneditprepare: function() {

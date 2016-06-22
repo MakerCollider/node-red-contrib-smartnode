@@ -20,12 +20,14 @@
         inputs: 1,
         outputs: 0,
         icon: "light.png",
+        align: "right",
         defaults: {
+            name: {value: "", required: false},
             accountid: {value: "", required: false},
             imagepath: {value: "", required: false}
         },
         label: function() {
-            return this.name || "wechat picture";
+            return this.name || this._("WeChatPic.label.palette");
         },
         paletteLabel: function () {
             return this._("WeChatPic.label.palette");

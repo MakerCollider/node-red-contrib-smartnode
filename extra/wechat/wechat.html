@@ -18,15 +18,15 @@
         category: 'social',
         color: '#3FADB5',
         defaults: {
+            name: {value: "", required: false},
             accountid: {value: "", required: false},
             prev_accountid: {value: "", required: false}
         },
         inputs: 0,
         outputs: 1,
         icon: "wechat.png",
-        align: "right",
         label: function() {
-            return this.name || "wechat in";
+            return this.name || this._("wechat.label.palette-in");
         },
         paletteLabel: function () {
             return this._("wechat.label.palette-in");
@@ -55,6 +55,7 @@
         inputs: 1,
         outputs: 0,
         icon: "wechat.png",
+        align: "right",
         label: function() {
             return this.name || "wechat out";
         },

@@ -14,29 +14,27 @@
   limitations under the License.
 -->
 <script type="text/javascript">
-	RED.nodes.registerType('FaceDetect', {
-		category: 'MultiMedia',
-		color: '#3FADB5',
-		defaults: {
-			name:      {value: "FaceDetect", required: false},
-		},
-		inputs: 1,
-		outputs: 2,
-		icon: "light.png",
-		label: function() {
-			return this.name || "FaceDetect";
-		},
-                paletteLabel: function () {
-                    return this.name||this._("FaceDetect.label.palette");
-                }
-	});
+    RED.nodes.registerType('FaceDetect', {
+        category: 'MultiMedia',
+        color: '#3FADB5',
+        defaults: {
+            name:      {value: "", required: false},
+        },
+        inputs: 1,
+        outputs: 2,
+        icon: "light.png",
+        label: function() {
+            return this.name || this._("FaceDetect.label.palette");
+        },
+        paletteLabel: function () {
+            return this._("FaceDetect.label.palette");
+        }
+    });
 </script>
 
 <script type="text/xred" data-template-name="FaceDetect">
-	<div class="form-row">
-		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-		<input type="text" id="node-input-name" placeholder="Name">
-	</div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
 </script>
-
-

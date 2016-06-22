@@ -18,7 +18,7 @@ module.exports = function init(RED) {
     'use strict';
     var serialport = require('serialport');
     var five = require('johnny-five');
-    function Temperature(n) {
+    function Sound(n) {
         RED.nodes.createNode(this, n);
         this.nodebot = RED.nodes.getNode(n.board);
         if (typeof this.nodebot === "object") {
@@ -42,15 +42,14 @@ module.exports = function init(RED) {
 
             node.nodebot.on("ioready", function () {
                 five.Board.cache.push(node.nodebot.board);
-                
+
                 /*******************Edit*******************/
-                var temperature = new five.Thermometer({
-                    controller: "LM35",
+                var asoundSensor = new five.Sensor({
                     pin: "A" + n.analogPin
                 });
 
-                temperature.on("change", function(value) {
-                    var msg = {payload: this.celsius, topic: "Celsius"};
+                asoundSensor.on("change", function(value) {
+                    var msg = {payload: value};
                     node.send(msg);
                 });
                 /*******************Edit*******************/
@@ -63,7 +62,7 @@ module.exports = function init(RED) {
             this.warn("nodebot not configured");
         }
     }
-    RED.nodes.registerType("Temperature", Temperature);
+    RED.nodes.registerType("Sound", Sound);
 
     function listArduinoPorts(callback) {
         return serialport.list(function (err, ports) {

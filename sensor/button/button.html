@@ -180,7 +180,7 @@
       color: '#3FADB5',
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
-        name: {value: "Button"},
+        name: {value: ""},
         digitalPin: {value: "2", required: false},
         impulse: {value: "500", required: false}
       },
@@ -188,10 +188,10 @@
       outputs:1,
       icon: "light.png",
       label: function() {
-          return this.name +' D' + this.digitalPin;
+          return (this.name || this._("Button.label.palette")) + ' D' + this.digitalPin;
       },
       paletteLabel: function () {
-          return this.name||this._("Button.label.palette");
+          return this._("Button.label.palette");
       },
       /***do not delete***/
       oneditprepare: function() {

@@ -15,7 +15,7 @@
 -->
 
 <!-- Edit -->
-<script type="text/x-red" data-template-name="Temperature">
+<script type="text/x-red" data-template-name="Rotation">
     <div class="form-row">
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input type="text" id="node-input-name" placeholder="Name">
@@ -156,22 +156,22 @@
 
 <script type="text/javascript">
 /*******************Edit*******************/
-  RED.nodes.registerType('Temperature',{
+  RED.nodes.registerType('Rotation',{
       category: 'Sensor',
       color: '#3FADB5',
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
-        name: {value: ""},
-        analogPin: {value: "2", required: false}
+        name: {value: "", required:false},
+        analogPin: {value: "0", required: false}
       },
-      inputs:0,
-      outputs:1,
+      inputs: 0,
+      outputs: 1,
       icon: "light.png",
       label: function() {
-          return (this.name || this._("Temperature.label.palette")) + ' A' + this.analogPin;
+          return (this.name || this._("Rotation.label.palette")) + ' A' + this.analogPin;
       },
       paletteLabel: function () {
-          return this._("Temperature.label.palette");
+          return this._("Rotation.label.palette");
       },
       /***do not delete***/
       oneditprepare: function() {

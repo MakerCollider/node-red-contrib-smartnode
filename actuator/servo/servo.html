@@ -15,7 +15,7 @@
 -->
 
 <!-- Edit -->
-<script type="text/x-red" data-template-name="Temperature">
+<script type="text/x-red" data-template-name="Servo">
     <div class="form-row">
       <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
       <input type="text" id="node-input-name" placeholder="Name">
@@ -29,16 +29,20 @@
     <!-- do not delete -->
 
     <div class="form-row">
-      <label for="node-input-analogPin"><i class="fa fa-tag"></i> Analog Pin</label>
-      <!--input type="number" id="node-input-digitalPin"-->
-      <select id="node-input-analogPin">
-        <option value=0>A0</option>
-        <option value=1>A1</option>
-        <option value=2>A2</option>
-        <option value=3>A3</option>
-        <option value=4>A4</option>
-        <option value=5>A5</option>
+      <label for="node-input-pwmPin"><i class="fa fa-tag"></i> PWM Pin</label>
+      <select id="node-input-pwmPin">
+            <option value=3>3</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+            <option value=11>11</option>
       </select>
+    </div>
+
+    <div class="form-row">
+      <label for="node-input-startAt"><i class="fa fa-tag"></i> StartAt </label>
+      <input type="number" id="node-input-startAt">
     </div>
 </script>
 <!-- Edit -->
@@ -156,22 +160,24 @@
 
 <script type="text/javascript">
 /*******************Edit*******************/
-  RED.nodes.registerType('Temperature',{
-      category: 'Sensor',
+  RED.nodes.registerType('Servo',{
+      category: 'Actuator',
       color: '#3FADB5',
       defaults: {
-        board: {type:"nodebot", required:true},       //do not delete
         name: {value: ""},
-        analogPin: {value: "2", required: false}
+        board: {type:"nodebot", required:true},       //do not delete
+        pwmPin: {value: "3", required: false},
+        startAt: {value: 90, required: false}
       },
-      inputs:0,
-      outputs:1,
+      inputs: 1,
+      outputs: 0,
       icon: "light.png",
+      align: "right",
       label: function() {
-          return (this.name || this._("Temperature.label.palette")) + ' A' + this.analogPin;
+          return (this.name || this._("Servo.label.palette")) + ' PWM' + this.pwmPin;
       },
       paletteLabel: function () {
-          return this._("Temperature.label.palette");
+          return this._("Servo.label.palette");
       },
       /***do not delete***/
       oneditprepare: function() {

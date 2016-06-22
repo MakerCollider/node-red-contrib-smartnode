@@ -18,7 +18,7 @@ limitations under the License.
         category: 'MultiMedia',
         color: '#3FADB5',
         defaults: {
-            name:          {value: "Camera", required: false},
+            name:          {value: "", required: false},
             cameraId:      {value: 0, required: true},
             frameConfig:   {value: 1, required: true},
             mode:          {value: 0, required: true},
@@ -29,10 +29,10 @@ limitations under the License.
 		outputs: 2,
         icon: "light.png",
         label: function() {
-            return this.name || "Camera";
+            return this.name || this._("Camera.label.palette");
         },
         paletteLabel: function () {
-            return this.name||this._("Camera.label.palette");
+            return this._("Camera.label.palette");
         }
     });
 </script>

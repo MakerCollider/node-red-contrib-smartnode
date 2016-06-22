@@ -1,0 +1,13 @@
+﻿{
+    
+	"Sound": {
+        "label": {
+            "palette": "声音传感器"
+        }
+    },
+    "palette": {
+        "label": {
+              "Sensor": "传感器"
+        }
+    }     
+}

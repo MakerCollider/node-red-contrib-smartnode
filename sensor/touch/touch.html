@@ -175,14 +175,14 @@
       color: '#3FADB5',
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
-        name: {value: "Touch"},
+        name: {value: ""},
         digitalPin: {value: "2", required: false}
       },
       inputs:0,
       outputs:1,
       icon: "light.png",
       label: function() {
-          return this.name +' D' + this.digitalPin;
+          return (this.name || this._("Touch.label.palette")) + ' D' + this.digitalPin;
       },
       paletteLabel: function () {
           return this.name||this._("Touch.label.palette");

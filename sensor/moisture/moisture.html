@@ -161,17 +161,17 @@
       color: '#3FADB5',
       defaults: {
         board: {type:"nodebot", required:true},       //do not delete
-        name: {value: "Moisture"},
+        name: {value: ""},
         analogPin: {value: "2", required: false}
       },
       inputs: 0,
       outputs: 1,
       icon: "light.png",
       label: function() {
-          return this.name +' A' + this.analogPin;
+          return (this.name || this._("Moisture.label.palette")) + ' A' + this.analogPin;
       },
       paletteLabel: function () {
-          return this.name||this._("Moisture.label.palette");
+          return this._("Moisture.label.palette");
       },
       /***do not delete***/
       oneditprepare: function() {

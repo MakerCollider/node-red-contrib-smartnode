@@ -14,29 +14,27 @@
   limitations under the License.
 -->
 <script type="text/javascript">
-	RED.nodes.registerType('Image2base64', {
-		category: 'MultiMedia',
-		color: '#3FADB5',
-		defaults: {
-			name:      {value: "Image2base64", required: false},
-		},
-		inputs: 1,
-		outputs: 1,
-		icon: "light.png",
-		label: function() {
-			return this.name || "Image2base64";
-		},
-                paletteLabel: function () {
-                    return this.name||this._("Image2base64.label.palette");
-                }
-	});
+    RED.nodes.registerType('Image2base64', {
+        category: 'MultiMedia',
+        color: '#3FADB5',
+        defaults: {
+            name:      {value: "", required: false},
+        },
+        inputs: 1,
+        outputs: 1,
+        icon: "light.png",
+        label: function() {
+            return this.name || this._("Image2base64.label.palette");
+        },
+        paletteLabel: function () {
+            return this._("Image2base64.label.palette");
+        }
+    });
 </script>
 
 <script type="text/xred" data-template-name="Image2base64">
-	<div class="form-row">
-		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-		<input type="text" id="node-input-name" placeholder="Name">
-	</div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
 </script>
-
-

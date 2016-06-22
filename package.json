@@ -41,18 +41,18 @@
     },
     "node-red": {
         "nodes": {
-            "Led":              "hardwareOutput/led/led.js",
-            "Piezo":            "hardwareOutput/piezo/piezo.js",
-            "Relay":            "hardwareOutput/relay/relay.js",
-            "Servo":            "hardwareOutput/servo/servo.js",
+            "Led":              "actuator/led/led.js",
+            "Piezo":            "actuator/piezo/piezo.js",
+            "Relay":            "actuator/relay/relay.js",
+            "Servo":            "actuator/servo/servo.js",
 
             "Light":            "sensor/light/light.js",
             "Touch":            "sensor/touch/touch.js",
             "Button":           "sensor/button/button.js",
             "Motion":           "sensor/motion/motion.js",
-            "Rotation":         "sensor/RotationSensor/RotationSensor.js",
+            "Rotation":         "sensor/rotation/rotation.js",
             "IRSwitch":         "sensor/irswitch/irswitch.js",
-            "Sound":            "sensor/soundSensor/soundSensor.js",
+            "Sound":            "sensor/sound/sound.js",
             "Temperature":      "sensor/temperature/temperature.js",
             "Moisture":         "sensor/moisture/moisture.js",
             
@@ -60,8 +60,6 @@
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
             "Image2base64":     "imageProcessing/image2base64/image2base64.js",
             "GeometryDetect":   "imageProcessing/geometryDetect/geometryDetect.js",
-
-            "say":              "hardwareOutput/say/say.js",
 
             "Math":             "logic/math/math-operations.js",
             "Toggle":           "logic/toggle/toggle.js",
@@ -73,9 +71,10 @@
             "change-sign":      "logic/changeSign/change-sign.js",
             "change-type":      "logic/changeType/change-type.js",
 
+            "say":              "extra/say/say.js",
+            "audio":            "extra/audio/audio.js",
             "wechat":           "extra/wechat/wechat.js",
-            "WeChatPic":        "extra/weChatPic/weChatPic.js",
-            "audio":            "extra/audio/audio.js"
+            "WeChatPic":        "extra/weChatPic/weChatPic.js"
         }
     }
 }

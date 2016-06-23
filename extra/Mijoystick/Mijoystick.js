@@ -28,6 +28,7 @@ module.exports = function(RED) {
                     LEFT:-1,RIGHT:-1,
                     UP:-1,DOWN:-1}
     };
+    var close_flag=false;
     function Mijoystick(n) {
         RED.nodes.createNode(this,n);
         this.address = (n.address || "").trim();
@@ -55,6 +56,7 @@ module.exports = function(RED) {
                 }
             }
             node.activeProcesses = {};
+            close_flag=true;
         });
 
         function useExec(command){
@@ -116,20 +118,23 @@ module.exports = function(RED) {
                 });
                 ex.on('close', function (code) {
                     //console.log('[exec] result: ' + code);
-                    delete node.activeProcesses[ex.pid];
+                    //delete node.activeProcesses[ex.pid];
                     msg.payload = code;
                     node.status({});
                     //console.log("at close:"+msg);
-
-                    cmd="echo \"connect "+node.address+"\" | bluetoothctl";
-                    console.log("trying to connect to "+node.address);
-                    useExec(cmd);
-                   // console.log("cmd is :"+cmd);
-                    setTimeout(function(){
-                        useSpawn("cat /dev/hidraw0");
-                       
-                    },2500);
+                    if(!close_flag){
+                        cmd="echo \"connect "+node.address+"\" | bluetoothctl";
+                        console.log("trying to connect to "+node.address);
+                        useExec(cmd);
+                       // console.log("cmd is :"+cmd);
+                        setTimeout(function(){
+                            useSpawn("cat /dev/hidraw0");
+                           
+                        },2500);
+                    }
                 });
+                ex.on('exit',function(){
+                })
                 ex.on('error', function (code) {
                     delete node.activeProcesses[ex.pid];
                     node.error(code,msg);
@@ -180,10 +185,17 @@ module.exports = function(RED) {
         function parser_key_b4(b4)
         {
             var code=new Buffer([0x00,0x02,0x04,0x06]);
-            b4&code[0] ? mi_key.KEY.UP=1 : mi_key.KEY.UP=0;
-            b4&code[1] ? mi_key.KEY.RIGHT=1 : mi_key.KEY.RIGHT=0;
-            b4&code[2] ? mi_key.KEY.DOWN=1 : mi_key.KEY.DOWN=0;
-            b4&code[3] ? mi_key.KEY.LEFT=1 : mi_key.KEY.LEFT=1;
+            b4==code[0] ? mi_key.KEY.UP=1 : mi_key.KEY.UP=0;
+            b4==code[1] ? mi_key.KEY.RIGHT=1 : mi_key.KEY.RIGHT=0;
+            b4==code[2] ? mi_key.KEY.DOWN=1 : mi_key.KEY.DOWN=0;
+            b4==code[3] ? mi_key.KEY.LEFT=1 : mi_key.KEY.LEFT=0;
+            
+            if(b4%2!=0){
+                if(b4==0x01) {mi_key.KEY.UP=1;mi_key.KEY.RIGHT=1; } 
+                if(b4==0x03) {mi_key.KEY.RIGHT=1;mi_key.KEY.DOWN=1;}
+                if(b4==0x05) {mi_key.KEY.DOWN=1;mi_key.KEY.LEFT=1;} 
+                if(b4==0x07) {mi_key.KEY.LEFT=1;mi_key.KEY.UP=1;} 
+            }
         }
 
         /****************************************************************

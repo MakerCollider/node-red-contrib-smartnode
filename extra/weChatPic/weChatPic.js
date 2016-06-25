@@ -40,7 +40,9 @@ module.exports = function(RED) {
             var exec = require('child_process').exec; 
             
             var path = node.imagepath;
-            var cmdStr = 'curl -F media=@'+path+' "http://weixin.makercollider.com/uploadWechatImage?account_id='+node.accountid+'"';
+            //var weixinServer = 'http://weixin.makercollider.com';
+            var weixinServer = 'http://weixin.smartnode.io';
+            var cmdStr = 'curl -F media=@'+path+' '+weixinServer+'"/uploadWechatImage?account_id='+node.accountid+'"';
             console.log(cmdStr);
             exec(cmdStr, function(err,stdout,stderr){
                 if (err) {

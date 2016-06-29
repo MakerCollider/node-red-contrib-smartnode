@@ -123,6 +123,7 @@ module.exports = function(RED) {
                     node.status({});
                     //console.log("at close:"+msg);
                     if(!close_flag){
+                        
                         cmd="echo \"connect "+node.address+"\" | bluetoothctl";
                         console.log("trying to connect to "+node.address);
                         useExec(cmd);
@@ -189,6 +190,8 @@ module.exports = function(RED) {
             b4==code[1] ? mi_key.KEY.RIGHT=1 : mi_key.KEY.RIGHT=0;
             b4==code[2] ? mi_key.KEY.DOWN=1 : mi_key.KEY.DOWN=0;
             b4==code[3] ? mi_key.KEY.LEFT=1 : mi_key.KEY.LEFT=0;
+            
+            
             
             if(b4%2!=0){
                 if(b4==0x01) {mi_key.KEY.UP=1;mi_key.KEY.RIGHT=1; } 

@@ -23,14 +23,19 @@ module.exports = function(RED) {
         this.interval = n.interval;
         this.x = new m.Aio(parseInt(this.pin));
         this.board = m.getPlatformName();
+        this.outkey = n.outkey;
         var node = this;
         var msg = { topic:node.board+"/A"+node.pin };
         var old = -99999;
         this.timer = setInterval(function() {
-            msg.payload = node.x.read();
-            if (msg.payload !== old) {
+            var output_key = 'payload';
+            var _output = node.outkey;
+            (_output == '' || _output.length == 0) ? output_key = "payload" : output_key = node.outkey;
+            msg[output_key] = node.x.read();
+
+            if (msg[output_key] !== old) {
                 node.send(msg);
-                old = msg.payload;
+                old = msg[output_key];
             }
         }, node.interval);
 

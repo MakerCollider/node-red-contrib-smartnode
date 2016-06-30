@@ -1,6 +1,12 @@
 {
     "mraa-gpio-ain": {
         "label": {
+            "name": "Name",
+            "name-placeholder": "Node name",
+            "selectpi": "Pin",
+            "interval": "Interval",
+            "interval-placeholder": "Node name",
+            "outkey": "Output",
             "palette": "Universal Analog Input"
         }
     },

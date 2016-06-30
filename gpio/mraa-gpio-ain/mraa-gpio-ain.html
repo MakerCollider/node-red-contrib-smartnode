@@ -21,7 +21,8 @@
         defaults: {
             name: {value:""},
             pin:  {value:"", required: true, validate:RED.validators.number()},
-            interval: {value:"100", required: true, validate:RED.validators.number()}
+            interval: {value:"100", required: true, validate:RED.validators.number()},
+            outkey: {value:"payload"}
         },
         inputs:0,
         outputs:1,
@@ -56,9 +57,9 @@
 
 <script type="text/x-red" data-template-name="mraa-gpio-ain">
     <div class="form-row">
-        <label for="node-input-pin"><i class="fa fa-circle"></i> Pin</label>
-        <select type="text" id="node-input-pin" style="width:250px;">
-            <option value='' disabled selected style='display:none;'><span data-i18n="rpi-gpio.label.selectpin"></span></option>
+        <label for="node-input-pin"><i class="fa fa-circle"></i><span data-i18n="mraa-gpio-ain.label.selectpi"> </span></label>
+        <select type="text" id="node-input-pin" style="display: inline-block; width: 250px; vertical-align: top;">
+            <option value='' disabled selected style='display:none;'> <span data-i18n="mraa-gpio-ain.label.selectpi"></span></option>
             <option value="0">A0</option>
             <option value="1">A1</option>
             <option value="2">A2</option>
@@ -68,12 +69,16 @@
         </select>
     </div>
     <div class="form-row">
-       <label for="node-input-name"><i class="fa fa-clock-o"></i> Interval</label>
-        <input type="text" id="node-input-interval" placeholder="Interval" style="width:250px;"> mS
+        <label for="node-input-interval"><i class="fa fa-clock-o"></i> <span data-i18n="mraa-gpio-ain.label.interval"></span></label>
+        <input type="text" id="node-input-interval"  data-i18n="[placeholder]mraa-gpio-ain.label.interval-placeholder"  style="width:238px;"> mS
     </div>
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name" style="width: 250px;">
+        <label for="node-input-outkey"><i class="fa fa-sign-in"></i> <span data-i18n="mraa-gpio-ain.label.outkey"></span></label>
+        msg.<input type="text" id="node-input-outkey" style="width:208px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="mraa-gpio-ain.label.name"></span></label>
+        <input type="text" id="node-input-name" data-i18n="[placeholder]mraa-gpio-ain.label.name-placeholder">
     </div>
     <div class="form-tips">Board : <span id="btype">n/a</span><br/>mraa version : <span id="ver-tip">n/a</span></div>
 </script>

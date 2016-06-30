@@ -1,6 +1,12 @@
 {
     "mraa-gpio-ain": {
         "label": {
+            "name": "名称",
+            "name-placeholder": "节点名称",
+            "selectpi": "Pin",
+            "interval": "时间间隔",
+            "interval-placeholder": "时间间隔",
+            "outkey": "输出",
             "palette": "通用模拟输入"
         }
     },

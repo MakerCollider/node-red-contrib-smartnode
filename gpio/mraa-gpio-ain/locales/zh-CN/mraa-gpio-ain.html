@@ -24,11 +24,13 @@
 <ol>
 <li>Pin：数字引脚</li>
 <li>Interval：输出时间间隔</li>
+<li>输出：msg.xxx,xxx为自定义输出键名称,默认msg.payload</li>
 <li>Name：节点名称</li>
 </ol>
-
+<h4 id="注意">注意</h4>
 <ol>
-<li>输出<code>msg.payload</code>内容为"{the_board_name}/A{the pin number}".</li>
+<li>输出<code>msg.topic</code>内容为"{the_board_name}/A{the pin number}".</li>
+<li>输出<code>msg.xxx</code>内容为0或正整数.</li>
 <li>若本次读取的值与前一次读取的不同时才会发送。</li>
 </ol>
 </script>

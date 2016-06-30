@@ -20,70 +20,132 @@ module.exports = function(RED) {
     function driver(config) {
         this.log("Driver initalizing.......");
         RED.nodes.createNode(this, config);
-        this.lpwm = Number(config.lpwm);
-        this.ldir = Number(config.ldir);
-        this.rpwm = Number(config.rpwm);
-        this.rdir = Number(config.rdir);
+        this.lpwm = 6;
+        this.ldir = 7;
+        this.rpwm = 5;
+        this.rdir = 4;
         this.speed = Number(config.speed);
         this.timeout = Number(config.timeout);
+        this.dir = "Stop";
+        this.injectType = config.injectType;
+        this.forwardsKey = config.forwardsKey;
+        this.forwardsValue = config.forwardsValue;
+        this.backKey = config.backKey;
+        this.backValue = config.backValue;
+        this.leftKey = config.leftKey;
+        this.leftValue = config.leftValue;
+        this.rightKey = config.rightKey;
+        this.rightValue = config.rightValue;
+        var node = this;
 
-        var lmotor = new jslib.OJL298(this.lpwm, this.ldir);
-        var rmotor = new jslib.OJL298(this.rpwm, this.rdir);
-        lmotor.speed = this.speed;
-        rmotor.speed = this.speed;
-        lmotor.timeout = this.timeout;
-        rmotor.timeout = this.timeout;
+        var lmotor = new jslib.OJL298(node.lpwm, node.ldir);
+        var rmotor = new jslib.OJL298(node.rpwm, node.rdir);
+        lmotor.speed = node.speed;
+        rmotor.speed = node.speed;
+        lmotor.timeout = node.timeout;
+        rmotor.timeout = node.timeout;
 
         this.log("Driver prepared.");
-        this.log("Driver pwm : " + this.lpwm + " " + this.rpwm);
-        this.log("Driver dir : " + this.ldir + " " + this.rdir);
-        this.log("Default speed : " + this.speed);
-        this.log("Default timeout : " + this.timeout);
+        this.log("Driver pwm : " + node.lpwm + " " + node.rpwm);
+        this.log("Driver dir : " + node.ldir + " " + node.rdir);
+        this.log("Default speed : " + node.speed);
+        this.log("Default timeout : " + node.timeout);
         this.status({fill:"blue",shape:"dot",text:"Initalized"});
 
         //Handle inputs
         this.on('input', function(msg) {
-            if(msg.speed)
+            if(node.speed)
             {
-                this.speed = Number(msg.speed);
-                lmotor.speed = this.speed;
-                rmotor.speed = this.speed;
+                node.speed = Number(node.speed);
+                lmotor.speed = node.speed;
+                rmotor.speed = node.speed;
             }
 
-            if(msg.direction){
-                switch(Number(msg.direction)){
-                    case 0:
-                        this.dir = "Forward";
+            var output_key = 'payload';
+            var direction = 0; //stop
+            if (node.injectType == 1){ //Remoter
+                if (msg.hasOwnProperty("KEY")){
+                    var keys = msg.KEY;
+                    for (var k in keys) {
+                        if (keys.hasOwnProperty(k)) {
+                            if (node.forwardsKey == k && node.forwardsValue == keys[k]){
+                                direction = 1;
+                                var data = {forwards:direction};
+                                msg[output_key] = data;
+                                node.send(msg);
+                            }
+                            if (node.backKey == k && node.backValue == keys[k]){
+                                direction = 2;
+                                var data = {backwards:direction};
+                                msg[output_key] = data;
+                                node.send(msg);
+                            }
+                            if (node.leftKey == k && node.leftValue == keys[k]){
+                                direction = 3;
+                                var data = {leftwards:direction};
+                                msg[output_key] = data;
+                                node.send(msg);
+                            }
+                            if (node.rightKey == k && node.rightValue == keys[k]){
+                                direction = 4;
+                                var data = {rightwards:direction};
+                                msg[output_key] = data;
+                                node.send(msg);
+                            }
+                        }
+                    }
+                }
+            }
+            else{ //default
+                if (msg.hasOwnProperty("payload")){
+                    var re = /^[1-9]+[0-9]*]*$/; //positive integer
+                    re.test(msg.payload)? direction = msg.payload : direction = 0;
+                    var data = {direction:direction};
+                    msg[output_key] = data;
+                    node.send(msg);
+                }
+            }
+
+
+            if(direction){
+                switch(Number(direction)){
+                    case 1:
+                        node.dir = "Forward";
                         lmotor.direction = 0;
                         rmotor.direction = 1;
                         break;
-                    case 1:
-                        this.dir = "Backward";
+                    case 2:
+                        node.dir = "Backward";
                         lmotor.direction = 1;
                         rmotor.direction = 0;
                         break;
-                    case 2:
-                        this.dir = "Left";
+                    case 3:
+                        node.dir = "Left";
                         lmotor.direction = 0;
                         rmotor.direction = 0;
                         break;
-                    case 3:
-                        this.dir = "Right";
+                    case 4:
+                        node.dir = "Right";
                         lmotor.direction = 1;
                         rmotor.direction = 1;
                         break;
                     default:
-                        this.dir = "Stop";
+                        node.dir = "Stop";
                         lmotor.direction = 2;
                         rmotor.direction = 2;
                         break;
                 }
             }
+            else{
+                node.dir = "Stop";
+                lmotor.direction = 2;
+                rmotor.direction = 2;
+            }
 
             lmotor.setMotion();
             rmotor.setMotion();
-            this.status({fill:"green",shape:"dot",text:this.dir});
-            this.log("Action: Speed " + this.speed + " Direction " + this.dir);
+            this.status({fill:"green",shape:"dot",text:node.dir});
+            this.log("Action: Speed " + node.speed + " Direction " + node.dir);
         });
 
         this.on('close', function() {

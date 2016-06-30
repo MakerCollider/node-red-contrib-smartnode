@@ -20,21 +20,39 @@
         color: '#E2D96E',
         defaults: {
             name:      {value: "Driver", required: false},
-            lpwm:      {value: 6,       required: true},
-            ldir:      {value: 7,       required: true},
-            rpwm:      {value: 5,       required: true},
-            rdir:      {value: 4,       required: true},
             speed:     {value: 50,      required: true},
             timeout:   {value: 2,       required: true},
+            injectType:    {value: 0,   required: true},
+            forwardsKey:   {value: "",  required: true},
+            forwardsValue: {value: "",  required: true},
+            backKey:       {value: "",  required: true },
+            backValue:     {value: "",  required: true },
+            leftKey:       {value: "",  required: true },
+            leftValue:     {value: "",  required: true },
+            rightKey:      {value: "",  required: true },
+            rightValue:    {value: "",  required: true }
         },
         inputs: 1,
         outputs: 1,
         icon: "light.png",
         label: function() {
-            return this.name + ' D' + this.lpwm+ ',D'+ this.ldir + ',D' +this.rpwm+ ',D' + this.rdir;
+            return this.name + ' D6,D7,D5,D4';
         },
         paletteLabel: function () {
             return this.name||this._("Driver.label.palette");
+        },
+        oneditprepare: function() {
+            $("#node-input-injectType").change(function(){
+                var injectType = $(this).val();
+                if (injectType == 0){
+                    $('#div-control-key').hide();
+                }
+                if (injectType == 1){
+                    $('#div-control-key').show();
+                }
+            });
+        },
+        oneditsave: function() {
         }
     });
 </script>
@@ -44,87 +62,6 @@
         <label for="node-input-name"><i class="fa fa-tag"></i> Name </label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
-
-    <div class="form-row">
-        <label for="node-input-lpwm"><i class="fa fa-tag"></i> Left PWM </label>
-        <!--input type="number" id="node-input-lpwm" placeholder="Pin number"-->
-        <select id="node-input-lpwm">
-			<option value=3>3</option>
-			<option value=5>5</option>
-			<option value=6>6</option>
-			<option value=9>9</option>
-			<option value=10>10</option>
-			<option value=11>11</option>
-		</select>
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-ldir"><i class="fa fa-tag"></i> Left_Dir </label>
-        <!--input type="number" id="node-input-ldir" placeholder="Pin number"-->
-        <select id="node-input-ldir">
-			<option value=0>0</option>
-			<option value=1>1</option>
-			<option value=2>2</option>
-			<option value=3>3</option>
-			<option value=4>4</option>
-			<option value=5>5</option>
-			<option value=6>6</option>
-			<option value=7>7</option>
-			<option value=8>8</option>
-			<option value=9>9</option>
-			<option value=10>10</option>
-			<option value=11>11</option>
-			<option value=12>12</option>
-			<option value=13>13</option>
-			<option value=14>14(A0)</option>
-			<option value=15>15(A1)</option>
-			<option value=16>16(A2)</option>
-			<option value=17>17(A3)</option>
-			<option value=18>18(A4)</option>
-			<option value=19>19(A5)</option>
-		</select>
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-rpwm"><i class="fa fa-tag"></i> Right PWM </label>
-        <!--input type="number" id="node-input-rpwm" placeholder="Pin number"-->
-        <select id="node-input-rpwm">
-			<option value=3>3</option>
-			<option value=5>5</option>
-			<option value=6>6</option>
-			<option value=9>9</option>
-			<option value=10>10</option>
-			<option value=11>11</option>
-		</select>
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-rdir"><i class="fa fa-tag"></i> Right_Dir </label>
-        <!--input type="number" id="node-input-rdir" placeholder="Pin number"-->
-        <select id="node-input-rdir">
-			<option value=0>0</option>
-			<option value=1>1</option>
-			<option value=2>2</option>
-			<option value=3>3</option>
-			<option value=4>4</option>
-			<option value=5>5</option>
-			<option value=6>6</option>
-			<option value=7>7</option>
-			<option value=8>8</option>
-			<option value=9>9</option>
-			<option value=10>10</option>
-			<option value=11>11</option>
-			<option value=12>12</option>
-			<option value=13>13</option>
-			<option value=14>14(A0)</option>
-			<option value=15>15(A1)</option>
-			<option value=16>16(A2)</option>
-			<option value=17>17(A3)</option>
-			<option value=18>18(A4)</option>
-			<option value=19>19(A5)</option>
-		</select>
-    </div>
-
     <div class="form-row">
         <label for="node-input-speed"><i class="fa fa-tag"></i> Speed </label>
         <input type="number" id="node-input-speed" placeholder="Default speed">
@@ -134,5 +71,33 @@
         <label for="node-input-timeout"><i class="fa fa-tag"></i> Timeout </label>
         <input type="number" id="node-input-timeout" placeholder="Default timeout">
     </div>
+
+    <div class="form-row">
+        <label for="node-input-injectType"><i class="fa fa-list"></i> ControlType </label>
+        <select for="node-input-injectType" id="node-input-injectType">
+            <option value ="0">Default</option>
+            <option value ="1">Remoter</option>
+        </select>
+    </div>
+ <div id="div-control-key" style="display:none;">   
+    <div class="form-row"><i class="fa fa-sign-in"></i> <span>Control-Key</span>:
+    </div>
+    <div class="form-row"><label>Forwards</label>
+        <span>Key</span>: <input type="text" id="node-input-forwardsKey" style="width:90px;"/>
+        &nbsp;<span>Value</span>: <input type="text" id="node-input-forwardsValue"  style="width:90px;"/>
+    </div>
+    <div class="form-row"><label>Backwards</label>
+        <span>Key</span>: <input type="text" id="node-input-backKey" style="width:90px;"/>
+        &nbsp;<span>Value</span>: <input type="text" id="node-input-backValue"  style="width:90px;"/>
+    </div>
+    <div class="form-row"><label>Leftwards</label>
+        <span>Key</span>: <input type="text" id="node-input-leftKey" style="width:90px;"/>
+        &nbsp;<span>Value</span>: <input type="text" id="node-input-leftValue"  style="width:90px;"/>
+    </div>
+    <div class="form-row"><label>Rightwards</label>
+        <span>Key</span>: <input type="text" id="node-input-rightKey" style="width:90px;"/>
+        &nbsp;<span>Value</span>: <input type="text" id="node-input-rightValue"  style="width:90px;"/>
+    </div>
+</div>
 </script>
 

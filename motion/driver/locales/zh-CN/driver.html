@@ -28,7 +28,10 @@
     <ol>
     <li>msg.speed：速度</li><li>msg.direction：方向</li></ol>
     <h4 id="输出量"><a name="输出量" href="#输出量"></a>输出量</h4>
-    <p>无</p>
+    <ol>
+    <li>控制类型设置为Remoter时, 输出：msg.forwards 向前，msg.backwards 向后，msg.leftwards 向左，msg.rightwards 向右.</li>
+    <li>控制类型设置为Default时, 输出：msg.payload.</li>
+    </ol>
     <h4 id="使用方法"><a name="使用方法" href="#使用方法"></a>使用方法</h4>
     <ol>
     <li>配置好节点的每个参数。</li><li><code>msg.speed</code>的值为0-100的整数，表示速度的百分比。</li><li><code>msg.direction</code>的值为0-4的整数，分别代表的是<code>前进1</code>、<code>后退2</code>、<code>左转3</code>、<code>右转4</code>和<code>停止0</code>。</li><li>发送指令后，小车会按照规定方向与速度执行任务，并在超时时间到时，停止运动。超时时间使用<code>Timeout</code>进行设置，单位为秒，可以为小数。</li>

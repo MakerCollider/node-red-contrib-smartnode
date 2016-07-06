@@ -6,31 +6,37 @@
                      "intel",
                      "Edison"
                     ],
-    "dependencies": {
-        "lwm2m-node-lib": "*",
-        "ftp": "*",
-        "Buffer": "*",
-        "bindings": "*",
-        "connect-multiparty": "*",
-        "ejs": "*",
-	"express": "*",
-	"fs": "*",
-	"jsupm_camera": ">=0.0.1",
-        "jsupm_facedetect": ">=0.0.1",
-        "jsupm_numberdetect": ">=0.0.1",
-        "jsupm_geometry": ">=0.0.1",
-        "jsupm_img2base64": ">=0.0.1",
-	"jsupm_mpu9150": ">=0.0.1",
-	"jsupm_ojl298": ">=0.0.1",
-	"jsupm_screenspi9225": ">=0.0.1",
-	"morgan": "*",
-	"node-red-contrib-smartnode-hook": "*",
-	"path": "*",
-        "pkginfo": "*"
+    "homepage": "http://www.smartnode.io/",
+    "bugs": {
+        "url": "https://github.com/MakerCollider/node-red-contrib-smartnode/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Maker Collider SmartNode team"
     },
     "repository": {
         "type": "git",
         "url": "https://github.com/MakerCollider/node-red-contrib-smartnode.git"
+    },
+    "dependencies": {
+        "fs": "*",
+        "ejs": "*",
+        "ftp": "*",
+        "say": "0.6.0",
+        "path": "*",
+        "async": "*",
+        "morgan": "*",
+        "multer": "*",
+        "Buffer": "*",
+        "express": "*",
+        "pkginfo": "*",
+        "express": "*",
+        "bindings": "*",
+        "socket.io": "*",
+        "serve-index": "*",
+        "command-node": "*",
+        "lwm2m-node-lib": "*",
+        "connect-multiparty": "*"
     },
     
     "node-red":     {
@@ -62,7 +68,7 @@
             "Led":              "hardwareOutput/led/led.js",
             "say":              "hardwareOutput/say/say.js",
             "PwmLed":           "hardwareOutput/pwmLed/pwmled.js",
-	        "I2cServo":		    "hardwareOutput/I2cServo/I2cServo.js",
+            "I2cServo":         "hardwareOutput/I2cServo/I2cServo.js",
             "LEDstrips":        "hardwareOutput/LEDstrips/LEDstrips.js",
 
             "Camera":           "imageProcessing/camera/camera.js",
@@ -78,7 +84,7 @@
             "Toggle":           "logic/toggle/toggle.js",
             "SubString":        "logic/subString/substring.js",
             "Combine":          "logic/combine/combine.js",
-	        "random":		    "logic/random/random.js",
+            "random":           "logic/random/random.js",
             "CToggle":          "logic/ctoggle/ctoggle.js",
 
             "Driver":           "motion/driver/driver.js",
@@ -92,13 +98,5 @@
 
             "DiaplayImage":     "io/disp.js"
         }
-    },
-    "author": {
-        "name": "Maker Collider SmartNode team"
-    },
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/MakerCollider/node-red-contrib-smartnode/issues"
-    },
-    "homepage": "https://github.com/MakerCollider/node-red-contrib-smartnode"
+    }
 }

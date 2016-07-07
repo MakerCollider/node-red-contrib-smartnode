@@ -31,10 +31,16 @@
 
         function setEditorValue(text){
             var data = this.editor.getValue();
-            var index = data.lastIndexOf('\n')
-            data = data.substring(0,index);
-            data = data +'\n'+text;
-            initEditor(data); 
+            var index = data.lastIndexOf('已完成');
+            if (index == -1){
+                data = data +text;
+                initEditor(data); 
+            }
+            if (index > 0){
+                data = data.substring(0,index);
+                data = data +text;
+                initEditor(data); 
+            }
         }
 
         $("#node-input-download").attr("disabled",false);
@@ -63,6 +69,7 @@
             wsConnect(); 
         }
 
+
         function wsConnect() {
             var text = appendMsg('正在连接远程版本服务器...');
             initEditor(text);  
@@ -73,7 +80,7 @@
             ws = new WebSocket(wsUri);
             ws.onmessage = function(msg) {
                 var data = msg.data;
-                console.log(data);
+                //console.log(data);
                 if (data.indexOf('{progress}')!=-1){
                     data = data.replace("{progress}","");
                     setEditorValue(data);

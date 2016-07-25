@@ -71,7 +71,6 @@
             "Camera":           "imageProcessing/camera/camera.js",
             "Geometry":         "imageProcessing/geometry/geometry.js",
             "FaceDetect":       "imageProcessing/faceDetect/facedetect.js",
-            "NumberDetect":     "imageProcessing/numberDetect/numberdetect.js",
             "Image2Stream":     "imageProcessing/image2Stream/image2Stream.js",
 
             "add-strings":      "logic/addString/add-strings.js",

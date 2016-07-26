@@ -1,6 +1,12 @@
 {
     "upgrade": {
         "label": {
+            "name": "Name",
+            "current-version":"Current-version",
+            "versions": "versions",
+            "button-download": "Download",
+            "button-install": "Install",
+            "button-recovery": "Recovery",
             "palette": "version upgrade"
         }
     },

@@ -8,6 +8,7 @@ var config = require(__dirname + '/config'),
 var util = require("./util.js");
 var env = require("./env.js");
 var nodeMap = {};
+connectStatus = 0;
 function getDevInfoFromName(name, cb) {
 
     if(!cb) {

@@ -96,7 +96,7 @@
                         }],
                         ["OS=='linux'", {
                             "files": [
-                                "/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml",
+                                "/usr/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml",
                             ]
                         }]
                     ],

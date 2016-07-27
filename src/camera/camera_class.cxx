@@ -120,7 +120,7 @@ namespace mc
         {
             obj->m_camera.open(obj->m_cameraId);
             #ifdef _WIN32
-                Sleep(1);
+                Sleep(1000);
             #else
                 sleep(1);
             #endif
@@ -146,7 +146,7 @@ namespace mc
             m_grabThread->join();
             m_camera.release();
             #ifdef _WIN32
-                Sleep(1);
+                Sleep(1000);
             #else
                 sleep(1);
             #endif
@@ -192,7 +192,12 @@ namespace mc
             
             in_class->m_mutex.unlock();
 
-            std::this_thread::yield();
+            #ifdef _WIN32
+                Sleep(1);
+            #else
+                usleep(1000);
+            #endif
+            //std::this_thread::yield();
         }
         return 0;
     }
@@ -209,6 +214,7 @@ namespace mc
         {
             obj->m_camera.retrieve(m_rawImage);
             obj->ptr2String((void*)(&m_rawImage), ptrString);
+            std::cout << "read image" << std::endl;
         }
         obj->m_mutex.unlock();
         

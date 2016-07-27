@@ -1,5 +1,5 @@
 {
-    "Geometry": {
+    "GeometryDetect": {
         "label": {
             "palette": "几何形状识别"
         }

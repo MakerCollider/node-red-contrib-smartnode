@@ -13,26 +13,24 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<script type="text/x-red" data-help-name="Camera">
-	<h3 id="Camera node"><a name="Camera node" href="#Camera node"></a>Camera node</h3>
-	<p>The node uses the camera to capture an image and send the image data to the next node.</p>
-	<h4 id="Configuration parameters"><a name="Configuration parameters" href="#Configuration parameters"></a>Configuration parameters</h4>
-	<ol>
-	<li>Name：The node name</li>
-	<li>CameraId：The number of the used camera</li>
-	<li>FrameConfig：Image resolution</li>
-	<li>TimerVal：Timer duration</li></ol>
-	<h4 id="Input"><a name="Input" href="#Input"></a>Input</h4>
-	<ol>
-	<li>msg.payload：The camera switch</li></ol>
-	<h4 id="Output"><a name="Output" href="#Output"></a>Output</h4>
-	<ol>
-	<li>msg.imagePtr：The image data packet.</li></ol>
-	<h4 id="Usage"><a name="Usage" href="#Usage"></a>Usage</h4>
-	<ol>
-	<li>Plug the camera into Edison's USB port.</li>
-	<li>Set parameters, if there is only one camera, Camera Id is zero.</li>
-	<li>When <code>msg.payload</code>is 1，the camera is turned on, and output image data every time interval.</li>
-	<li>The output is string format, with a structure <code>Camera:xxxxxxxx</code>，among them, <code>xxxxxxx</code>is<code>cv:Mat</code>type of indicators, there are images the camera has read. </li></ol>
+<script type="text/xred" data-help-name="Camera">
+<h3 id="camera"><a name="camera" href="#camera"></a>Camera</h3>
+<p>This node can get image from camera and send it out</p>
+<h4 id="config"><a name="config" href="#config"></a>Config</h4>
+<ol>
+<li>Name: node name</li><li>CameraId: camera id</li><li>FrameConfig: the resolution of image</li><li>Mode: node mode(video or shoot)</li><li>ImageName: the name of image file when in shoot mode</li><li>TimerVal: timer</li></ol>
+<h4 id="input"><a name="input" href="#input"></a>Input</h4>
+<ol>
+<li>payload: switch</li></ol>
+<h4 id="output1"><a name="output1" href="#output1"></a>Output1</h4>
+<ol>
+<li>topic: message type, the value is <strong>imageStr</strong></li><li>payload: image pointer, type is cv::Mat</li></ol>
+<h4 id="output2"><a name="output2" href="#output2"></a>Output2</h4>
+<ol>
+<li>topic: message type, the value is <strong>shoot</strong></li><li>payload: image file path</li></ol>
+<h4 id="howto"><a name="howto" href="#howto"></a>Howto</h4>
+<ol>
+<li>Setup camera</li><li>Set node mode, camera id, timerval and image name.</li><li>In <strong>Video</strong> mode, the node will send out image pointer periodically from ouput1</li><li>In <strong>Shoot</strong> mode, the node will capture an image and send out the image file path from output2 and send image pointer from output1</li></ol>
+
 </script>
 

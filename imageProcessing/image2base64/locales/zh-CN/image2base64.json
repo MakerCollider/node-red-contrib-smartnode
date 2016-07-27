@@ -1,7 +1,7 @@
 {
-    "Image2Stream": {
+    "Image2base64": {
         "label": {
-            "palette": "图像转流数据"
+            "palette": "图像转Base64"
         }
     },
     "palette": {

@@ -16,22 +16,23 @@ limitations under the License.
 <script type="text/javascript">
     RED.nodes.registerType('Camera', {
         category: 'MultiMedia',
-        color: '#E2D96E',
+        color: '#3FADB5',
         defaults: {
-            name:          {value: "Camera", required: false},
+            name:          {value: "", required: false},
             cameraId:      {value: 0, required: true},
             frameConfig:   {value: 1, required: true},
             mode:          {value: 0, required: true},
+            imageName:     {value: "shoot", required: true},
             timerVal:      {value: 500, required: true},
         },
         inputs: 1,
 		outputs: 2,
         icon: "light.png",
         label: function() {
-            return this.name || "Camera";
+            return this.name || this._("Camera.label.palette");
         },
         paletteLabel: function () {
-            return this.name||this._("Camera.label.palette");
+            return this._("Camera.label.palette");
         }
     });
 </script>
@@ -64,6 +65,10 @@ limitations under the License.
             <option value=0>Video</option>
             <option value=1>Photo</option>
         </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-imageName"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-imageName" placeholder="shoot">
     </div>
     <div class="form-row">
         <label for="node-input-timerVal"><i class="fa fa-tag"></i> TimerVal</label>

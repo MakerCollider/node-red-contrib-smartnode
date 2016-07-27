@@ -14,9 +14,9 @@
   limitations under the License.
 -->
 
-<script type="text/xred" data-help-name="FaceDetect">
-<h3 id="facedetect"><a name="facedetect" href="#facedetect"></a>FaceDetect</h3>
-<p>This node can detect face form camera</p>
+<script type="text/xred" data-help-name="GeometryDetect">
+<h3 id="GeometryDetect"><a name="GeometryDetect" href="#GeometryDetect"></a>GeometryDetect</h3>
+<p>This node can detect circle and geometry from camera</p>
 <h4 id="config"><a name="config" href="#config"></a>Config</h4>
 <ol>
 <li>Name: Node name</li></ol>
@@ -25,12 +25,12 @@
 <li>topic: message type, the value is <strong>imageStr</strong></li><li>payload: image pointer, the type is cv::Mat</li></ol>
 <h4 id="output1"><a name="output1" href="#output1"></a>Output1</h4>
 <ol>
-<li>topic: message type, the value is <strong>faceNumber</strong></li><li>payload: face number</li></ol>
+<li>topic: message type, the value is <strong>geometryType</strong></li><li>payload: geometry type</li></ol>
 <h4 id="output2"><a name="output2" href="#output2"></a>Output2</h4>
 <ol>
 <li>topic: message type, the value is <strong>imageStr</strong></li><li>payload: image pointer, the type is cv::Mat</li></ol>
 <h4 id="howto"><a name="howto" href="#howto"></a>Howto</h4>
 <ol>
-<li>The image in output2 circles the detected faces.</li></ol>
+<li>The <strong>payload</strong> of output1 has 4 values: 0(input error), 1(no result), 2(rectangle), 3(circle)</li></ol>
 </script>
 

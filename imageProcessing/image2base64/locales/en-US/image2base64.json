@@ -1,7 +1,7 @@
 {
-    "Camera": {
+    "Image2base64": {
         "label": {
-            "palette": "camera"
+            "palette": "base64 encode"
         }
     },
     "palette": {

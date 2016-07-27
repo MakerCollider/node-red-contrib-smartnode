@@ -1,7 +1,7 @@
 {
-    "Camera": {
+    "GeometryDetect": {
         "label": {
-            "palette": "camera"
+            "palette": "geometry detect"
         }
     },
     "palette": {

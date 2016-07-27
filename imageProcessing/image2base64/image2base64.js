@@ -14,40 +14,35 @@
  * limitations under the License.
  **/
 module.exports = function(RED) {
-
-    var jslib = require('jsupm_img2base64');
-    function image2Stream(config) {
+    'use strict';
+    var binary = require('node-pre-gyp');
+    var path = require('path');
+    var binding_path = binary.find(path.resolve(path.join(__dirname, '../../package.json')));
+    var sn_addon = require(binding_path);
+    function image2base64(config) {
         var node = this;
-        node.log("image2Stream initalizing.......");
+        node.log("Geometry detect initalizing.......");
         RED.nodes.createNode(this, config);
-        var image2Stream = new jslib.Cimg2Base64();
 
-        node.log("image2Stream prepared.");
+        var img2base64 = new sn_addon.Image2base64();
+
+        node.log("Geometry detect prepared.");
         node.status({fill:"green",shape:"dot",text:"Running"});
 
         //Handle inputs
         node.on('input', function(msg) {
-            if((typeof msg.imagePtr) != "string")
+            if(msg.topic === "imageStr" && ((typeof msg.payload) != "string"))
             {
-                this.log("Input Error! Wrong Topic");
+                this.log("Input Error!");
                 node.status({fill:"red", shape:"dot", text:"InputError"});
             }
             else
             {
-                var result = image2Stream.noderedBase64(msg.imagePtr);
-                if(result == -1)
-                {
-                    this.log("Input Error! Wrong String Format");
-                    node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
-                }
-                var msg1 = {payload: image2Stream.m_outputString};
-                node.send(msg1);
+                var base64Str = img2base64.encode(msg.payload);
+                var msg = {topic: "base64", payload: base64Str};
+                node.send(msg);
             }
         });
-
-        node.on('close', function() {
-            node.log("Stop image2Stream");
-        });
     }
-    RED.nodes.registerType("Image2Stream", image2Stream);
+    RED.nodes.registerType("Image2base64", image2base64);
 }

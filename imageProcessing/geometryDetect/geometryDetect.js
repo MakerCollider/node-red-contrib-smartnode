@@ -14,29 +14,33 @@
  * limitations under the License.
  **/
 module.exports = function(RED) {
-
-    var jslib = require('jsupm_geometry');
-    function geometry(config) {
+    'use strict';
+    var binary = require('node-pre-gyp');
+    var path = require('path');
+    var binding_path = binary.find(path.resolve(path.join(__dirname, '../../package.json')));
+    var sn_addon = require(binding_path);
+    function geometryDetect(config) {
         var node = this;
         node.log("Geometry detect initalizing.......");
         RED.nodes.createNode(this, config);
-        var geometry = new jslib.Geometry();
+
+        var geometry = new sn_addon.GeometryDetect();
 
         node.log("Geometry detect prepared.");
         node.status({fill:"green",shape:"dot",text:"Running"});
 
         //Handle inputs
         node.on('input', function(msg) {
-            if((typeof msg.imagePtr) != "string")
+            if(msg.topic === "imageStr" && ((typeof msg.payload) != "string"))
             {
                 this.log("Input Error!");
                 node.status({fill:"red", shape:"dot", text:"InputError"});
             }
             else
             {
-                var geometryType = geometry.noderedDetect(msg.imagePtr);
-                var msg1 = {payload: geometryType};
-                var msg2 = {imagePtr: geometry.m_outputString};
+                var geometryResult = geometry.detect(msg.payload);
+                var msg1 = {topic: "geometryType", payload: geometryResult.result};
+                var msg2 = {topic: "imageStr", payload: geometryResult.imageStr};
                 node.send([msg1, msg2]);
             }
         });
@@ -45,5 +49,5 @@ module.exports = function(RED) {
             node.log("Stop Geometry");
         });
     }
-    RED.nodes.registerType("Geometry", geometry);
+    RED.nodes.registerType("GeometryDetect", geometryDetect);
 }

@@ -36,10 +36,17 @@
     </div>
 </script>
 
+<script type="text/x-red" data-help-name="Combine">
+    <p>A simple function node to route messages based on its properties.</p>
+    <p>When a message arrives, the selected property is evaluated against each
+    of the defined rules. The message is then sent to the output of <i>all</i>
+    rules that pass.</p>
+    <p>Note: the <i>otherwise</i> rule applies as a "not any of" the rules preceding it.</p>
+</script>
 
 <script type="text/javascript">
     RED.nodes.registerType('Combine', {
-        color: "#E2D96E",
+        color: "#3FADB5",
         category: 'function',
         defaults: {
             name: {value:""},
@@ -49,7 +56,7 @@
         },
         inputs: 1,
         outputs: 1,
-        icon: "light.png",
+        icon: "function.png",
         label: function() {
             return this.name||"Combine";
         },

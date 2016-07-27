@@ -1,8 +1,8 @@
 {
     "Combine": {
         "label": {
-            "name": "Combine",
-            "palette": "Combine",
+            "name": "combine",
+            "palette": "combine",
             "rules": "Rules",
             "timeout": "Timeout",
             "addrule": "Add",

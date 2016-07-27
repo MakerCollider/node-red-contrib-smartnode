@@ -37,10 +37,16 @@
     </div>
 </script>
 
+<!--<script type="text/x-red" data-help-name="random">
+    <p>Generates a random number between a low and high value.</p>
+    <p>If you return an integer it can <i>include</i> both the low and high values.</p>
+    <p>If you return a floating point value it will be <i>between</i> the low and high values.</p>
+</script>-->
+
 <script type="text/javascript">
     RED.nodes.registerType('random',{
         category: 'function',
-        color:"#E2D96E",
+        color:"#3FADB5",
         defaults: {
             name: {value:""},
             low: {value:"1"},
@@ -49,9 +55,9 @@
         },
         inputs:1,
         outputs:1,
-        icon: "debug.png",
+        icon: "function.png",
         label: function() {
-            return this.name||"random";
+            return this.name||this._("random.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("random.label.palette");

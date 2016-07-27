@@ -1,7 +1,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('substring',{
         category: 'function',
-        color: '#a6bbcf',
+        color: '#3FADB5',
         defaults: {
             Name: {value:""},
 			From:{value:"0", required: true},
@@ -9,9 +9,9 @@
         },
         inputs:1,
         outputs:1,
-        icon: "file.png",
+        icon: "function.png",
         label: function() {
-            return this.name||"substring";
+            return this.name||"Substring";
         },
         paletteLabel: function () {
             return this.name||this._("substring.label.palette");

@@ -214,7 +214,6 @@ namespace mc
         {
             obj->m_camera.retrieve(m_rawImage);
             obj->ptr2String((void*)(&m_rawImage), ptrString);
-            std::cout << "read image" << std::endl;
         }
         obj->m_mutex.unlock();
         

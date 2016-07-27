@@ -41,7 +41,7 @@
             "M2MServer":        "edge/M2MServer/M2MServer.js",
             "M2MEdge":          "edge/M2MEdge/M2MEdge.js",
             "edgeIO":           "edge/edgeIO/edgeIO.js",
-            "profile":          "edge/profile/profile.js",
+            "profile":          "edge/profile/profile.js"
         },
         "nodes":{
             "mraa-gpio-ain":    "gpio/mraa-gpio-ain/mraa-gpio-ain.js",

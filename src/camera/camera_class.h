@@ -26,7 +26,7 @@ namespace mc
         void ptr2String(void* in_ptr, std::string &in_str);
         bool string2Ptr(std::string &in_str, void** in_ptr);
 
-        bool checkCamera(int in_videoID);
+        // bool checkCamera(int in_videoID);
         void stopCamera();
 
         static void* grabFunc(void* in_data);

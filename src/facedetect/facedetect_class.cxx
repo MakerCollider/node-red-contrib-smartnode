@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <Windows.h>
+//#include <Windows.h>
 
 #include "facedetect_class.h"
 

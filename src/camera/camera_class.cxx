@@ -1,7 +1,10 @@
 #include <iostream>
 #include <sstream>
-
-#include <Windows.h>
+#ifdef _WIN32
+    #include <Windows.h>
+#else
+    #include <unistd.h>
+#endif
 
 #include "camera_class.h"
 
@@ -116,7 +119,11 @@ namespace mc
         if(obj->m_running != true)
         {
             obj->m_camera.open(obj->m_cameraId);
-            Sleep(1);
+            #ifdef _WIN32
+                Sleep(1);
+            #elif
+                sleep(1);
+            #endif
             if(obj->m_camera.isOpened())
             {
                 obj->m_running = true;
@@ -138,7 +145,11 @@ namespace mc
             m_running = false;
             m_grabThread->join();
             m_camera.release();
-            Sleep(1);
+            #ifdef _WIN32
+                Sleep(1);
+            #elif
+                sleep(1);
+            #endif
         }
     }
 
@@ -158,28 +169,27 @@ namespace mc
         args.GetReturnValue().Set(v8::Boolean::New(isolate, obj->m_running));
     }
 
-    bool Camera::checkCamera(int in_videoID)
-    {
-        return true;
-    }
+    // bool Camera::checkCamera(int in_videoID)
+    // {
+    //     return true;
+    // }
 
     void* Camera::grabFunc(void* in_data)
     {
+        bool result;
         Camera* in_class = (Camera*)(in_data);
 
         while(in_class->m_running)
         {
             in_class->m_mutex.lock();
-            if (in_class->checkCamera(in_class->m_cameraId))
-            {
 
-                in_class->m_camera.grab();
-            }
-            else
+            result = in_class->m_camera.grab();
+            if (!result)
             {
                 in_class->m_running = false;
                 in_class->m_camera.release();
             }
+            
             in_class->m_mutex.unlock();
 
             std::this_thread::yield();

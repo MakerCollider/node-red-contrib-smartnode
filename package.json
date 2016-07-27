@@ -38,11 +38,12 @@
     
     "node-red":     {
         "nodes":{
+            /*
             "M2MServer":        "edge/M2MServer/M2MServer.js",
             "M2MEdge":          "edge/M2MEdge/M2MEdge.js",
             "edgeIO":           "edge/edgeIO/edgeIO.js",
             "profile":          "edge/profile/profile.js",
-
+            */
             "mraa-gpio-ain":    "gpio/mraa-gpio-ain/mraa-gpio-ain.js",
             "mraa-gpio-din":    "gpio/mraa-gpio-din/mraa-gpio-din.js",
             "mraa-gpio-dout":   "gpio/mraa-gpio-dout/mraa-gpio-dout.js",

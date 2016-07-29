@@ -38,7 +38,7 @@ module.exports = function(RED) {
                     //throw new Error("exception in nextTick callback");
                     if((typeof msg.imagePtr) != "string")
                     {
-                        this.log("Input Error! Wrong Topic");
+                        node.log("Input Error! Wrong Topic");
                         node.status({fill:"red", shape:"dot", text:"InputError"});
                     }
                     else
@@ -46,7 +46,7 @@ module.exports = function(RED) {
                         var result = img2Base64.noderedBase64(msg.imagePtr);
                         if(result == -1)
                         {
-                            this.log("Input Error! Wrong String Format");
+                            node.log("Input Error! Wrong String Format");
                             node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
                         }
                         var msg1 = {payload: img2Base64.m_outputString};
@@ -73,7 +73,7 @@ module.exports = function(RED) {
     RED.nodes.registerType("dispImg", dispImg);
 
     function dispGauge(config) {
-        console.log
+        //console.log
         RED.nodes.createNode(this, config);
         var node = this;
         var name = config.name;

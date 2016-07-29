@@ -16,44 +16,40 @@
 var atlas = global.atlas;
 var ejs = require('ejs');
 var fs = require('fs');
-var jslib = require('jsupm_img2base64');
 
 module.exports = function(RED) {
-    var domain = require('domain');
-
-    var d = domain.create();
-
-    d.on('error', function(e) {
-        console.log("error in dispImg:", e);
-    });
+    'use strict';
+    var binary = require('node-pre-gyp');
+    var path = require('path');
+    var binding_path = binary.find(path.resolve(path.join(__dirname, '../package.json')));
+    var sn_addon = require(binding_path);
+    
     function dispImg(config) {
         RED.nodes.createNode(this, config);
-        var img2Base64 = new jslib.Cimg2Base64();
+        var img2Base64 = new sn_addon.Image2base64();
         var node = this;
         var name = config.name;
 
         node.on('input', function(msg) {
-            d.run(function () {
-                process.nextTick(function () {
-                    //throw new Error("exception in nextTick callback");
-                    if((typeof msg.imagePtr) != "string")
+            process.nextTick(function () {
+                //throw new Error("exception in nextTick callback");
+                if((typeof msg.payload) != "string")
+                {
+                    node.log("Input Error! Wrong Topic");
+                    node.status({fill:"red", shape:"dot", text:"InputError"});
+                }
+                else
+                {
+                    var base64Str = img2Base64.encode(msg.payload);
+                    if(base64Str == -1)
                     {
-                        node.log("Input Error! Wrong Topic");
-                        node.status({fill:"red", shape:"dot", text:"InputError"});
+                        node.log("Input Error! Wrong String Format");
+                        node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
                     }
-                    else
-                    {
-                        var result = img2Base64.noderedBase64(msg.imagePtr);
-                        if(result == -1)
-                        {
-                            node.log("Input Error! Wrong String Format");
-                            node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
-                        }
-                        var msg1 = {payload: img2Base64.m_outputString};
-                        //node.send(msg1);
-                        atlas.emit(name, msg1.payload);
-                    }
-                });
+                    var msg1 = {topic: "base64", payload: base64Str};
+                    //node.send(msg1);
+                    atlas.emit(name, msg1.payload);
+                }
             });
             
             /*
@@ -73,7 +69,7 @@ module.exports = function(RED) {
     RED.nodes.registerType("dispImg", dispImg);
 
     function dispGauge(config) {
-        //console.log
+        console.log
         RED.nodes.createNode(this, config);
         var node = this;
         var name = config.name;

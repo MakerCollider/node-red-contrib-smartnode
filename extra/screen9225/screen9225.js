@@ -173,12 +173,12 @@ module.exports = function(RED) {
             } else if(value == -1){
                 screenSpi.ILI9225GclearScreen(0x0000);
                 this.status({fill:"green",shape:"dot",text:"Clear"});
-            } else if((typeof msg.imagePtr) == "string"){
+            } else if(msg.topic === "imageStr"){
                 if(!state){
                     screenSpi.ILI9225GclearScreen(0x0000);
                     state = true;
                 }
-                screenSpi.ILI9225GfillRectA(msg.imagePtr);
+                screenSpi.ILI9225GfillRectA(msg.payload);
                 this.status({fill:"green",shape:"dot",text:"Camera"});
             }
         });

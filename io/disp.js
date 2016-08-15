@@ -46,9 +46,9 @@ module.exports = function(RED) {
                         node.log("Input Error! Wrong String Format");
                         node.status({fill:"red", shape:"dot", text:"WrongFormat"});                   
                     }
-                    var msg1 = {topic: "base64", payload: base64Str};
+                    //var msg1 = {topic: "base64", payload: base64Str};
                     //node.send(msg1);
-                    atlas.emit(name, msg1.payload);
+                    atlas.emit("dispImg", base64Str);
                 }
             });
             

@@ -18,13 +18,13 @@
     category: 'Robot',
     color: '#c7e9c0',
     defaults: {
-      name:  {value:"RobotHead-Init"}  
+      name:  {value:""}  
     },
     inputs:1,
     outputs:1, // how many callbacks of cameraInit
     icon: "light.png",
     label: function() {
-      return this.name;
+      return this.name ||this._("RobotHead-Init.label.palette");
     },
     paletteLabel: function () {
             return this.name||this._("RobotHead-Init.label.palette");

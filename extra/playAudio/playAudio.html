@@ -21,14 +21,14 @@
         category: 'MultiMedia',
         color: '#E2D96E',
         defaults: {
-            name: {value: "PlayAudio", required: false},
+            name: {value: "", required: false},
             rules: {value:[]}
         },
         inputs: 1,
         outputs: 0,
         icon: "light.png",
         label: function() {
-            return this.name || "PlayAudio";
+            return this.name || this._("PlayAudio.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("PlayAudio.label.palette");

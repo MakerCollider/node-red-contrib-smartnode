@@ -19,7 +19,7 @@
         category: 'HardwareOutput',
         color: '#E2D96E',
         defaults: {
-            name: {value: "Servo", required: false},
+            name: {value: "", required: false},
             ServoType:{value:"",required:true},
 			ServoNumber:{value:"",required:true},
             ServoSpeed:{value:"0",required:true},
@@ -28,7 +28,7 @@
         outputs: 0,
         icon: "light.png",
         label: function() {
-            return this.name || "I2cServo";
+            return this.name || this._("I2cServo.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("I2cServo.label.palette");

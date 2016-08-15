@@ -6,10 +6,10 @@
     outputs: 0,
     icon: "light.png",
     defaults: {
-      name: { value: 'upgrade' }
+      name: { value: '' }
     },
     label: function(){
-      return this.name || 'upgrade'
+      return this.name || this._("upgrade.label.palette");
     },
     paletteLabel: function () {
         return this.name||this._("upgrade.label.palette");

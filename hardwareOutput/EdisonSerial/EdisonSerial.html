@@ -19,7 +19,7 @@
 		category: 'advanced-function',
 		color: '#E2D96E',
 		defaults: {
-			name:      {value: "EdisonSerial", required: false},
+			name:      {value: "", required: false},
 			//serialport: {value: "/dev/ttyMFD1", required: true},
 			serialbaud: {value: 115200, required: true},
 			databits: {value: 8, required: false},
@@ -30,7 +30,7 @@
 		outputs: 1,
 		icon: "serial.png",
 		label: function() {
-			return this.name || "EdisonSerial";
+			return this.name || this._("EdisonSerial.label.palette");
 		},
                 paletteLabel: function () {
                     return this.name||this._("EdisonSerial.label.palette");

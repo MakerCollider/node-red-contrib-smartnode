@@ -20,14 +20,14 @@
         category: 'OtherSensor',
         color: '#E2D96E',
         defaults: {
-            name: {value: "Attitude", required: false},
+            name: {value: "", required: false},
             interval: {value: "500", required: false}
         },
         inputs: 1,
         outputs: 3,
         icon: "light.png",
         label: function() {
-            return this.name || "Attitude";
+            return this.name ||this._("Attitude.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("Attitude.label.palette");

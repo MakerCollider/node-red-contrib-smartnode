@@ -19,14 +19,14 @@
         category: 'HardwareOutput',
         color: '#E2D96E',
         defaults: {
-            name: {value: "PwmLed", required: false},
+            name: {value: "", required: false},
             pwmPin: {value: "3", required: false},
         },
         inputs: 1,
         outputs: 0,
         icon: "light.png",
         label: function() {
-            return this.name || "PwmLed";
+            return this.name || this._("PwmLed.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("PwmLed.label.palette");

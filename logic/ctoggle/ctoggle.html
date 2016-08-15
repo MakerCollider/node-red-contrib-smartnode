@@ -32,27 +32,21 @@
     </div>
 </script>
 
-<script type="text/x-red" data-help-name="CToggle">
-    <p>A simple function node to route messages based on its properties.</p>
-    <p>When a message arrives, the selected property is evaluated against each
-    of the defined rules. The message is then sent to the output of <i>all</i>
-    rules that pass.</p>
-    <p>Note: the <i>otherwise</i> rule applies as a "not any of" the rules preceding it.</p>
-</script>
+
 
 <script type="text/javascript">
     RED.nodes.registerType('CToggle', {
         color: "#3FADB5",
         category: 'function',
         defaults: {
-            name: {value: "CToggle", required: true},
+            name: {value: "", required: true},
             rules: {value: [{name: "", condition: ""}]},
         },
         inputs: 1,
         outputs: 1,
         icon: "function.png",
         label: function() {
-            return this.name||"CToggle";
+            return this.name||this._("CToggle.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("CToggle.label.palette");

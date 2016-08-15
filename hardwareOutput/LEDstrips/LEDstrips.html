@@ -19,14 +19,14 @@
         category: 'HardwareOutput',
         color: '#E2D96E',
         defaults: {
-            name: {value: "ledStrips", required: false},
+            name: {value: "", required: false},
             mode: {value:"",required:true},
         },
         inputs: 1,
         outputs: 0,
         icon: "light.png",
         label: function() {
-            return this.name || "LEDstrips";
+            return this.name || this._("LEDstrips.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("LEDstrips.label.palette");

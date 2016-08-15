@@ -19,13 +19,13 @@
         category: 'MultiMedia',
         color: '#a6bbcf',
         defaults: {
-            name: {value:"dispImg"},
+            name: {value:""},
         },
         inputs:1,
         outputs:0,
         icon: "file.png",
         label: function() {
-            return this.name;
+            return this.name ||this._("dispImg.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("dispImg.label.palette");
@@ -47,7 +47,7 @@
         category: 'MultiMedia',
         color: '#a6bbcf',
         defaults: {
-            name: {value:"dispGauge"},
+            name: {value:""},
             min: {value:0},
             max: {value:100},
             title: {value: 'dispGauge'},
@@ -57,7 +57,7 @@
         outputs:0,
         icon: "file.png",
         label: function() {
-            return this.name;
+            return this.name ||this._("dispGauge.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("dispGauge.label.palette");

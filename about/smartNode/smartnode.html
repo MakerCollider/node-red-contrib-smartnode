@@ -3,13 +3,13 @@
         category: 'about',
         color: '#E2D96E',
         defaults: {
-            name:       {value: "SmartNode",  required: false},
+            name:       {value: "",  required: false},
         },
         inputs:  0,
         outputs: 1,
         icon: "light.png",
         label: function() {
-            return this.name || "SmartNode";
+            return this.name || this._("SmartNode.label.palette");
         },
         paletteLabel: function () {
             return this.name||this._("SmartNode.label.palette");

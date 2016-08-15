@@ -19,14 +19,14 @@
     category: 'Robot',
     color: '#c7e9c0',
     defaults: {
-      name:  {value:"RobotHead-Smile"},
+      name:  {value:""},
       time:  {value: 500}   
     },
     inputs:1,
     outputs:1, // how many callbacks of cameraInit
     icon: "light.png",
     label: function() {
-      return this.name;
+      return this.name||this._("RobotHead-Smile.label.palette");
     },
     paletteLabel: function () {
             return this.name||this._("RobotHead-Smile.label.palette");

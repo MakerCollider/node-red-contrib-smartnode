@@ -1,0 +1,12 @@
+{ 
+	"face": {    
+		"label": {   
+			"palette": "face"
+		}
+	},
+   	"palette": {
+        "label": {
+            "face": "recognition"
+        }
+    }
+}

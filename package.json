@@ -104,7 +104,10 @@
 
             "Attitude":         "sensor/attitude/attitude.js",
 
-            "DiaplayImage":     "io/disp.js"
+            "DiaplayImage":     "io/disp.js",
+
+            "face":        "recognition/face/face.js",
+            "tts":        "tts/tts/tts.js"
         }
     }
 }

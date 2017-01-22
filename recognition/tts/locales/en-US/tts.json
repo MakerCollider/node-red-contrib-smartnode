@@ -1,0 +1,17 @@
+﻿{
+    
+	"tts": {
+        
+		"label": {
+            "palette": "Text-to-Speech",
+            "genderVoice":"Voice Type",
+            "language": "Language",
+            "FemaleVoice": "Female",
+            "MaleVoice": "Male",
+            "Chinese": "Chinese",
+            "English": "English"
+		}
+
+   	 }
+ 
+}

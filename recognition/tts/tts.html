@@ -1,0 +1,50 @@
+<script type="text/javascript">
+	RED.nodes.registerType('tts', {
+		category: 'recognition',
+		color: '#0587C2',
+//		color: '#3FADB5',
+		defaults: {
+			name: {value: ""},
+			say: {value: ""},
+			genderVoice: {value: 0, required: true},
+			language: {value: 0, required: true}
+		},
+		inputs: 1,
+		outputs: 1,
+		align: 'right',
+		icon: 'bridge-dash.png',
+		label: function () {
+			return this.name || 'tts';
+		},
+		paletteLabel: function () {
+		return this.name||this._("tts.label.palette");
+		}
+	});
+
+</script>
+
+<script type="text/x-red" data-template-name="tts">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+    	<label for="node-input-say"><i class="icon-edit"></i> Text</label>
+        <input type="text" id="node-input-say" placeholder="Text to speech (override payload)">
+    </div>
+    <div class="form-row">
+      <label for="node-input-genderVoice"><i class="fa fa-tag"></i> <span data-i18n="tts.label.genderVoice"></span></label>
+      <select id="node-input-genderVoice">
+          <option value=0 data-i18n="[text]tts.label.FemaleVoice"></option>
+          <option value=1 data-i18n="[text]tts.label.MaleVoice"></option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="node-input-language"><i class="fa fa-tag"></i> <span data-i18n="tts.label.language"></span></label>
+      <select id="node-input-language">
+          <option value=0 data-i18n="[text]tts.label.Chinese"></option>
+          <option value=1 data-i18n="[text]tts.label.English"></option>
+      </select>
+    </div>
+</script>
+

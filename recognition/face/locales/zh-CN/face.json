@@ -1,0 +1,13 @@
+﻿{
+	"face": {
+		"label": {
+            "palette": "人脸识别"
+		}
+   	 },
+   	 "palette": {
+        "label": {
+              "face": "识别"
+        }
+    }
+ 
+}
